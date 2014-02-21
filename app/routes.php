@@ -17,8 +17,10 @@ Route::get('/', function()
 });
 
 
-Route::get("admin/users/login" , array("as" => "users.login" , "uses" => "UsersController@login"));
-Route::post("admin/users/login" , "UsersController@postLogin");
+Route::get("admin/login" , array("as" => "admin.login" , "uses" => "AdminController@login"));
+Route::post("admin/login" , "AdminController@postLogin");
+Route::get("admin/forgot" , array("as" => "admin.forgot" , "uses" => "AdminController@forgot"));
+Route::get("admin/logout" , array("as" => "admin.logout" , "uses" => "AdminController@logout"));
 
 Route::group(array('before' => 'auth', 'prefix' => 'admin'), function()
 {

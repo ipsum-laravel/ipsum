@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'sites.5-2.lan',
+			'host'      => 'localhost',
 			'database'  => 'ipsum_3',
 			'username'  => 'root',
-			'password'  => 'mysql',
+			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
