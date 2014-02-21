@@ -22,7 +22,10 @@ Route::post("admin/login" , "AdminController@postLogin");
 Route::get("admin/forgot" , array("as" => "admin.forgot" , "uses" => "AdminController@forgot"));
 Route::get("admin/logout" , array("as" => "admin.logout" , "uses" => "AdminController@logout"));
 
+
 Route::group(array('before' => 'auth', 'prefix' => 'admin'), function()
 {
     Route::get('/', array('uses' => 'AdminController@getIndex', 'as' => 'admin'));
+
+    Route::resource('actualite', 'ActualiteController');
 });
