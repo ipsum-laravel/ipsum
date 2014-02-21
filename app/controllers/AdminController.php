@@ -32,12 +32,14 @@ class AdminController extends BaseController {
     {
         $this->layout = View::make('layouts.admin_login');
         
-        $creds = array('identifiant' => Input::get('identifiant') ,
-                  'password' => Input::get('password'));
+        $creds = array(
+            'identifiant' => Input::get('identifiant') ,
+            'password' => Input::get('password')
+        );
                  
         $validation = User::validate($creds, Input::has('cookie'));
 
-        if ( $validation->passes() ) {
+        if ($validation->passes()) {
             return (Auth::attempt($creds , true)) ? Redirect::route("admin")
                     : Redirect::back()->with("alert_error" , "Erreur de connexion");
         }

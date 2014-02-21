@@ -19,8 +19,8 @@
 <div id="conteneur">
 <div id="conteneur_haut"></div>
     <div id="header">
-        <h1><a href="<?php echo asset('/') ?>" title="Retour à la page d'accueil" ><?php echo Config::get('settings.nom_site');?></a></h1>
-        <p class="infos_connect"><strong><?php echo Auth::user()->prenom ?> <?php echo Auth::user()->nom ?></strong><br /><?php echo link_to_action('AdminController@logout', 'Déconnexion') ?></p>
+        <h1><a href="<?php echo asset('/') ?>" title="Retour à la page d'accueil" ><?= e(Config::get('settings.nom_site')) ?></a></h1>
+        <p class="infos_connect"><strong><?= e(Auth::user()->prenom) ?> <?= e(Auth::user()->nom) ?></strong><br /><?= link_to_action('AdminController@logout', 'Déconnexion') ?></p>
         <?php /*
         <div id="rubrique">
             <?php foreach ($rubriques as $groupe) : ?>
@@ -77,7 +77,7 @@
           Ipsum
        </p>
         <p>
-            <a href="#rubrique" >Haut de page</a> - Administration du site <?php echo Config::get('settings.nom_site');?>
+            <a href="#rubrique" >Haut de page</a> - Administration du site <?= e(Config::get('settings.nom_site')) ?>
         </p>
     </div>
     <div id="conteneur_bas"></div>
