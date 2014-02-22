@@ -86,3 +86,6 @@ require app_path().'/filters.php';
 
 require app_path().'/library/macros.php';
 
+// TODO : uniquement si en admin
+require app_path().'/library/admin/macros.php';
+

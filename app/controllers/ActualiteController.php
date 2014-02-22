@@ -1,13 +1,13 @@
 <?php
 
-class ActualiteController extends \AdminController {
+class ActualiteController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function getIndex()
+	public function index()
 	{
 	    $data = array();
 

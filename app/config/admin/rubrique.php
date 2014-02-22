@@ -9,7 +9,7 @@ return array(
             'abreviation' => 'Actu.',
             'icone' => 'calendrier.png',
             'droit' => 'actualite',
-            'uri' => 'actualite/actualite',
+            'action' => 'ActualiteController@index',
         ),
         array(
             'rubrique' => 'configuration',
@@ -17,7 +17,7 @@ return array(
             'abreviation' => 'Config.',
             'icone' => 'parametre.png',
             'droit' => '',
-            'uri' => 'configuration',
+            'action' => 'AdminController@configuration',
         ),
     ),
 );

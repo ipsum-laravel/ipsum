@@ -21,24 +21,7 @@
     <div id="header">
         <h1><a href="<?php echo asset('/') ?>" title="Retour à la page d'accueil" ><?= e(Config::get('settings.nom_site')) ?></a></h1>
         <p class="infos_connect"><strong><?= e(Auth::user()->prenom) ?> <?= e(Auth::user()->nom) ?></strong><br /><?= link_to_action('AdminController@logout', 'Déconnexion') ?></p>
-        <?php /*
-        <div id="rubrique">
-            <?php foreach ($rubriques as $groupe) : ?>
-            <div class="groupe">
-                <ul>
-                    <?php foreach ($groupe as $key => $rubrique) : ?>
-                    <li class="<?php echo $rubrique['selected'] ?>">
-                        <a href="<?php echo \Uri::create('/admin/'.$rubrique['uri']) ?>" >
-                            <?php echo Asset::img($rubrique['icone'], array('alt' => $rubrique['nom'], 'width' => '40', 'height' => '40')) ?>
-                            <br /><?php echo $rubrique['abreviation'] ?>
-                        </a>
-                    </li>
-                    <?php endforeach ?>
-                </ul>
-            </div>
-            <?php endforeach ?>
-        </div>
-        */ ?>
+        <?= HTML::rubrique() ?>
          
     </div><!-- Fin header //-->
 
