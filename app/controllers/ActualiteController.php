@@ -11,10 +11,40 @@ class ActualiteController extends AdminController {
 	{
 	    $data = array();
 
-        $data['actualites'] = Actualite::orderBy('date_actu', 'desc')->orderBy('id', 'desc')->paginate(5);
+        //$data['actualites'] = Actualite::orderBy('date_actu', 'desc')->orderBy('id', 'desc')->paginate(5);
+        
+        $liste = new Liste();
+        $recherche = array(
+            'input'     => 'mot',
+            'colonnes'      => array (
+                'actualite.nom',
+                'actualite.description'
+            )
+        );
+        $liste->setRecherche($recherche);
+        $tri = array(
+            'ordre'     => 'DESC',
+            'colonne'  => 'date_actu'
+        );
+        $liste->setTri($tri);
+        $requete = array(
+            'colonnes'  => 'actualite.id,
+                            actualite.nom,
+                            actualite.description,
+                            DATE_FORMAT(actualite.date_actu, "%d/%m/%Y") AS date_actu_format',
+            'from'      => 'actualite'
+        );
+        $ressource = $liste->select($requete);
 
+        $data['datas'] = array();
+        foreach($ressource as $item) {
+            $data['datas'][] = $item;
+        }
+
+        $data['liste'] = $liste;
+        
         $this->layout->menus = array();
-        $this->layout->title = 'Dashssssssssssssssssboard';
+        $this->layout->title = 'Liste des actualités';
         $this->layout->content = View::make('actualite.index', $data);
 	}
 
