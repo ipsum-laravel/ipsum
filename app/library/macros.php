@@ -5,7 +5,7 @@
  *
  * These messages are set using Session::flash(<message_type>, <message>);
  */
-HTML::macro("notifications", function($errors = null, $views = 'partials.notifications') {
+HTML::macro("notifications", function($errors = null, $template = 'partials.notifications') {
     $views =  '';
     $alert_types = array(
         "error" => 'notifications.title.error',
@@ -27,7 +27,7 @@ HTML::macro("notifications", function($errors = null, $views = 'partials.notific
         }
 
         if(!empty($messages)) {
-            $views .= View::make($views, array('type' => $type, 'label' => Lang::get($label), 'messages' => $messages));
+            $views = View::make($template, array('type' => $type, 'label' => Lang::get($label), 'messages' => $messages));
         }
     }
     return empty($views) ? null : $views;

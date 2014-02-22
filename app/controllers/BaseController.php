@@ -13,6 +13,12 @@ class BaseController extends Controller {
 		{
 			$this->layout = View::make($this->layout);
 		}
+        if (isset($this->title)) {
+            $this->layout->title = $this->title;
+        }
+        if (isset($this->rubrique)) {
+            $this->layout->rubrique = $this->rubrique;
+        }
 	}
 
     public function __construct()

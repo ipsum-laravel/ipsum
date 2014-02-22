@@ -11,7 +11,7 @@ class Liste
     * Nombres de ligne a afficher dans la liste
     * @var int
     */
-    protected $nb_lignes = 2;
+    protected $nb_lignes = 10;
 
     /**
     * Nombres de page a afficher dans la pagination : toujours impair
@@ -371,7 +371,7 @@ class Liste
                     $sql .= " AND ".$colonnes[0]." >= '".DB::getPdo()->quote($values[0])."' AND ".$colonnes[1]." <= ".DB::getPdo()->quote($values[1], PDO::PARAM_STR)." " ;
                 }
                 elseif  ($filtre['type'] == 'sous requete') {
-                    $sous_requete = sprintf($filtre['requete'], DB::getPdo()->quote($filtre['value'], PDO::PARAM_STR)); //TODO pas sur que ça fonctionne
+                    $sous_requete = sprintf($filtre['requete'], DB::getPdo()->quote($filtre['value'], PDO::PARAM_STR)); //TODO pas sur que ça fonctionne a cause des quotes générés
                     $sql .= ' AND '.$filtre['colonne'].' '.$filtre['operateur']." (".$sous_requete.")" ;
                 }
                 else {
@@ -386,7 +386,7 @@ class Liste
             $sql .= ' HAVING '.$this->requete['having'];
         }
         if ($this->tri) {
-            $sql .= ' ORDER BY '.DB::getPdo()->quote($this->tri['colonne'], PDO::PARAM_STR).' '.$this->tri['ordre'];
+            $sql .= ' ORDER BY '.$this->quoteIdent($this->tri['colonne']).' '.$this->tri['ordre'];
         }
         elseif (!empty($this->requete['order by'])) {
             $sql .= ' ORDER BY '.$this->requete['order by'];
@@ -512,4 +512,8 @@ class Liste
         .e($label).' '.$img.'
         </a>';
     }
+    
+    public static function quoteIdent($field) {
+        return "`".str_replace("`","``",$field)."`";
+    }    
 }

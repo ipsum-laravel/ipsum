@@ -1,7 +1,10 @@
 <?php
 
 class ActualiteController extends AdminController {
-
+    
+    public $title = 'Gestion des actualités';
+    public $rubrique = 'actualite';
+    
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -10,8 +13,6 @@ class ActualiteController extends AdminController {
 	public function index()
 	{
 	    $data = array();
-
-        //$data['actualites'] = Actualite::orderBy('date_actu', 'desc')->orderBy('id', 'desc')->paginate(5);
         
         $liste = new Liste();
         $recherche = array(
@@ -38,13 +39,12 @@ class ActualiteController extends AdminController {
 
         $data['datas'] = array();
         foreach($ressource as $item) {
+            $item->description = Str::words(strip_tags($item->description), 30, '...');
             $data['datas'][] = $item;
         }
 
         $data['liste'] = $liste;
         
-        $this->layout->menus = array();
-        $this->layout->title = 'Liste des actualités';
         $this->layout->content = View::make('actualite.index', $data);
 	}
 
@@ -55,7 +55,8 @@ class ActualiteController extends AdminController {
 	 */
 	public function create()
 	{
-		//
+        $this->layout->head = \JsTools::jwysiwyg().\JsTools::datePicker();
+        $this->layout->content = View::make('actualite.form');
 	}
 
 	/**
@@ -65,7 +66,23 @@ class ActualiteController extends AdminController {
 	 */
 	public function store()
 	{
-		//
+        $inputs = Input::all();
+        $inputs['date_actu'] = formateDateStocke(Input::get('date_actu'));
+        $validation = Actualite::validate($inputs);
+
+        if ($validation->passes()) {
+            $data = new Actualite;
+            $data->nom = Input::get('nom');
+            $data->date_actu = $inputs['date_actu'];
+            $data->description = Input::get('description');
+            if ($post->save()) {
+                Session::flash('success', "L'enregistrement a bien été créé");
+                return Redirect::route("admin.actualite.index");
+            } else {
+                Session::flash('error', "Impossible de créer l'enregistrement");               
+            }
+        }
+        return Redirect::back()->withInput()->withErrors($validation);
 	}
 
 	/**
@@ -76,10 +93,9 @@ class ActualiteController extends AdminController {
 	 */
 	public function show($id)
 	{
-		$data['actualite'] = Actualite::find($id);
+		$data['actualite'] = Actualite::findOrFail($id);
 
-        $this->layout->menus = array();
-        $this->layout->title = 'sssss';
+        $this->layout->title = $data['actualite']->nom;
         $this->layout->content = View::make('actualite.show', $data);
 	}
 
@@ -91,7 +107,10 @@ class ActualiteController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+        $data = Actualite::findOrFail($id);
+
+        $this->layout->head = JsTools::jwysiwyg().JsTools::datePicker();
+        $this->layout->content = View::make('actualite.form', compact("data"));        
 	}
 
 	/**
@@ -102,7 +121,25 @@ class ActualiteController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+	    $data = Actualite::findOrFail($id);
+
+        $inputs = Input::all();
+        $inputs['date_actu'] = formateDateStocke(Input::get('date_actu'));
+        $validation = Actualite::validate($inputs);
+
+        if ($validation->passes()) {
+            $data->nom = Input::get('nom');
+            $data->date_actu = $inputs['date_actu'];
+            $data->description = Input::get('description');
+
+            if ($data->save()) {
+                Session::flash('success', "L'enregistrement a bien été modifié");
+                return Redirect::route("admin.actualite.index");
+            } else {
+                Session::flash('error', "Impossible de modifier l'enregistrement");               
+            }
+        }
+        return Redirect::back()->withInput()->withErrors($validation);
 	}
 
 	/**
@@ -113,7 +150,13 @@ class ActualiteController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+	    $data = Actualite::findOrFail($id);
+		if ($data->delete()) {
+            Session::flash('warning', "L'enregistrement a bien été supprimé");
+		} else {
+		    Session::flash('error', "Impossible de supprimer l'enregistrement");
+		}
+		return Redirect::back();
 	}
 
 }

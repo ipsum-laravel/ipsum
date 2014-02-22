@@ -4,14 +4,9 @@ class AdminController extends BaseController {
 
     public $layout = 'layouts.admin';
 
-    public function __construct()
-    {
-
-    }
-
     public function getIndex()
     {
-        $this->layout->menus = array();
+        $this->layout->rubrique = 'configuration';
         $this->layout->title = 'Dashboard';
         $this->layout->content = View::make('admin.dashboard');
     }
@@ -65,7 +60,7 @@ class AdminController extends BaseController {
     
     public function configuration()
     {
-        $this->layout->menus = array();
+        $this->layout->rubrique = 'configuration';
         $this->layout->title = 'Dashboard';
         $this->layout->content = View::make('admin.configuration');
     }    

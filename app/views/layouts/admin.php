@@ -4,14 +4,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
     <title>Administration :: <?= $title ?></title>
     <meta name="robots" content="noindex, nofollow" />
-    <link href="<?php echo asset('assets/admin/css/admin.css'); ?>" rel="stylesheet">
-    <link href="<?php echo asset('assets/admin/css/admin_print.css'); ?>" rel="stylesheet" media="print">
-
+    <link href="<?= asset('assets/admin/css/admin.css') ?>" type="text/css" rel="stylesheet" />
+    <link href="<?= asset('assets/admin/css/admin_print.css') ?>" type="text/css" rel="stylesheet" media="print" />
+    
     <!--    Librairie javascript //-->
-    <?php /* TODO : echo Asset::js(array(
-        'jquery-1.5.1.min.js',
-        'admin.js'
-    ));*/ ?>
+    <script type="text/javascript" src="<?= asset('assets/admin/js/jquery-1.5.1.min.js') ?>"></script>
+    <script type="text/javascript" src="<?= asset('assets/admin/js/admin.js') ?>"></script>
 
     <?php if (!empty($head)) echo $head; ?>
 </head>
@@ -21,12 +19,12 @@
     <div id="header">
         <h1><a href="<?php echo asset('/') ?>" title="Retour à la page d'accueil" ><?= e(Config::get('settings.nom_site')) ?></a></h1>
         <p class="infos_connect"><strong><?= e(Auth::user()->prenom) ?> <?= e(Auth::user()->nom) ?></strong><br /><?= link_to_action('AdminController@logout', 'Déconnexion') ?></p>
-        <?= HTML::rubrique() ?>
+        <?= HTML::rubrique($rubrique) ?>
          
     </div><!-- Fin header //-->
 
     <div id="menu">
-        <?php foreach ($menus as $menu) : ?>
+        <?php /*foreach ($menus as $menu) : ?>
         <div class="menu <?php echo $menu['selected'] ?>">
             <div class="onglet"><a href="<?php echo Uri::create($menu['uri']) ?>"><?php echo $menu['nom'] ?></a></div>
             <?php if(!empty($menu['smenus'])) : ?>
@@ -37,21 +35,11 @@
             </ul>
             <?php endif ?>
         </div>
-        <?php endforeach; ?>
+        <?php endforeach;*/ ?>
     </div>
     <div id="texte">
         <!--[if lte IE 7]><div class="attention"><p>Nous avons détecté que vous utilisez IE7 (ou une version antérieure).<br/>Ce site ne s'affichera pas correctement car cette version est dépassée. Pour une meilleure utilisation du site, nous vous recommandons fortement d'utiliser un des navigateurs suivants  :<br /><a href="http://www.microsoft.com/windows/products/winfamily/ie/default.mspx">Internet Explorer</a> <a href="http://www.apple.com/safari/">Safari</a> <a href="http://www.google.com/chrome/">Google Chrome</a> <a href="http://www.mozilla.com/firefox/">Firefox</a> <a href="http://www.opera.com/download/">Opera</a></p></div> <![endif]-->
-        <?php /* if (Session::get_flash('success')): ?>
-        <div class="confirmation">
-            <ul><li><?php echo implode('</li><li>', (array) Session::get_flash('success')); ?></li></ul>
-        </div>
-        <?php endif; ?>
-        <?php if (Session::get_flash('error')): ?>
-        <div class="attention">
-            <p><strong>Erreurs :</strong></p>
-            <ul><li><?php echo implode('</li><li>', (array) Session::get_flash('error')); ?></li></ul>
-        </div>
-        <?php endif; */ ?>
+        <?= HTML::notifications($errors) ?>
         <?= $content; ?>
 
     </div><!-- Fin texte //-->
