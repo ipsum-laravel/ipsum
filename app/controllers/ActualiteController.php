@@ -1,5 +1,7 @@
 <?php
 
+use \App\library\Liste;
+
 class ActualiteController extends AdminController {
     
     public $title = 'Gestion des actualités';

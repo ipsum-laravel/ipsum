@@ -1,4 +1,8 @@
 <?php
+namespace App\library;
+
+use \Illuminate\Support\Facades\DB;
+
 /**
 * Affichage de liste
 *

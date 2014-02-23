@@ -1,5 +1,4 @@
 <?php
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +64,7 @@ App::error(function(Exception $exception, $code)
     }
 });
 
-
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 App::error(function(ModelNotFoundException $e)
 {
     return Response::make(View::make('error/404'), 404);
