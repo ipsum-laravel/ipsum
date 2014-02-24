@@ -3,6 +3,7 @@
 class AdminController extends BaseController {
 
     public $layout = 'layouts.admin';
+    public static $zone;
 
     public function getIndex()
     {
@@ -57,11 +58,11 @@ class AdminController extends BaseController {
         $this->layout->title = 'Mot de passe oublié';
         $this->layout->content = View::make('admin/connexion');
     }
-    
+
     public function configuration()
     {
         $this->layout->rubrique = 'configuration';
         $this->layout->title = 'Dashboard';
         $this->layout->content = View::make('admin.configuration');
-    }    
+    }
 }

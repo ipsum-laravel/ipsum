@@ -3,11 +3,11 @@
 use \App\library\Liste;
 
 class ActualiteController extends AdminController {
-    
+
     public $title = 'Gestion des actualités';
     public $rubrique = 'actualite';
-    public static $acces = 'actualite';
-    
+    public static $zone = 'actualite';
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -16,7 +16,7 @@ class ActualiteController extends AdminController {
 	public function index()
 	{
 	    $data = array();
-        
+
         $liste = new Liste();
         $recherche = array(
             'input'     => 'mot',
@@ -47,7 +47,7 @@ class ActualiteController extends AdminController {
         }
 
         $data['liste'] = $liste;
-        
+
         $this->layout->content = View::make('actualite.index', $data);
 	}
 
@@ -82,7 +82,7 @@ class ActualiteController extends AdminController {
                 Session::flash('success', "L'enregistrement a bien été créé");
                 return Redirect::route("admin.actualite.index");
             } else {
-                Session::flash('error', "Impossible de créer l'enregistrement");               
+                Session::flash('error', "Impossible de créer l'enregistrement");
             }
         }
         return Redirect::back()->withInput()->withErrors($validation);
@@ -113,7 +113,7 @@ class ActualiteController extends AdminController {
         $data = Actualite::findOrFail($id);
 
         $this->layout->head = JsTools::jwysiwyg().JsTools::datePicker();
-        $this->layout->content = View::make('actualite.form', compact("data"));        
+        $this->layout->content = View::make('actualite.form', compact("data"));
 	}
 
 	/**
@@ -139,7 +139,7 @@ class ActualiteController extends AdminController {
                 Session::flash('success', "L'enregistrement a bien été modifié");
                 return Redirect::route("admin.actualite.index");
             } else {
-                Session::flash('error', "Impossible de modifier l'enregistrement");               
+                Session::flash('error', "Impossible de modifier l'enregistrement");
             }
         }
         return Redirect::back()->withInput()->withErrors($validation);

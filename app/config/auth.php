@@ -68,4 +68,39 @@ return array(
 
 	),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Zones d'accés
+    |--------------------------------------------------------------------------
+    |
+    | Liste des diffèrentes zones d'accès restreint
+    |
+    */
+
+    'zones' => array(
+
+        'actualite' => 'Gestion des actualités',
+
+        'categorie' => 'Gestion des catégories',
+
+    ),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Roles des utilisateurs
+    |--------------------------------------------------------------------------
+    |
+    | Liste des diffèrents utilisateurs
+    |
+    */
+
+    'roles' => array(
+
+        '1' => 'Super administrateur',
+
+        '2' => 'Administrateur',
+
+        '3' => 'Éditeur',
+
+    ),
 );

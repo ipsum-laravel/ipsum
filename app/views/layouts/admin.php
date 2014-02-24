@@ -6,7 +6,7 @@
     <meta name="robots" content="noindex, nofollow" />
     <link href="<?= asset('assets/admin/css/admin.css') ?>" type="text/css" rel="stylesheet" />
     <link href="<?= asset('assets/admin/css/admin_print.css') ?>" type="text/css" rel="stylesheet" media="print" />
-    
+
     <!--    Librairie javascript //-->
     <script type="text/javascript" src="<?= asset('assets/admin/js/jquery-1.5.1.min.js') ?>"></script>
     <script type="text/javascript" src="<?= asset('assets/admin/js/admin.js') ?>"></script>
@@ -18,9 +18,12 @@
 <div id="conteneur_haut"></div>
     <div id="header">
         <h1><a href="<?php echo asset('/') ?>" title="Retour à la page d'accueil" ><?= e(Config::get('settings.nom_site')) ?></a></h1>
-        <p class="infos_connect"><strong><?= e(Auth::user()->prenom) ?> <?= e(Auth::user()->nom) ?></strong><br /><?= link_to_action('AdminController@logout', 'Déconnexion') ?></p>
+        <p class="infos_connect">
+            <strong><?= e(Auth::user()->prenom) ?> <?= e(Auth::user()->nom) ?></strong><br />
+            <?= e(Auth::user()->role()) ?><br />
+            <?= link_to_action('AdminController@logout', 'Déconnexion') ?></p>
         <?= HTML::rubrique($rubrique) ?>
-         
+
     </div><!-- Fin header //-->
 
     <div id="menu">
