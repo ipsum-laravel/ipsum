@@ -2,70 +2,67 @@
 
 // Configuration des menus
 return array(
-    array(
+    'actualite' => array(
         'rubrique' => 'actualite',
         'menu' => array(
             array(
                 'nom' => 'Actualités',
-                'controler' => 'Actualite\Controller_Admin_Actualite',
-                'uri' => 'actualite/actualite',
+                'controleur' => 'actualiteController',
+                'action' => 'actualiteController@index',
                 'smenus' => array(
                     array(
                         'nom' => 'Liste des actualités',
-                        'uri' => 'actualite/actualite',
+                        'action' => 'actualiteController@index',
                         'icone' => 'table.png'
                     ),
                     array(
                         'nom' => 'Ajouter une actualité',
-                        'uri' => 'actualite/actualite/create',
+                        'action' => 'actualiteController@create',
                         'icone' => 'add.png'
                     ),
-                ),      
+                ),
             ),
             array(
                 'nom' => 'test',
-                'controler' => 'Actualite\Controller_Admin_Test',
-                'uri' => 'actualite/test',     
+                'controleur' => 'testController',
+                'action' => 'testController@index',
             ),
         ),
     ),
-    array(
+    'configuration' => array(
         'rubrique' => 'configuration',
         'menu' => array(
             array(
                  'nom' => 'Dashboard',
-                'controler' => 'Admin\Controller_Admin',
-                'action' => 'index',
-                'uri' => 'index',
+                'controleur' => 'adminController',
+                'action' => 'adminController@index',
                 'visibility'=> 'hidden',
             ),
             array(
                 'nom' => 'Configuration',
-                'controler' => 'Admin\Controller_Admin',
-                'action' => 'configuration',
-                'uri' => 'configuration',
+                'controleur' => 'adminController',
+                'action' => 'adminController@configuration',
             ),
             array(
                 'nom' => 'Paramètres',
-                'controler' => 'Admin\Controller_Admin',
-                'action' => 'website',
-                'uri' => 'website',
+                'controleur' => 'parametreController',
+                'action' => 'parametreController@index',
                 'visibility'=> 'hidden',
             ),
             array(
                 'nom' => 'Utilisateurs',
-                'controler' => 'Admin\Controller_Admin_User',
-                'uri' => 'admin/user',
+                'controleur' => 'userController',
+                'action' => 'userController@index',
                 'visibility'=> 'hidden',
                 'smenus' => array(
                     array(
                         'nom' => 'Liste des utilisateurs',
-                        'uri' => 'admin/user',
+                        'action' => 'userController@index',
                         'icone' => 'table.png'
                     ),
                     array(
                         'nom' => 'Ajouter une utilisateur',
-                        'uri' => 'admin/user/create',
+                        'action' => 'userController@create',
                         'icone' => 'add.png'
                     ),
                 ),

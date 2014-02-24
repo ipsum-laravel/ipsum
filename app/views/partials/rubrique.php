@@ -1,4 +1,3 @@
-        <div id="rubrique">
             <?php foreach ($rubriques as $groupe) : ?>
             <div class="groupe">
                 <ul>
@@ -13,4 +12,3 @@
                 </ul>
             </div>
             <?php endforeach ?>
-        </div>
