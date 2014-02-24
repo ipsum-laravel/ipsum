@@ -35,6 +35,10 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
+    // TODO check accès au controleur    
+    $controleur = strstr(Route::currentRouteAction(), '@', true);
+    //echo $controleur::$acces;
+    
 	if (Auth::guest()) return Redirect::guest('admin/login');
 });
 

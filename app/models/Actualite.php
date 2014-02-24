@@ -1,6 +1,6 @@
 <?php
 
-class actualite extends BaseModel {
+class Actualite extends BaseModel {
 
     protected $table = 'actualite';
 
@@ -10,4 +10,5 @@ class actualite extends BaseModel {
                                 "date_actu" => "required|date_format:Y-m-d",
                                 "nom" => "required",
                             );
+                            
 }

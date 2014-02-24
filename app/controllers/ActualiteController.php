@@ -6,6 +6,7 @@ class ActualiteController extends AdminController {
     
     public $title = 'Gestion des actualités';
     public $rubrique = 'actualite';
+    public static $acces = 'actualite';
     
 	/**
 	 * Display a listing of the resource.
