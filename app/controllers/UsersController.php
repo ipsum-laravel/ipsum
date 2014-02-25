@@ -51,5 +51,103 @@ class UsersController extends AdminController {
 
         $this->layout->content = View::make('admin.user.index', $data);
     }
+
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        $this->layout->head = \JsTools::jwysiwyg().\JsTools::datePicker();
+        $this->layout->content = View::make('admin.user.form');
+    }
+    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store()
+    {
+        $inputs = Input::all();
+        $inputs['date_actu'] = formateDateStocke(Input::get('date_actu'));
+        $validation = Actualite::validate($inputs);
+
+        if ($validation->passes()) {
+            $data = new Actualite;
+            $data->nom = Input::get('nom');
+            $data->date_actu = $inputs['date_actu'];
+            $data->description = Input::get('description');
+            if ($post->save()) {
+                Session::flash('success', "L'enregistrement a bien été créé");
+                return Redirect::route("admin.actualite.index");
+            } else {
+                Session::flash('error', "Impossible de créer l'enregistrement");
+            }
+        }
+        return Redirect::back()->withInput()->withErrors($validation);
+    }
+    
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $data = User::findOrFail($id);
+        $role = Config::get('auth.roles');
+
+        $this->layout->content = View::make('admin.user.form', compact("data", "role"));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        $data = Actualite::findOrFail($id);
+
+        $inputs = Input::all();
+        $inputs['date_actu'] = formateDateStocke(Input::get('date_actu'));
+        $validation = Actualite::validate($inputs);
+
+        if ($validation->passes()) {
+            $data->nom = Input::get('nom');
+            $data->date_actu = $inputs['date_actu'];
+            $data->description = Input::get('description');
+
+            if ($data->save()) {
+                Session::flash('success', "L'enregistrement a bien été modifié");
+                return Redirect::route("admin.actualite.index");
+            } else {
+                Session::flash('error', "Impossible de modifier l'enregistrement");
+            }
+        }
+        return Redirect::back()->withInput()->withErrors($validation);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $data = Actualite::findOrFail($id);
+        if ($data->delete()) {
+            Session::flash('warning', "L'enregistrement a bien été supprimé");
+        } else {
+            Session::flash('error', "Impossible de supprimer l'enregistrement");
+        }
+        return Redirect::back();
+    }    
    
 }
