@@ -1,20 +1,20 @@
 <?php
-
+// TODO : gèrer les accès aux zones
 return array(
     array(
         'nom' => 'PARAMETRES SYSTEME',
         'smenus' => array(
             array(
                 'nom' => 'Gestion des administrateurs',
-                'uri' => 'admin/user',
+                'action' => 'UsersController@index',
             ),
             array(
                 'nom' => 'Gestion des paramètres',
-                'uri' => 'website',
+                'action' => 'AdminController@getIndex',
             ),
             array(
                 'nom' => 'Gestion des erreurs',
-                'uri' => '',
+                'action' => 'AdminController@getIndex',
             ),
         ),
     ),
@@ -23,7 +23,7 @@ return array(
         'smenus' => array(
             array(
                 'nom' => 'Gestion des catégories',
-                'uri' => 'categorie/categorie',
+                'action' => 'AdminController@getIndex',
             ),
         ),
     ),

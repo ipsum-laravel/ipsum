@@ -73,9 +73,11 @@ class AdminController extends BaseController {
 
     public function configuration()
     {
+        $configuration = Config::get('admin/configuration');
+        
         $this->layout->rubrique = 'configuration';
         $this->layout->menu = 'configuration';
         $this->layout->title = 'Dashboard';
-        $this->layout->content = View::make('admin.configuration');
+        $this->layout->content = View::make('admin.configuration', array('menu_configuration' => $configuration));
     }
 }
