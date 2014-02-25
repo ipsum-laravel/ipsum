@@ -3,11 +3,23 @@
 class AdminController extends BaseController {
 
     public $layout = 'layouts.admin';
+    public $menu = null;
     public static $zone;
+    
+    /**
+     * Setup the layout used by the controller.
+     *
+     * @return void
+     */
+    protected function setupLayout()
+    {
+        parent::setupLayout();
+        $this->layout->menu = $this->menu;
+    }    
 
     public function getIndex()
     {
-        $this->layout->rubrique = 'configuration';
+        $this->layout->rubrique = null;
         $this->layout->title = 'Dashboard';
         $this->layout->content = View::make('admin.dashboard');
     }
@@ -62,6 +74,7 @@ class AdminController extends BaseController {
     public function configuration()
     {
         $this->layout->rubrique = 'configuration';
+        $this->layout->menu = 'configuration';
         $this->layout->title = 'Dashboard';
         $this->layout->content = View::make('admin.configuration');
     }
