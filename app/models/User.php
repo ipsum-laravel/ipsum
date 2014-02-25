@@ -98,7 +98,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
      */
     public function hasAcces($zone)
     {
-        return empty($zone) or ($this->acces() and in_array($zone, $this->acces()));
+        return empty($zone) or ($this->acces() and in_array($zone, $this->acces()) or $this->isAdmin());
     }
 
 	/**

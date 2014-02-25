@@ -8,13 +8,17 @@ HTML::macro("rubrique", function($rubrique_active, $views = 'partials.rubrique')
 
     $rubriques = Config::get('admin/menu');
 
+    $datas = array();
     foreach ($rubriques as $key1 => $groupe) {
         foreach ($groupe as $key => $rubrique) {
-            $rubriques[$key1][$key]['selected'] = $rubrique_active == $rubrique['rubrique'] ? 'selected' : '';
+            if (Auth::user()->hasAcces($rubrique['rubrique']) or $rubrique['rubrique'] == 'configuration') {
+                $rubriques[$key1][$key]['selected'] = $rubrique_active == $rubrique['rubrique'] ? 'selected' : '';
+                $datas[$key1][$key] = $rubriques[$key1][$key];
+            }
         }
     }
     // Use render http://www.laravel-tricks.com/tricks/avoid-string-viewmake
-    return View::make($views, array('rubriques' => $rubriques));
+    return View::make($views, array('rubriques' => $datas));
 });
 
 /**
