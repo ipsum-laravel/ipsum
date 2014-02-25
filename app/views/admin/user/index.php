@@ -1,4 +1,4 @@
-<h2>Liste des actualités (<?= $liste->count() ?>)</h2>
+<h2>Liste des utilisateurs (<?= $liste->count() ?>)</h2>
 <?= $liste->pagination() ?>
 <form method="get" id="recherche" action="">
     <div>
@@ -10,19 +10,17 @@
 <table class="liste" width="75%">
     <thead>
         <tr>
-            <th><?= $liste->labelTri('date_actu', 'Date') ?></th>
-            <th><?= $liste->labelTri('nom', 'Titre') ?></th>
-            <th><?= $liste->labelTri('description', 'Description') ?></th>
+            <th><?= $liste->labelTri('nom', 'Nom') ?></th>
+            <th><?= $liste->labelTri('email', 'Email') ?></th>
             <th>Modif.</th>
             <th>Supp.</th>
         </tr>
     </thead>
     <tbody>
         <?php $i=0; foreach ($datas as $data): ?>
-            <tr class="<?= (($i %2 ) == 0 ? "pair" : "impair") ?>">
-                <td><?= $data->date_actu_format; ?></td>
+            <tr class="<?= (($i %2 ) == 0 ? "pair" : "impair"); ?>">
                 <td><?= e($data->nom) ?></td>
-                <td><?= e($data->description) ?></td>
+                <td><?= e($data->email) ?></td>
                 <td class="center"><a href="<?= url('admin/actualite/'.$data->id.'/edit') ?>"><img src="<?= asset('assets/admin/img/modifier.png') ?>" alt="Modifier" /></a></td>
                 <td class="center">
                     <?= Form::open(array('method' => 'DELETE', 'action' => array('ActualiteController@destroy', $data->id))) ?>
