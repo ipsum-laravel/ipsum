@@ -3,8 +3,53 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ecfece9975c697a5b18ac3269876b367",
+    "hash": "80ebf5d18ef78f849c8627b81162dcf1",
     "packages": [
+        {
+            "name": "barryvdh/laravel-vendor-cleanup",
+            "version": "v1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-vendor-cleanup.git",
+                "reference": "adc610c978da98599260f0b197fff6da5247e015"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-vendor-cleanup/zipball/adc610c978da98599260f0b197fff6da5247e015",
+                "reference": "adc610c978da98599260f0b197fff6da5247e015",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "4.x",
+                "illuminate/filesystem": "4.x",
+                "illuminate/support": "4.x",
+                "php": ">=5.3.0",
+                "symfony/finder": ">=2.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Barryvdh\\VendorCleanup": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "A vendor cleanup package, to remove tests and documentation to save space",
+            "keywords": [
+                "cleanup",
+                "laravel",
+                "vendor"
+            ],
+            "time": "2013-10-12 13:05:41"
+        },
         {
             "name": "classpreloader/classpreloader",
             "version": "1.0.1",
