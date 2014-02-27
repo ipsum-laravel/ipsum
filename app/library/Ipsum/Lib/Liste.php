@@ -1,5 +1,5 @@
 <?php
-namespace App\library;
+namespace Ipsum\Lib;
 
 use \Illuminate\Support\Facades\DB;
 

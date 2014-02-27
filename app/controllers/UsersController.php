@@ -1,6 +1,6 @@
 <?php
 
-use \App\library\Liste;
+use \Ipsum\Lib\Liste;
 
 class UsersController extends AdminController {
     
