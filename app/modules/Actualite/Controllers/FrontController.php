@@ -6,7 +6,7 @@ use \View;
 use \Str;
 use \Ipsum\Actualite\Models;
 
-class ActualiteController extends \BaseController {
+class FrontController extends \BaseController {
 
     public $title = 'Gestion des actualités';
     public $rubrique = 'actualite';
@@ -53,7 +53,7 @@ class ActualiteController extends \BaseController {
 
         $data['liste'] = $liste;
 
-        $this->layout->content = View::make('actualite.index', $data);
+        $this->layout->content = View::make('IpsumActualite::index', $data);
 	}
 
 	/**

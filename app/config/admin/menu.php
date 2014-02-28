@@ -9,21 +9,21 @@ return array(
             'abreviation' => 'Actu.',
             'icone' => 'calendrier.png',
             'zone' => 'actualite',
-            'action' => 'ActualiteController@index',
+            'action' => '\Ipsum\Actualite\Controllers\AdminController@index',
             'menus' => array(
                 'actualite' => array(
                     'menu' => 'actualite',
                     'nom' => 'Actualités',
-                    'action' => 'ActualiteController@index',
+                    'action' => '\Ipsum\Actualite\Controllers\AdminController@index',
                     'smenus' => array(
                         array(
                             'nom' => 'Liste des actualités',
-                            'action' => 'ActualiteController@index',
+                            'action' => '\Ipsum\Actualite\Controllers\AdminController@index',
                             'icone' => 'table.png'
                         ),
                         array(
                             'nom' => 'Ajouter une actualité',
-                            'action' => 'ActualiteController@create',
+                            'action' => '\Ipsum\Actualite\Controllers\AdminController@create',
                             'icone' => 'add.png'
                         ),
                     ),
@@ -31,9 +31,9 @@ return array(
                 'test' => array(
                     'menu' => 'test',
                     'nom' => 'test',
-                    'action' => 'ActualiteController@index',
+                    'action' => '\Ipsum\Actualite\Controllers\AdminController@index',
                 ),
-            ),            
+            ),
         ),
         'configuration' => array(
             'rubrique' => 'configuration',
@@ -78,7 +78,7 @@ return array(
                         ),
                     ),
                 ),
-            ),            
+            ),
         ),
     ),
 );

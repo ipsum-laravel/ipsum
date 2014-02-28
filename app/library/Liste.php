@@ -1,5 +1,5 @@
 <?php
-namespace Ipsum\Lib;
+namespace Ipsum\Library;
 
 use \Illuminate\Support\Facades\DB;
 
@@ -403,7 +403,7 @@ class Liste
 
         $this->sql_sans_pagination = 'SELECT 1 '.$this->sql_sans_pagination;
         $this->sql = 'SELECT '.$this->requete['colonnes'].$sql;
-        
+
         $lignes = DB::select(DB::raw($this->sql));
 
         return $lignes;
@@ -516,8 +516,8 @@ class Liste
         .e($label).' '.$img.'
         </a>';
     }
-    
+
     public static function quoteIdent($field) {
         return "`".str_replace("`","``",$field)."`";
-    }    
+    }
 }

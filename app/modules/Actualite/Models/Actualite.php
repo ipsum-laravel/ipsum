@@ -1,6 +1,7 @@
 <?php
+namespace Ipsum\Actualite\Models;
 
-class Actualite extends BaseModel {
+class Actualite extends \BaseModel {
 
     protected $table = 'actualite';
 
@@ -10,5 +11,5 @@ class Actualite extends BaseModel {
                                 "date_actu" => "required|date_format:Y-m-d",
                                 "nom" => "required",
                             );
-                            
+
 }

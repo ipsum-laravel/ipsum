@@ -108,6 +108,8 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
         'Barryvdh\VendorCleanup\VendorCleanupServiceProvider',
+
+        'Ipsum\Actualite\ActualiteServiceProvider',
 	),
 
 	/*

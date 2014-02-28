@@ -4,11 +4,11 @@ namespace Ipsum\Actualite;
 use Illuminate\Support\ServiceProvider;
 
 /**
- * Description of WebsiteServiceProvider
+ * Description of ActualiteServiceProvider
  *
  * @author a
  */
-class WebsiteServiceProvider extends ServiceProvider {
+class ActualiteServiceProvider extends ServiceProvider {
 
     public function boot()
     {
@@ -16,7 +16,7 @@ class WebsiteServiceProvider extends ServiceProvider {
 
         include __DIR__.'/routes.php';
     }
-    
+
     public function register()
     {
 

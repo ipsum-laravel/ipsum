@@ -16,7 +16,10 @@
 			"app/database/seeds",
 			"app/tests/TestCase.php"
 		],
-        "psr-0" : {"Ipsum" : "app/library"}
+        "psr-4": {
+            "Ipsum\\": "app/modules",
+            "Ipsum\\Library\\": "app/library"
+        }
 	},
 	"scripts": {
 		"post-install-cmd": [

@@ -26,10 +26,9 @@ Route::get("admin/logout" , array("as" => "admin.logout" , "uses" => "AdminContr
 Route::group(array('before' => 'auth', 'prefix' => 'admin'), function()
 {
     Route::get('/', array('uses' => 'AdminController@getIndex', 'as' => 'admin'));
-    
+
     Route::get('configuration', array('uses' => 'AdminController@configuration', 'as' => 'admin.configuration'));
 
-    Route::resource('actualite', 'ActualiteController');
     Route::resource('user', 'UsersController');
 });
 

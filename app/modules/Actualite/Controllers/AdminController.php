@@ -7,9 +7,9 @@ use \Input;
 use \Redirect;
 use \Session;
 use \Str;
-use \Ipsum\Actualite\Models;
+use \Ipsum\Actualite\Models\Actualite;
 
-class ActualiteController extends \Ipsum\Admin\Controller\AdminController {
+class AdminController extends \AdminController {
 
     public $title = 'Gestion des actualités';
     public $rubrique = 'actualite';
@@ -56,7 +56,7 @@ class ActualiteController extends \Ipsum\Admin\Controller\AdminController {
 
         $data['liste'] = $liste;
 
-        $this->layout->content = View::make('actualite.index', $data);
+        $this->layout->content = View::make('IpsumActualite::admin.index', $data);
 	}
 
 	/**
@@ -67,7 +67,7 @@ class ActualiteController extends \Ipsum\Admin\Controller\AdminController {
 	public function create()
 	{
         $this->layout->head = \JsTools::jwysiwyg().\JsTools::datePicker();
-        $this->layout->content = View::make('actualite.form');
+        $this->layout->content = View::make('IpsumActualite::admin.form');
 	}
 
 	/**
@@ -86,7 +86,7 @@ class ActualiteController extends \Ipsum\Admin\Controller\AdminController {
             $data->nom = Input::get('nom');
             $data->date_actu = $inputs['date_actu'];
             $data->description = Input::get('description');
-            if ($post->save()) {
+            if ($data->save()) {
                 Session::flash('success', "L'enregistrement a bien été créé");
                 return Redirect::route("admin.actualite.index");
             } else {
@@ -107,7 +107,7 @@ class ActualiteController extends \Ipsum\Admin\Controller\AdminController {
 		$data['actualite'] = Actualite::findOrFail($id);
 
         $this->layout->title = $data['actualite']->nom;
-        $this->layout->content = View::make('actualite.show', $data);
+        $this->layout->content = View::make('IpsumActualite::admin.show', $data);
 	}
 
 	/**
@@ -120,8 +120,8 @@ class ActualiteController extends \Ipsum\Admin\Controller\AdminController {
 	{
         $data = Actualite::findOrFail($id);
 
-        $this->layout->head = JsTools::jwysiwyg().JsTools::datePicker();
-        $this->layout->content = View::make('actualite.form', compact("data"));
+        $this->layout->head = \JsTools::jwysiwyg().\JsTools::datePicker();
+        $this->layout->content = View::make('IpsumActualite::admin.form', compact("data"));
 	}
 
 	/**

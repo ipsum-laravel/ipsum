@@ -13,8 +13,6 @@
             <th><?= $liste->labelTri('date_actu', 'Date') ?></th>
             <th><?= $liste->labelTri('nom', 'Titre') ?></th>
             <th><?= $liste->labelTri('description', 'Description') ?></th>
-            <th>Modif.</th>
-            <th>Supp.</th>
         </tr>
     </thead>
     <tbody>
@@ -23,21 +21,6 @@
                 <td><?= $data->date_actu_format; ?></td>
                 <td><?= e($data->nom) ?></td>
                 <td><?= e($data->description) ?></td>
-                <td class="center"><a href="<?= url('admin/actualite/'.$data->id.'/edit') ?>"><img src="<?= asset('assets/admin/img/modifier.png') ?>" alt="Modifier" /></a></td>
-                <td class="center">
-                    <?= Form::open(array('method' => 'DELETE', 'action' => array('\Ipsum\Actualite\Controllers\AdminController@destroy', $data->id))) ?>
-                        <div>
-                            <input type="image" src="<?= asset('assets/admin/img/supprimer.png') ?>" value="Supprimer">
-                            <button type="submit">Delete</button>
-                        </div>
-                    <?= Form::close() ?>
-                    <?php /* TODO faire confirmation javascript
-                    array(
-                        "alt" => "Supprimer",
-                        'class' => 'supprimer',
-                        'title' => 'supprimer '.$data->nom
-                    ))); */?>
-                </td>
            </tr>
         <?php $i++; endforeach; ?>
     </tbody>
