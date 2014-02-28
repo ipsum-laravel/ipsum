@@ -1,8 +1,15 @@
 <?php
+namespace Ipsum\Actualite\Controllers;
 
-use \Ipsum\Lib\Liste;
+use \Ipsum\Library\Liste;
+use \View;
+use \Input;
+use \Redirect;
+use \Session;
+use \Str;
+use \Ipsum\Actualite\Models;
 
-class ActualiteController extends AdminController {
+class ActualiteController extends \Ipsum\Admin\Controller\AdminController {
 
     public $title = 'Gestion des actualités';
     public $rubrique = 'actualite';
