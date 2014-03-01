@@ -2,6 +2,7 @@
 namespace Ipsum\Actualite\Controllers;
 
 use \Ipsum\Library\Liste;
+use \Ipsum\Admin\Library\JsTools;
 use \View;
 use \Input;
 use \Redirect;
@@ -9,7 +10,7 @@ use \Session;
 use \Str;
 use \Ipsum\Actualite\Models\Actualite;
 
-class AdminController extends \AdminController {
+class AdminController extends \Ipsum\Admin\Controllers\BaseController {
 
     public $title = 'Gestion des actualités';
     public $rubrique = 'actualite';
@@ -66,7 +67,7 @@ class AdminController extends \AdminController {
 	 */
 	public function create()
 	{
-        $this->layout->head = \JsTools::jwysiwyg().\JsTools::datePicker();
+        $this->layout->head = JsTools::jwysiwyg().JsTools::datePicker();
         $this->layout->content = View::make('IpsumActualite::admin.form');
 	}
 
@@ -120,7 +121,7 @@ class AdminController extends \AdminController {
 	{
         $data = Actualite::findOrFail($id);
 
-        $this->layout->head = \JsTools::jwysiwyg().\JsTools::datePicker();
+        $this->layout->head = JsTools::jwysiwyg().JsTools::datePicker();
         $this->layout->content = View::make('IpsumActualite::admin.form', compact("data"));
 	}
 

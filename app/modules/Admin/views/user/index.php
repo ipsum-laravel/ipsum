@@ -23,7 +23,7 @@
                 <td><?= e($data->email) ?></td>
                 <td class="center"><a href="<?= url('admin/user/'.$data->id.'/edit') ?>"><img src="<?= asset('assets/admin/img/modifier.png') ?>" alt="Modifier" /></a></td>
                 <td class="center">
-                    <?= Form::open(array('method' => 'DELETE', 'action' => array('UsersController@destroy', $data->id))) ?>
+                    <?= Form::open(array('method' => 'DELETE', 'action' => array('\Ipsum\Admin\Controllers\UsersController@destroy', $data->id))) ?>
                         <div>
                             <input type="image" src="<?= asset('assets/admin/img/supprimer.png') ?>" value="Supprimer">
                             <button type="submit">Delete</button>

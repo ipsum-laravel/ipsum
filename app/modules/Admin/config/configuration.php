@@ -6,15 +6,15 @@ return array(
         'smenus' => array(
             array(
                 'nom' => 'Gestion des administrateurs',
-                'action' => 'UsersController@index',
+                'action' => '\Ipsum\Admin\Controllers\UsersController@index',
             ),
             array(
                 'nom' => 'Gestion des paramètres',
-                'action' => 'AdminController@getIndex',
+                'action' => '\Ipsum\Admin\Controllers\BaseController@getIndex',
             ),
             array(
                 'nom' => 'Gestion des erreurs',
-                'action' => 'AdminController@getIndex',
+                'action' => '\Ipsum\Admin\Controllers\BaseController@getIndex',
             ),
         ),
     ),
@@ -23,7 +23,7 @@ return array(
         'smenus' => array(
             array(
                 'nom' => 'Gestion des catégories',
-                'action' => 'AdminController@getIndex',
+                'action' => '\Ipsum\Admin\Controllers\BaseController@getIndex',
             ),
         ),
     ),

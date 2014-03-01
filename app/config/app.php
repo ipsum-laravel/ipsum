@@ -109,6 +109,7 @@ return array(
 
         'Barryvdh\VendorCleanup\VendorCleanupServiceProvider',
 
+        'Ipsum\Admin\AdminServiceProvider',
         'Ipsum\Actualite\ActualiteServiceProvider',
 	),
 

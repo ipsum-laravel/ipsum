@@ -1,8 +1,16 @@
 <?php
+namespace Ipsum\Admin\Controllers;
 
-use \Ipsum\Lib\Liste;
+use \Ipsum\Library\Liste;
+use \View;
+use \Input;
+use \Redirect;
+use \Session;
+use \Str;
+use \Config;
+use \Ipsum\Admin\Models\User;
 
-class UsersController extends AdminController {
+class UsersController extends BaseController {
     
     public $title = 'Gestion des utilisateurs';
     public $rubrique = 'configuration';
@@ -49,7 +57,7 @@ class UsersController extends AdminController {
 
         $data['liste'] = $liste;
 
-        $this->layout->content = View::make('admin.user.index', $data);
+        $this->layout->content = View::make('IpsumAdmin::user.index', $data);
     }
 
 
@@ -60,8 +68,8 @@ class UsersController extends AdminController {
      */
     public function create()
     {
-        $this->layout->head = \JsTools::jwysiwyg().\JsTools::datePicker();
-        $this->layout->content = View::make('admin.user.form');
+        $role = Config::get('auth.roles');
+        $this->layout->content = View::make('IpsumAdmin::user.form', compact("data", "role"));
     }
     
     /**
@@ -82,7 +90,7 @@ class UsersController extends AdminController {
             $data->description = Input::get('description');
             if ($post->save()) {
                 Session::flash('success', "L'enregistrement a bien été créé");
-                return Redirect::route("admin.actualite.index");
+                return Redirect::route("admin.user.index");
             } else {
                 Session::flash('error', "Impossible de créer l'enregistrement");
             }
@@ -101,7 +109,7 @@ class UsersController extends AdminController {
         $data = User::findOrFail($id);
         $role = Config::get('auth.roles');
 
-        $this->layout->content = View::make('admin.user.form', compact("data", "role"));
+        $this->layout->content = View::make('IpsumAdmin::user.form', compact("data", "role"));
     }
 
     /**
@@ -125,7 +133,7 @@ class UsersController extends AdminController {
 
             if ($data->save()) {
                 Session::flash('success', "L'enregistrement a bien été modifié");
-                return Redirect::route("admin.actualite.index");
+                return Redirect::route("admin.user.index");
             } else {
                 Session::flash('error', "Impossible de modifier l'enregistrement");
             }

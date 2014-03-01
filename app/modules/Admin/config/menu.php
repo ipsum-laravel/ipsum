@@ -41,39 +41,39 @@ return array(
             'abreviation' => 'Config.',
             'icone' => 'parametre.png',
             'zone' => '',
-            'action' => 'AdminController@configuration',
+            'action' => '\Ipsum\Admin\Controllers\BaseController@configuration',
             'menus' => array(
                 'dashboard' => array(
                     'menu' => 'dashboard',
                     'nom' => 'Dashboard',
-                    'action' => 'AdminController@getIndex',
+                    'action' => '\Ipsum\Admin\Controllers\BaseController@getIndex',
                     'visibility'=> 'hidden',
                 ),
                 'configuration' => array(
                     'menu' => 'configuration',
                     'nom' => 'Configuration',
-                    'action' => 'AdminController@configuration',
+                    'action' => '\Ipsum\Admin\Controllers\BaseController@configuration',
                 ),
                 'parametre' => array(
                     'menu' => 'parametre',
                     'nom' => 'Paramètres',
-                    'action' => 'AdminController@getIndex',
+                    'action' => '\Ipsum\Admin\Controllers\BaseController@getIndex',
                     'visibility'=> 'hidden',
                 ),
                 'utilisateur' => array(
                     'menu' => 'utilisateur',
                     'nom' => 'Utilisateurs',
-                    'action' => 'UsersController@index',
+                    'action' => '\Ipsum\Admin\Controllers\UsersController@index',
                     'visibility'=> 'hidden',
                     'smenus' => array(
                         array(
                             'nom' => 'Liste des utilisateurs',
-                            'action' => 'UsersController@index',
+                            'action' => '\Ipsum\Admin\Controllers\UsersController@index',
                             'icone' => 'table.png'
                         ),
                         array(
                             'nom' => 'Ajouter une utilisateur',
-                            'action' => 'UsersController@index',
+                            'action' => '\Ipsum\Admin\Controllers\UsersController@create',
                             'icone' => 'add.png'
                         ),
                     ),

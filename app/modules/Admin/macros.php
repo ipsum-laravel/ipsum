@@ -4,9 +4,9 @@
  * Affiche le menu des rubriques
  *
  */
-HTML::macro("rubrique", function($rubrique_active, $views = 'partials.rubrique') {
+HTML::macro("rubrique", function($rubrique_active, $views = 'IpsumAdmin::partials.rubrique') {
 
-    $rubriques = Config::get('admin/menu');
+    $rubriques = Config::get('IpsumAdmin::menu');
 
     $datas = array();
     foreach ($rubriques as $key1 => $groupe) {
@@ -25,9 +25,9 @@ HTML::macro("rubrique", function($rubrique_active, $views = 'partials.rubrique')
  * Affiche le menu
  *
  */
-HTML::macro("menu", function($rubrique_active, $menu_actif, $views = 'partials.menu') {
+HTML::macro("menu", function($rubrique_active, $menu_actif, $views = 'IpsumAdmin::partials.menu') {
     
-    $rubriques = Config::get('admin/menu');
+    $rubriques = Config::get('IpsumAdmin::menu');
     
     $datas = array();
     foreach ($rubriques as $key => $groupe) {

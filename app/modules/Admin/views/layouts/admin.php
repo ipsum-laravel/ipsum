@@ -21,7 +21,7 @@
         <p class="infos_connect">
             <strong><?= e(Auth::user()->prenom) ?> <?= e(Auth::user()->nom) ?></strong><br />
             <?= e(Auth::user()->role()) ?><br />
-            <?= link_to_action('AdminController@logout', 'Déconnexion') ?>
+            <?= link_to_action('\Ipsum\Admin\Controllers\LoginController@logout', 'Déconnexion') ?>
         </p>
         <div id="rubrique">
             <?= HTML::rubrique($rubrique) ?>

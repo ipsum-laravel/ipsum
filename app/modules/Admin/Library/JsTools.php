@@ -1,4 +1,5 @@
 <?php
+namespace Ipsum\Admin\Library;
 
 class JsTools {
 
