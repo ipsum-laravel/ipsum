@@ -1,11 +1,11 @@
 <?php
 namespace Ipsum\Admin\Controllers;
 
-use \View;
-use \Input;
-use \Redirect;
-use \Config;
-use \Ipsum\Admin\Models\User;
+use View;
+use Input;
+use Redirect;
+use Config;
+use Ipsum\Admin\Models\User;
 
 class BaseController extends \BaseController {
 

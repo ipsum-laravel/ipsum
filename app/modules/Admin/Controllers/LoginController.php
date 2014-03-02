@@ -1,11 +1,12 @@
 <?php
 namespace Ipsum\Admin\Controllers;
 
-use \View;
-use \Input;
-use \Redirect;
-use \Auth;
-use \Ipsum\Admin\Models\User;
+use View;
+use Input;
+use Redirect;
+use Auth;
+use Validator;
+use Ipsum\Admin\Models\User;
 
 class LoginController extends \BaseController {
 
@@ -25,7 +26,13 @@ class LoginController extends \BaseController {
 
     public function postLogin()
     {
-        $validation = User::validate(Input::only('identifiant', 'password'));
+        $validation = Validator::make(
+            Input::only('identifiant', 'password'),
+            array(
+                'identifiant' => 'required',
+                'password' => 'required',
+            )
+        );        
 
         if ($validation->passes()) {
             return (Auth::attempt(Input::only('identifiant', 'password') , Input::has('cookie'))) ? Redirect::route("admin")

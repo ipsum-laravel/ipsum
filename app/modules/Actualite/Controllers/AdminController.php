@@ -1,14 +1,14 @@
 <?php
 namespace Ipsum\Actualite\Controllers;
 
-use \Ipsum\Library\Liste;
-use \Ipsum\Admin\Library\JsTools;
-use \View;
-use \Input;
-use \Redirect;
-use \Session;
-use \Str;
-use \Ipsum\Actualite\Models\Actualite;
+use Ipsum\Library\Liste;
+use Ipsum\Admin\Library\JsTools;
+use View;
+use Input;
+use Redirect;
+use Session;
+use Str;
+use Ipsum\Actualite\Models\Actualite;
 
 class AdminController extends \Ipsum\Admin\Controllers\BaseController {
 

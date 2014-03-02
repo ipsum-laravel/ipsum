@@ -1,14 +1,14 @@
 <?php
 namespace Ipsum\Admin\Controllers;
 
-use \Ipsum\Library\Liste;
-use \View;
-use \Input;
-use \Redirect;
-use \Session;
-use \Str;
-use \Config;
-use \Ipsum\Admin\Models\User;
+use Ipsum\Library\Liste;
+use View;
+use Input;
+use Redirect;
+use Session;
+use Str;
+use Config;
+use Ipsum\Admin\Models\User;
 
 class UsersController extends BaseController {
     

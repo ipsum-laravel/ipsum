@@ -1,14 +1,14 @@
 <?php
 namespace Ipsum\Admin\Controllers;
 
-use \View;
-use \Password;
-use \Lang;
-use \Redirect;
-use \Input;
-use \App;
-use \Hash;
-use \Validator;
+use View;
+use Password;
+use Lang;
+use Redirect;
+use Input;
+use App;
+use Hash;
+use Validator;
 
 class RemindersController extends \BaseController {
     

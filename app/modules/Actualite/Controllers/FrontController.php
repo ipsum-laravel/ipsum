@@ -1,10 +1,10 @@
 <?php
 namespace Ipsum\Actualite\Controllers;
 
-use \Ipsum\Library\Liste;
-use \View;
-use \Str;
-use \Ipsum\Actualite\Models;
+use Ipsum\Library\Liste;
+use View;
+use Str;
+use Ipsum\Actualite\Models;
 
 class FrontController extends \BaseController {
 
