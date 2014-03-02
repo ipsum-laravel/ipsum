@@ -78,6 +78,7 @@ margin: 20px 30px 5px 30px;
 	width: 145px;
 	text-align:  right;
 	padding-right: 10px;
+	clear: both;
 	}
 	input, textarea {
 	/*display: block;*/

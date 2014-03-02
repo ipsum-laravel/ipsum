@@ -3,7 +3,7 @@ namespace Ipsum\Admin\Models;
 
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
-use \Config;
+use Config;
 
 class User extends \BaseModel implements UserInterface, RemindableInterface {
 
@@ -26,10 +26,9 @@ class User extends \BaseModel implements UserInterface, RemindableInterface {
 
     public static $rules = array (
         "identifiant" => "required",
-        "password" => "required|min:4",
-     );
-     
-     //'email' => 'required|email|unique:users',     
+        "password" => "required|min:6",
+        'email' => 'required|email|unique:users',
+     );    
 
     const SUPERADMIN = 1;
 

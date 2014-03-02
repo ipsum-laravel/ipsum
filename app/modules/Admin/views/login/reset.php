@@ -1,4 +1,4 @@
-<?php echo Form::open(array('url' => 'admin/reset')); ?>
+<?php echo Form::open(array('url' => 'admin/reset', 'autocomplete' => "off")); ?>
     <fieldset>
         <legend>Modification du mot de passe :</legend>
         
