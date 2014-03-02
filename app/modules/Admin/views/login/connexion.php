@@ -24,4 +24,4 @@
         </p>
     </fieldset>
 <?php echo Form::close(); ?>
-<p class="baspage"><?php echo link_to_action('\Ipsum\Admin\Controllers\LoginController@forgot', 'TODO Mot de passe oublié') ?></p>    
+<p class="baspage"><?php echo link_to_action('\Ipsum\Admin\Controllers\RemindersController@getRemind', 'Mot de passe oublié') ?></p>    

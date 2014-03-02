@@ -2,6 +2,7 @@
 
 Route::group(array('prefix' => 'admin'), function()
 {
+    /* Login */
     Route::get("login", array(
         "as" => "admin.login", 
         "uses" => "\Ipsum\Admin\Controllers\LoginController@login",
@@ -18,7 +19,26 @@ Route::group(array('prefix' => 'admin'), function()
         "as" => "admin.logout", 
         "uses" => "\Ipsum\Admin\Controllers\LoginController@logout",
     ));
-
+    
+    /* Remind */
+    Route::get("remind", array(
+        "as" => "admin.remind", 
+        "uses" => "\Ipsum\Admin\Controllers\RemindersController@getRemind",
+    ));    
+    Route::post("remind", array(
+        "as" => "admin.remind", 
+        "uses" => "\Ipsum\Admin\Controllers\RemindersController@postRemind",
+    ));
+    Route::get("reset/{token}", array(
+        "as" => "admin.reset", 
+        "uses" => "\Ipsum\Admin\Controllers\RemindersController@getReset",
+    ));
+    Route::post("reset", array(
+        "as" => "admin.reset", 
+        "uses" => "\Ipsum\Admin\Controllers\RemindersController@postReset",
+    ));    
+    
+    
     Route::get('/', array(
         'uses' => '\Ipsum\Admin\Controllers\BaseController@getIndex', 
         'as' => 'admin',

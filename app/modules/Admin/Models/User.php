@@ -20,10 +20,16 @@ class User extends \BaseModel implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $hidden = array('password');
+    
+    public $timestamps = false;
 
 
-    public static $rules = array ("identifiant" => "required" ,
-                                  "password" => "required" ,);
+    public static $rules = array (
+        "identifiant" => "required",
+        "password" => "required|min:4",
+     );
+     
+     //'email' => 'required|email|unique:users',     
 
     const SUPERADMIN = 1;
 

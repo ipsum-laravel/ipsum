@@ -19,6 +19,6 @@ return array(
 
     "token"    => "Ce jeton de réinitialisation du mot de passe n'est pas valide.",
 
-    "sent"     => "Rappel du mot de passe envoyé !",
+    "sent"     => "Un email de récupèration de mot de passe vous a été envoyé à votre adresse.",
 
 );

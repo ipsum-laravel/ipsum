@@ -25,16 +25,10 @@ class LoginController extends \BaseController {
 
     public function postLogin()
     {
-
-        $creds = array(
-            'identifiant' => Input::get('identifiant') ,
-            'password' => Input::get('password')
-        );
-
-        $validation = User::validate($creds, Input::has('cookie'));
+        $validation = User::validate(Input::only('identifiant', 'password'));
 
         if ($validation->passes()) {
-            return (Auth::attempt($creds , true)) ? Redirect::route("admin")
+            return (Auth::attempt(Input::only('identifiant', 'password') , Input::has('cookie'))) ? Redirect::route("admin")
                     : Redirect::back()->with("alert_error" , "Erreur de connexion");
         }
         return Redirect::back()->with("alert_error" , "Merci de renseigner l'identifiant et le mot de passe");
