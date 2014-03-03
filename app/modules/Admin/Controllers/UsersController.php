@@ -8,14 +8,16 @@ use Redirect;
 use Session;
 use Str;
 use Config;
+use Validator;
+use Hash;
 use Ipsum\Admin\Models\User;
 
 class UsersController extends BaseController {
-    
+
     public $title = 'Gestion des utilisateurs';
     public $rubrique = 'configuration';
     public $menu = 'utilisateur';
-    //public static $zone = 'utilisateur';    
+    //public static $zone = 'utilisateur';
 
     /**
      * Display a listing of the resource.
@@ -71,7 +73,7 @@ class UsersController extends BaseController {
         $role = Config::get('auth.roles');
         $this->layout->content = View::make('IpsumAdmin::user.form', compact("data", "role"));
     }
-    
+
     /**
      * Store a newly created resource in storage.
      *
@@ -80,15 +82,16 @@ class UsersController extends BaseController {
     public function store()
     {
         $inputs = Input::all();
-        $inputs['date_actu'] = formateDateStocke(Input::get('date_actu'));
-        $validation = Actualite::validate($inputs);
+        $validation = User::validate($inputs);
 
         if ($validation->passes()) {
-            $data = new Actualite;
+            $data = new User;
             $data->nom = Input::get('nom');
-            $data->date_actu = $inputs['date_actu'];
-            $data->description = Input::get('description');
-            if ($post->save()) {
+            $data->prenom = Input::get('prenom');
+            $data->email = Input::get('email');
+            $data->password = Hash::make(Input::get('password'));;
+            $data->role = Input::get('role');
+            if ($data->save()) {
                 Session::flash('success', "L'enregistrement a bien été créé");
                 return Redirect::route("admin.user.index");
             } else {
@@ -97,7 +100,7 @@ class UsersController extends BaseController {
         }
         return Redirect::back()->withInput()->withErrors($validation);
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -120,22 +123,34 @@ class UsersController extends BaseController {
      */
     public function update($id)
     {
-        $data = Actualite::findOrFail($id);
+        $data = User::findOrFail($id);
+        $rules = User::$rules;
 
         $inputs = Input::all();
-        $inputs['date_actu'] = formateDateStocke(Input::get('date_actu'));
-        $validation = Actualite::validate($inputs);
+        // Modification des régles
+        if (!Input::has('password')) {
+            unset($rules['password']);
+        }
+        foreach ($rules['email'] as $key => $rule) {
+            if (starts_with($rule, 'unique')) {
+                $rules['email'][$key] = $rule.','.$data->id;
+            }
+        }
+        $validation = Validator::make($inputs, $rules);
 
         if ($validation->passes()) {
             $data->nom = Input::get('nom');
-            $data->date_actu = $inputs['date_actu'];
-            $data->description = Input::get('description');
-
+            $data->prenom = Input::get('prenom');
+            $data->email = Input::get('email');
+            if (Input::has('email')) {
+                $data->password = Hash::make(Input::get('password'));
+            }
+            $data->role = Input::get('role');
             if ($data->save()) {
-                Session::flash('success', "L'enregistrement a bien été modifié");
+                Session::flash('success', "L'enregistrement a bien été créé");
                 return Redirect::route("admin.user.index");
             } else {
-                Session::flash('error', "Impossible de modifier l'enregistrement");
+                Session::flash('error', "Impossible de créer l'enregistrement");
             }
         }
         return Redirect::back()->withInput()->withErrors($validation);
@@ -149,13 +164,13 @@ class UsersController extends BaseController {
      */
     public function destroy($id)
     {
-        $data = Actualite::findOrFail($id);
+        $data = User::findOrFail($id);
         if ($data->delete()) {
             Session::flash('warning', "L'enregistrement a bien été supprimé");
         } else {
             Session::flash('error', "Impossible de supprimer l'enregistrement");
         }
         return Redirect::back();
-    }    
-   
+    }
+
 }

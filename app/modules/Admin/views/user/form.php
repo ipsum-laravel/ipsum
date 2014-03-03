@@ -20,12 +20,12 @@
             <?= Form::password('password') ?>
         </p>
         <p>
-            <?= Form::label('password_again', 'Confirmation mot de passe') ?>
-            <?php echo Form::password('password_again') ?>
+            <?= Form::label('password_confirmation', 'Confirmation mot de passe') ?>
+            <?php echo Form::password('password_confirmation') ?>
         </p>
         <p>
             <?= Form::label('role', 'Rôle') ?>
-            <?= Form::select('role', $role) ?>
+            <?= Form::select('role', $role, isset($data) ? $data->role : null) ?>
         </p>
         <p>
             <label for="submit">&nbsp</label>
