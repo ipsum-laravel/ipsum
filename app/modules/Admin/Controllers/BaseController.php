@@ -12,15 +12,15 @@ class BaseController extends \BaseController {
     public $layout = 'IpsumAdmin::layouts.admin';
     public $menu = null;
     public static $zone;
-    
+
     /**
      * Instantiate a new UserController instance.
      */
     public function __construct()
     {
         $this->beforeFilter('auth');
-    }    
-    
+    }
+
     /**
      * Setup the layout used by the controller.
      *
@@ -30,7 +30,7 @@ class BaseController extends \BaseController {
     {
         parent::setupLayout();
         $this->layout->menu = $this->menu;
-    }    
+    }
 
     public function getIndex()
     {
@@ -42,7 +42,7 @@ class BaseController extends \BaseController {
     public function configuration()
     {
         $configuration = Config::get('IpsumAdmin::configuration');
-        
+
         $this->layout->rubrique = 'configuration';
         $this->layout->menu = 'configuration';
         $this->layout->title = 'Dashboard';

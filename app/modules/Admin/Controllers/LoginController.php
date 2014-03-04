@@ -35,7 +35,7 @@ class LoginController extends \BaseController {
         );
 
         if ($validation->passes()) {
-            return (Auth::attempt(Input::only('email', 'password') , Input::has('cookie'))) ? Redirect::route("admin")
+            return (Auth::attempt(Input::only('email', 'password') , Input::has('cookie'))) ? Redirect::intended("admin")
                     : Redirect::back()->with("alert_error" , "Erreur de connexion");
         }
         return Redirect::back()->with("alert_error" , "Merci de renseigner l'identifiant et le mot de passe");
@@ -46,14 +46,6 @@ class LoginController extends \BaseController {
 
         Auth::logout();
         return Redirect::route("admin.login")->with("alert_error" , "Vous êtes bien déconnecté");
-    }
-
-    public function forgot()
-    {
-
-        // TODO
-        $this->layout->title = 'Mot de passe oublié';
-        $this->layout->content = View::make('IpsumAdmin::login.connexion');
     }
 
 }

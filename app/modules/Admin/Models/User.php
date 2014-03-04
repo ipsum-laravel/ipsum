@@ -32,7 +32,9 @@ class User extends \BaseModel implements UserInterface, RemindableInterface {
             'unique:utilisateur,email'
         ),
         'nom' => 'required',
-        'role' => 'required',
+        'role' => array(
+            'required'
+        ),
      );
 
     const SUPERADMIN = 1;

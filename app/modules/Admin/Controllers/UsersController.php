@@ -10,6 +10,7 @@ use Str;
 use Config;
 use Validator;
 use Hash;
+use Auth;
 use Ipsum\Admin\Models\User;
 
 class UsersController extends BaseController {
@@ -17,7 +18,6 @@ class UsersController extends BaseController {
     public $title = 'Gestion des utilisateurs';
     public $rubrique = 'configuration';
     public $menu = 'utilisateur';
-    //public static $zone = 'utilisateur';
 
     /**
      * Display a listing of the resource.
@@ -26,6 +26,9 @@ class UsersController extends BaseController {
      */
     public function index()
     {
+        if (!Auth::user()->isAdmin()) {
+           return Redirect::route("admin.user.edit");
+        }
         $data = array();
 
         $liste = new Liste();
@@ -70,8 +73,15 @@ class UsersController extends BaseController {
      */
     public function create()
     {
+        if (!Auth::user()->isAdmin()) {
+           return Redirect::route("admin.user.edit");
+        }
         $role = Config::get('auth.roles');
-        $this->layout->content = View::make('IpsumAdmin::user.form', compact("data", "role"));
+        $zones = Config::get('auth.zones');
+        if (!Auth::user()->isSuperAdmin()) {
+            unset($role[User::SUPERADMIN]);
+        }
+        $this->layout->content = View::make('IpsumAdmin::user.form', compact("data", "role", "zones"));
     }
 
     /**
@@ -81,8 +91,15 @@ class UsersController extends BaseController {
      */
     public function store()
     {
+        if (!Auth::user()->isAdmin()) {
+           return Redirect::route("admin.user.edit");
+        }
         $inputs = Input::all();
-        $validation = User::validate($inputs);
+        $rules = User::$rules;
+        if (!Auth::user()->isSuperAdmin()) {
+            $rules['role'][] = 'not_in:'.User::SUPERADMIN;
+        }
+        $validation = Validator::make($inputs, $rules);
 
         if ($validation->passes()) {
             $data = new User;
@@ -91,6 +108,7 @@ class UsersController extends BaseController {
             $data->email = Input::get('email');
             $data->password = Hash::make(Input::get('password'));;
             $data->role = Input::get('role');
+            $data->acces = serialize(Input::get('zone'));
             if ($data->save()) {
                 Session::flash('success', "L'enregistrement a bien été créé");
                 return Redirect::route("admin.user.index");
@@ -109,10 +127,19 @@ class UsersController extends BaseController {
      */
     public function edit($id)
     {
-        $data = User::findOrFail($id);
-        $role = Config::get('auth.roles');
+        $zones = $role = false;
+        if (Auth::user()->isAdmin()) {
+            $data = User::findOrFail($id);
 
-        $this->layout->content = View::make('IpsumAdmin::user.form', compact("data", "role"));
+            $role = Config::get('auth.roles');
+            $zones = Config::get('auth.zones');
+            if (!Auth::user()->isSuperAdmin()) {
+                unset($role[User::SUPERADMIN]);
+            }
+        } else {
+            $data = Auth::user();
+        }
+        $this->layout->content = View::make('IpsumAdmin::user.form', compact("data", "role", "zones"));
     }
 
     /**
@@ -123,7 +150,11 @@ class UsersController extends BaseController {
      */
     public function update($id)
     {
-        $data = User::findOrFail($id);
+        if (Auth::user()->isAdmin()) {
+            $data = User::findOrFail($id);;
+        } else {
+            $data = Auth::user();
+        }
         $rules = User::$rules;
 
         $inputs = Input::all();
@@ -136,21 +167,30 @@ class UsersController extends BaseController {
                 $rules['email'][$key] = $rule.','.$data->id;
             }
         }
+        if (!Auth::user()->isAdmin()) {
+            unset($rules['role']);
+        } elseif (!Auth::user()->isSuperAdmin()) {
+            $rules['role'][] = 'not_in:'.User::SUPERADMIN;
+        }
+
         $validation = Validator::make($inputs, $rules);
 
         if ($validation->passes()) {
             $data->nom = Input::get('nom');
             $data->prenom = Input::get('prenom');
             $data->email = Input::get('email');
-            if (Input::has('email')) {
+            if (Input::has('password')) {
                 $data->password = Hash::make(Input::get('password'));
             }
-            $data->role = Input::get('role');
+            if (Auth::user()->isAdmin()) {
+                $data->role = Input::get('role');
+                $data->acces = serialize(Input::get('zone'));
+            }
             if ($data->save()) {
-                Session::flash('success', "L'enregistrement a bien été créé");
+                Session::flash('success', "L'enregistrement a bien été modifié");
                 return Redirect::route("admin.user.index");
             } else {
-                Session::flash('error', "Impossible de créer l'enregistrement");
+                Session::flash('error', "Impossible de modifier l'enregistrement");
             }
         }
         return Redirect::back()->withInput()->withErrors($validation);
@@ -164,6 +204,9 @@ class UsersController extends BaseController {
      */
     public function destroy($id)
     {
+        if (!Auth::user()->isAdmin()) {
+           return Redirect::route("admin.user.edit");
+        }
         $data = User::findOrFail($id);
         if ($data->delete()) {
             Session::flash('warning', "L'enregistrement a bien été supprimé");

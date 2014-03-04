@@ -23,13 +23,33 @@
             <?= Form::label('password_confirmation', 'Confirmation mot de passe') ?>
             <?php echo Form::password('password_confirmation') ?>
         </p>
+        <?php if ($role) : ?>
         <p>
             <?= Form::label('role', 'Rôle') ?>
             <?= Form::select('role', $role, isset($data) ? $data->role : null) ?>
         </p>
+        <?php endif ?>
         <p>
             <label for="submit">&nbsp</label>
             <?= Form::submit('Enregistrer', array('id' => 'submit', 'class' => 'submit')) ?>
         </p>
     </fieldset>
+    <?php if ($zones) : ?>
+    <fieldset class="bloc_right">
+        <legend>Zones d'accès</legend>
+        <p>
+            <?php foreach ($zones as $key => $zone) : ?>
+            <label style="width:70%" for="zone<?= $key ?>"><?= e($zone) ?></label>
+            <span class="checkbox" style="width:10%">
+                <input
+                    type="checkbox"
+                    value="<?= $key ?>"
+                    name="zone[]"
+                    id="zone<?= $key ?>"
+                    <?php echo ($data->acces() and in_array($key, $data->acces())) ? 'checked="checked"' : '' ?> />
+            </span>
+            <?php endforeach ?>
+        </p>
+    </fieldset>
+    <?php endif ?>
 <?= Form::close() ?>
