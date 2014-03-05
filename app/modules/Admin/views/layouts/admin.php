@@ -17,7 +17,7 @@
 <div id="conteneur">
 <div id="conteneur_haut"></div>
     <div id="header">
-        <h1><a href="<?= url('/') ?>" title="Retour à la page d'accueil" ><?= e(Config::get('settings.nom_site')) ?></a></h1>
+        <h1><a href="<?= url('/') ?>" title="Retour à la page d'accueil" ><?= e(Config::get('website.nom_site')) ?></a></h1>
         <p class="infos_connect">
             <strong><?= e(Auth::user()->prenom) ?> <?= e(Auth::user()->nom) ?></strong><br />
             <?= e(Auth::user()->role()) ?><br />
@@ -40,7 +40,7 @@
           Ipsum
        </p>
         <p>
-            <a href="#rubrique" >Haut de page</a> - Administration du site <?= e(Config::get('settings.nom_site')) ?>
+            <a href="#rubrique" >Haut de page</a> - Administration du site <?= e(Config::get('website.nom_site')) ?>
         </p>
     </div>
     <div id="conteneur_bas"></div>
