@@ -1,5 +1,5 @@
 <?php
-// TODO : gèrer les accès aux zones
+
 return array(
     array(
         'nom' => 'PARAMETRES SYSTEME',
@@ -20,10 +20,12 @@ return array(
     ),
     array(
         'nom' => 'GESTION DU SITE',
+        'zone' => '',
         'smenus' => array(
             array(
                 'nom' => 'Gestion des catégories',
                 'action' => '\Ipsum\Admin\Controllers\BaseController@getIndex',
+                'zone' => 'categorie',
             ),
         ),
     ),
