@@ -1,29 +1,23 @@
 <?php
 namespace Ipsum\Library;
 
-// TODO faire cache
 // http://forumsarchive.laravel.io/viewtopic.php?pid=68196
 
 
 class DBconfiguratorObject implements \ArrayAccess, \Serializable {
     protected $config = array();
     protected $table = null;
+    protected $tableName = null;
 
     private static $_instance = null;
 
-    public static function instance($tableName = 'config'){
-        if(self::$_instance === null){
-            self::$_instance = new self($tableName);
-        }
-        return self::$_instance;
-    }
-
-    private function __construct($tableName = 'config'){
-        $this->table = \DB::table($tableName);
+    public function __construct($tableName = 'config') {
+        $this->tableName = $tableName;
+        $this->table = \DB::table($tableName)->rememberForever($tableName);
         $this->config = $this->table->lists('value', 'key');
     }
 
-    public function offsetGet($key){
+    public function offsetGet($key) {
         return $this->config[$key];
     }
 
@@ -39,29 +33,31 @@ class DBconfiguratorObject implements \ArrayAccess, \Serializable {
             ));
         }
         $this->config[$key] = $value;
+        \Cache::forget($this->tableName);
     }
 
-    public function offsetExists($key){
+    public function offsetExists($key) {
         return isset($this->config[$key]);
     }
 
-    public function offsetUnset($key){
+    public function offsetUnset($key) {
         unset($this->config[$key]);
         $this->table->where('key', $key)->delete();
+        \Cache::forget($this->tableName);
     }
 
     public function serialize(){
         return serialize($this->config);
     }
 
-    public function unserialize($serialized){
+    public function unserialize($serialized) {
         $config = unserialize($serialized);
         foreach($config as $key => $value){
             $this[$key] = $value;
         }
     }
 
-    public function toJson(){
+    public function toJson() {
         return json_encode($this->config);
     }
 }
