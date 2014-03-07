@@ -10,7 +10,7 @@ return array(
             ),
             array(
                 'nom' => 'Gestion des paramètres',
-                'action' => '\Ipsum\Admin\Controllers\BaseController@getIndex',
+                'action' => '\Ipsum\Admin\Controllers\ConfigController@index',
             ),
             array(
                 'nom' => 'Gestion des erreurs',

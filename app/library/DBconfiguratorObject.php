@@ -4,7 +4,7 @@ namespace Ipsum\Library;
 // http://forumsarchive.laravel.io/viewtopic.php?pid=68196
 
 
-class DBconfiguratorObject implements \ArrayAccess, \Serializable {
+class DBconfiguratorObject implements \ArrayAccess, \Iterator,  \Serializable {
     protected $config = array();
     protected $table = null;
     protected $tableName = null;
@@ -17,6 +17,24 @@ class DBconfiguratorObject implements \ArrayAccess, \Serializable {
         $this->config = $this->table->lists('value', 'key');
     }
 
+    public function serialize(){
+        return serialize($this->config);
+    }
+
+    public function unserialize($serialized) {
+        $config = unserialize($serialized);
+        foreach($config as $key => $value){
+            $this[$key] = $value;
+        }
+    }
+
+    public function toJson() {
+        return json_encode($this->config);
+    }
+
+   /**
+    * Notations d’index
+    */
     public function offsetGet($key) {
         return $this->config[$key];
     }
@@ -46,18 +64,31 @@ class DBconfiguratorObject implements \ArrayAccess, \Serializable {
         \Cache::forget($this->tableName);
     }
 
-    public function serialize(){
-        return serialize($this->config);
+   /**
+    * Itération de l'objet
+    */
+    public function count()
+    {
+        return count($this->config);
     }
-
-    public function unserialize($serialized) {
-        $config = unserialize($serialized);
-        foreach($config as $key => $value){
-            $this[$key] = $value;
-        }
+    public function current()
+    {
+        return current($this->config);
     }
-
-    public function toJson() {
-        return json_encode($this->config);
+    public function next()
+    {
+        next($this->config);
+    }
+    public function valid()
+    {
+        return ($this->key() === NULL ? false : true);
+    }
+    public function key()
+    {
+        return key($this->config);
+    }
+    public function rewind()
+    {
+        reset($this->config);
     }
 }

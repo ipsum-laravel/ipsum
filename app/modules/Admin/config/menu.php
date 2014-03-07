@@ -57,7 +57,7 @@ return array(
                 'parametre' => array(
                     'menu' => 'parametre',
                     'nom' => 'Paramètres',
-                    'action' => '\Ipsum\Admin\Controllers\BaseController@getIndex',
+                    'action' => '\Ipsum\Admin\Controllers\ConfigController@index',
                     'visibility'=> 'hidden',
                 ),
                 'utilisateur' => array(
