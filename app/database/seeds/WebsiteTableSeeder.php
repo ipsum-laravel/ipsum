@@ -30,7 +30,7 @@ class WebsiteTableSeeder extends Seeder
                 'value' => '97200',
             ),
             array(
-                'key' => 'Ville',
+                'key' => 'ville',
                 'value' => 'Fort-de-France',
             ),
             array(

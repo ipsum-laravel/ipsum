@@ -111,6 +111,7 @@ return array(
 
         'Ipsum\Admin\AdminServiceProvider',
         'Ipsum\Actualite\ActualiteServiceProvider',
+        'Ipsum\Website\WebsiteServiceProvider',
 	),
 
 	/*
