@@ -1,7 +1,6 @@
 <?php
 namespace Ipsum\Admin\Controllers;
 
-use Ipsum\Library\Liste;
 use View;
 use Input;
 use Redirect;

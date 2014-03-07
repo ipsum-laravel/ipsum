@@ -60,6 +60,12 @@ return array(
                     'action' => '\Ipsum\Admin\Controllers\ConfigController@index',
                     'visibility'=> 'hidden',
                 ),
+                'log' => array(
+                    'menu' => 'log',
+                    'nom' => 'Fichier de log',
+                    'action' => '\Ipsum\Admin\Controllers\LogController@log',
+                    'visibility'=> 'hidden',
+                ),
                 'utilisateur' => array(
                     'menu' => 'utilisateur',
                     'nom' => 'Utilisateurs',

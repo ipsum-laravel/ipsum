@@ -14,7 +14,8 @@ return array(
             ),
             array(
                 'nom' => 'Gestion des erreurs',
-                'action' => '\Ipsum\Admin\Controllers\BaseController@getIndex',
+                'action' => '\Ipsum\Admin\Controllers\LogController@log',
+                'zone' => 'superAdmin',
             ),
         ),
     ),

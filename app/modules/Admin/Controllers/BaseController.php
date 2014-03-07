@@ -45,7 +45,8 @@ class BaseController extends \BaseController {
 
         $this->layout->rubrique = 'configuration';
         $this->layout->menu = 'configuration';
-        $this->layout->title = 'Dashboard';
+        $this->layout->title = 'Configuration';
         $this->layout->content = View::make('IpsumAdmin::configuration', array('menu_configuration' => $configuration));
     }
+
 }

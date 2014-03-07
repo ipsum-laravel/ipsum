@@ -60,6 +60,14 @@ Route::group(array('prefix' => 'admin'), function()
         'as' => 'admin.parametre',
     ));
 
+    Route::get('log', array(
+        'uses' => '\Ipsum\Admin\Controllers\LogController@log',
+        'as' => 'admin.log',
+    ));
+    Route::post('log', array(
+        'uses' => '\Ipsum\Admin\Controllers\LogController@postLog',
+        'as' => 'admin.log',
+    ));
 });
 
 
