@@ -46,7 +46,7 @@
                     value="<?= $key ?>"
                     name="zone[]"
                     id="zone<?= $key ?>"
-                    <?php echo ($data->acces() and in_array($key, $data->acces())) ? 'checked="checked"' : '' ?> />
+                    <?php echo (isset($data) and $data->acces() and in_array($key, $data->acces())) ? 'checked="checked"' : '' ?> />
             </span>
             <?php endforeach ?>
         </p>

@@ -11,6 +11,7 @@ return array(
             array(
                 'nom' => 'Gestion des paramètres',
                 'action' => '\Ipsum\Admin\Controllers\ConfigController@index',
+                'zone' => 'admin',
             ),
             array(
                 'nom' => 'Gestion des erreurs',

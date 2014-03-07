@@ -6,12 +6,23 @@ use Input;
 use Redirect;
 use Session;
 use Config;
+use Auth;
 
 class ConfigController extends BaseController {
 
     public $title = 'Gestion des paramètres';
     public $rubrique = 'configuration';
     public $menu = 'parametre';
+
+    public function __construct()
+    {
+        $this->beforeFilter(function()
+        {
+            if (!Auth::user()->isAdmin()) {
+                return Redirect::to('admin')->with('error', "Vous n'avez pas accès à cette page");
+            }
+        });
+    }
 
     /**
      * Display a listing of the resource.
