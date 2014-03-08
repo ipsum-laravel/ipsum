@@ -1,75 +1,77 @@
 <?php
 
-Route::group(array('prefix' => 'admin'), function()
-{
-    /* Login */
-    Route::get("login", array(
-        "as" => "admin.login",
-        "uses" => "\Ipsum\Admin\Controllers\LoginController@login",
-    ));
-    Route::post("login", array(
-        "as" => "admin.login",
-        "uses" => "\Ipsum\Admin\Controllers\LoginController@postLogin",
-    ));
-    Route::get("forgot", array(
-        "as" => "admin.forgot",
-        "uses" => "\Ipsum\Admin\Controllers\LoginController@forgot",
-    ));
-    Route::get("logout", array(
-        "as" => "admin.logout",
-        "uses" => "\Ipsum\Admin\Controllers\LoginController@logout",
-    ));
+Route::group(
+    array(
+        'prefix' => 'admin',
+        'namespace' => '\Ipsum\Admin\Controllers'
+    ),
+    function() {
+        /* Login */
+        Route::get("login", array(
+            "as" => "admin.login",
+            "uses" => "LoginController@login",
+        ));
+        Route::post("login", array(
+            "as" => "admin.login",
+            "uses" => "LoginController@postLogin",
+        ));
+        Route::get("forgot", array(
+            "as" => "admin.forgot",
+            "uses" => "LoginController@forgot",
+        ));
+        Route::get("logout", array(
+            "as" => "admin.logout",
+            "uses" => "LoginController@logout",
+        ));
 
-    /* Remind */
-    Route::get("remind", array(
-        "as" => "admin.remind",
-        "uses" => "\Ipsum\Admin\Controllers\RemindersController@getRemind",
-    ));
-    Route::post("remind", array(
-        "as" => "admin.remind",
-        "uses" => "\Ipsum\Admin\Controllers\RemindersController@postRemind",
-    ));
-    Route::get("reset/{token}", array(
-        "as" => "admin.reset",
-        "uses" => "\Ipsum\Admin\Controllers\RemindersController@getReset",
-    ));
-    Route::post("reset", array(
-        "as" => "admin.reset",
-        "uses" => "\Ipsum\Admin\Controllers\RemindersController@postReset",
-    ));
-
-
-    Route::get('/', array(
-        'uses' => '\Ipsum\Admin\Controllers\BaseController@getIndex',
-        'as' => 'admin',
-    ));
-
-    Route::get('configuration', array(
-        'uses' => '\Ipsum\Admin\Controllers\BaseController@configuration',
-        'as' => 'admin.configuration',
-    ));
-
-    Route::resource('user', '\Ipsum\Admin\Controllers\UsersController');
-
-    Route::get('parametre', array(
-        'uses' => '\Ipsum\Admin\Controllers\ConfigController@index',
-        'as' => 'admin.parametre',
-    ));
-    Route::post('parametre', array(
-        'uses' => '\Ipsum\Admin\Controllers\ConfigController@update',
-        'as' => 'admin.parametre',
-    ));
-
-    Route::get('log', array(
-        'uses' => '\Ipsum\Admin\Controllers\LogController@log',
-        'as' => 'admin.log',
-    ));
-    Route::post('log', array(
-        'uses' => '\Ipsum\Admin\Controllers\LogController@postLog',
-        'as' => 'admin.log',
-    ));
-});
+        /* Remind */
+        Route::get("remind", array(
+            "as" => "admin.remind",
+            "uses" => "RemindersController@getRemind",
+        ));
+        Route::post("remind", array(
+            "as" => "admin.remind",
+            "uses" => "RemindersController@postRemind",
+        ));
+        Route::get("reset/{token}", array(
+            "as" => "admin.reset",
+            "uses" => "RemindersController@getReset",
+        ));
+        Route::post("reset", array(
+            "as" => "admin.reset",
+            "uses" => "RemindersController@postReset",
+        ));
 
 
+        Route::get('/', array(
+            'uses' => 'BaseController@getIndex',
+            'as' => 'admin',
+        ));
 
+        Route::get('configuration', array(
+            'uses' => 'BaseController@configuration',
+            'as' => 'admin.configuration',
+        ));
+
+        Route::resource('user', 'UsersController');
+
+        Route::get('parametre', array(
+            'uses' => 'ConfigController@index',
+            'as' => 'admin.parametre',
+        ));
+        Route::post('parametre', array(
+            'uses' => 'ConfigController@update',
+            'as' => 'admin.parametre',
+        ));
+
+        Route::get('log', array(
+            'uses' => 'LogController@log',
+            'as' => 'admin.log',
+        ));
+        Route::post('log', array(
+            'uses' => 'LogController@postLog',
+            'as' => 'admin.log',
+        ));
+    }
+);
 
