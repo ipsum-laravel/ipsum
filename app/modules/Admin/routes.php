@@ -53,6 +53,7 @@ Route::group(
             'as' => 'admin.configuration',
         ));
 
+        // TODO : http://laravel.io/forum/02-27-2014-naming-restful-controller-methods
         Route::resource('user', 'UsersController');
 
         Route::get('parametre', array(
