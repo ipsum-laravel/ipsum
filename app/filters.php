@@ -35,7 +35,7 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-    if (Auth::guest()) return Redirect::guest('admin/login');
+    if (Auth::guest()) return Redirect::guest(route('admin.login'));
 
     // Check accès au controleur
     $controleur = strstr(Route::currentRouteAction(), '@', true);
