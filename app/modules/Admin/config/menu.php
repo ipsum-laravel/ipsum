@@ -9,21 +9,21 @@ return array(
             'abreviation' => 'Actu.',
             'icone' => 'calendrier.png',
             'zone' => 'actualite',
-            'action' => '\Ipsum\Actualite\Controllers\AdminController@index',
+            'route' => 'admin.actualite.index',
             'menus' => array(
                 'actualite' => array(
                     'menu' => 'actualite',
                     'nom' => 'Actualités',
-                    'action' => '\Ipsum\Actualite\Controllers\AdminController@index',
+                    'route' => 'admin.actualite.index',
                     'smenus' => array(
                         array(
                             'nom' => 'Liste des actualités',
-                            'action' => '\Ipsum\Actualite\Controllers\AdminController@index',
+                            'route' => 'admin.actualite.index',
                             'icone' => 'table.png'
                         ),
                         array(
                             'nom' => 'Ajouter une actualité',
-                            'action' => '\Ipsum\Actualite\Controllers\AdminController@create',
+                            'route' => 'admin.actualite.create',
                             'icone' => 'add.png'
                         ),
                     ),
@@ -31,7 +31,7 @@ return array(
                 'test' => array(
                     'menu' => 'test',
                     'nom' => 'test',
-                    'action' => '\Ipsum\Actualite\Controllers\AdminController@index',
+                    'route' => 'admin',
                 ),
             ),
         ),
@@ -41,45 +41,45 @@ return array(
             'abreviation' => 'Config.',
             'icone' => 'parametre.png',
             'zone' => '',
-            'action' => '\Ipsum\Admin\Controllers\BaseController@configuration',
+            'route' => 'admin.configuration',
             'menus' => array(
                 'dashboard' => array(
                     'menu' => 'dashboard',
                     'nom' => 'Dashboard',
-                    'action' => '\Ipsum\Admin\Controllers\BaseController@getIndex',
+                    'route' => 'admin',
                     'visibility'=> 'hidden',
                 ),
                 'configuration' => array(
                     'menu' => 'configuration',
                     'nom' => 'Configuration',
-                    'action' => '\Ipsum\Admin\Controllers\BaseController@configuration',
+                    'route' => 'admin.configuration',
                 ),
                 'parametre' => array(
                     'menu' => 'parametre',
                     'nom' => 'Paramètres',
-                    'action' => '\Ipsum\Admin\Controllers\ConfigController@index',
+                    'route' => 'admin.parametre',
                     'visibility'=> 'hidden',
                 ),
                 'log' => array(
                     'menu' => 'log',
                     'nom' => 'Fichier de log',
-                    'action' => '\Ipsum\Admin\Controllers\LogController@log',
+                    'route' => 'admin.log',
                     'visibility'=> 'hidden',
                 ),
                 'utilisateur' => array(
                     'menu' => 'utilisateur',
                     'nom' => 'Utilisateurs',
-                    'action' => '\Ipsum\Admin\Controllers\UsersController@index',
+                    'route' => 'admin.user',
                     'visibility'=> 'hidden',
                     'smenus' => array(
                         array(
                             'nom' => 'Liste des utilisateurs',
-                            'action' => '\Ipsum\Admin\Controllers\UsersController@index',
+                            'route' => 'admin.user',
                             'icone' => 'table.png'
                         ),
                         array(
                             'nom' => 'Ajouter une utilisateur',
-                            'action' => '\Ipsum\Admin\Controllers\UsersController@create',
+                            'route' => 'admin.user.create',
                             'icone' => 'add.png'
                         ),
                     ),

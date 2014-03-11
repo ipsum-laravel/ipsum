@@ -19,7 +19,7 @@ class LogController extends BaseController {
         $this->beforeFilter(function()
         {
             if (!Auth::user()->isSuperAdmin()) {
-                return Redirect::to('admin')->with('error', "Vous n'avez pas accès à cette page");
+                return Redirect::route('admin')->with('error', "Vous n'avez pas accès à cette page");
             }
         });
 

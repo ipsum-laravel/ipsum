@@ -1,5 +1,5 @@
 <h2>Fichier de log</h2>
-<?= Form::open(array('url' => 'admin/log', 'class' => "saisie")) ?>
+<?= Form::open(array('route' => 'admin.log', 'class' => "saisie")) ?>
     <fieldset >
         <legend>erreurs</legend>
         <p>

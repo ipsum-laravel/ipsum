@@ -2,10 +2,13 @@
 
 Route::group(
     array(
-        'prefix' => 'admin',
+        'prefix' => 'administration',
         'namespace' => '\Ipsum\Admin\Controllers'
     ),
     function() {
+        /* Patterns */
+        Route::pattern('id', '\d+');
+
         /* Login */
         Route::get("login", array(
             "as" => "admin.login",
@@ -42,20 +45,45 @@ Route::group(
             "uses" => "RemindersController@postReset",
         ));
 
+        /* Users */
+        Route::get('user', array(
+            'as'     => 'admin.user',
+            'uses'   => 'UsersController@index'
+        ));
+        Route::get('user/create', array(
+            'as'     => 'admin.user.create',
+            'uses'   => 'UsersController@create'
+        ));
+        Route::post('user', array(
+            'as'     => 'admin.user.store',
+            'uses'   => 'UsersController@store'
+        ));
+        Route::get('user/{id}/edit', array(
+            'as'     => 'admin.user.edit',
+            'uses'   => 'UsersController@edit'
+        ));
+        Route::put('user/{id}', array(
+            'as'     => 'admin.user.update',
+            'uses'   => 'UsersController@update'
+        ));
+        Route::delete('user/{id}/destroy', array(
+            'as'     => 'admin.user.destroy',
+            'uses'   => 'UsersController@destroy'
+        ));
 
+        /* Dashboard */
         Route::get('/', array(
             'uses' => 'BaseController@getIndex',
             'as' => 'admin',
         ));
 
+        /* Configuration */
         Route::get('configuration', array(
             'uses' => 'BaseController@configuration',
             'as' => 'admin.configuration',
         ));
 
-        // TODO : http://laravel.io/forum/02-27-2014-naming-restful-controller-methods
-        Route::resource('user', 'UsersController');
-
+        /* Paramètres */
         Route::get('parametre', array(
             'uses' => 'ConfigController@index',
             'as' => 'admin.parametre',
@@ -65,6 +93,7 @@ Route::group(
             'as' => 'admin.parametre',
         ));
 
+        /* Logs */
         Route::get('log', array(
             'uses' => 'LogController@log',
             'as' => 'admin.log',

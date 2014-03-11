@@ -1,5 +1,5 @@
 <h2><?= isset($data) ? 'Modification' : 'Nouvelle' ?> utilisateur</h2>
-<?= Form::open(array('url' => 'admin/user'.(isset($data) ? '/'.$data->id : ''), 'class' => 'saisie', 'method' => isset($data) ? 'PUT' : 'POST')) ?>
+<?= Form::open(array('route' => isset($data) ? array('admin.user.update', $data->id) : 'admin.user.store', 'class' => 'saisie', 'method' => isset($data) ? 'PUT' : 'POST')) ?>
     <fieldset class="bloc_left">
         <legend>Description</legend>
         <p>

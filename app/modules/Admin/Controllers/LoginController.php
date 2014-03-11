@@ -35,7 +35,7 @@ class LoginController extends \BaseController {
         );
 
         if ($validation->passes()) {
-            return (Auth::attempt(Input::only('email', 'password') , Input::has('cookie'))) ? Redirect::intended("admin")
+            return (Auth::attempt(Input::only('email', 'password') , Input::has('cookie'))) ? Redirect::intended(route('admin'))
                     : Redirect::back()->with("alert_error" , "Erreur de connexion");
         }
         return Redirect::back()->with("alert_error" , "Merci de renseigner l'identifiant et le mot de passe");

@@ -1,5 +1,5 @@
 <h2><?= isset($data) ? 'Modification' : 'Nouvelle' ?> actualité</h2>
-<?= Form::open(array('url' => 'admin/actualite'.(isset($data) ? '/'.$data->id : ''), 'class' => 'saisie', 'method' => isset($data) ? 'PUT' : 'POST')) ?>
+<?= Form::open(array('route' => isset($data) ? array('admin.actualite.update', $data->id) : 'admin.actualite.store', 'class' => 'saisie', 'method' => isset($data) ? 'PUT' : 'POST')) ?>
     <fieldset class="bloc_left">
         <legend>Description</legend>
         <p>

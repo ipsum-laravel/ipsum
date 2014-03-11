@@ -11,9 +11,9 @@ use Hash;
 use Validator;
 
 class RemindersController extends \BaseController {
-    
+
     public $layout = 'IpsumAdmin::layouts.login';
-    public $menu = null;        
+    public $menu = null;
 
 	/**
 	 * Display the password reminder view.
@@ -37,7 +37,7 @@ class RemindersController extends \BaseController {
             Input::only('email'),
             array('email' => 'required|email')
         );
-        
+
         if ($validator->fails()) {
             return Redirect::back()->with("alert_error" , "Merci de renseigner un email valide");
         }
@@ -92,7 +92,7 @@ class RemindersController extends \BaseController {
                 return Redirect::back()->with('alert_error', Lang::get($response));
 
             case Password::PASSWORD_RESET:
-                return Redirect::to('admin/login')->with("alert_error" , "Le mot de passe a bien été modifié");
+                return Redirect::route('admin.login')->with("alert_error" , "Le mot de passe a bien été modifié");
         }
     }
 }

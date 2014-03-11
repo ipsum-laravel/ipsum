@@ -21,15 +21,15 @@
             <tr class="<?= (($i %2 ) == 0 ? "pair" : "impair"); ?>">
                 <td><?= e($data->nom) ?></td>
                 <td><?= e($data->email) ?></td>
-                <td class="center"><a href="<?= url('admin/user/'.$data->id.'/edit') ?>"><img src="<?= asset('assets/admin/img/modifier.png') ?>" alt="Modifier" /></a></td>
+                <td class="center"><a href="<?= route('admin.user.edit', array('id' => $data->id)) ?>"><img src="<?= asset('assets/admin/img/modifier.png') ?>" alt="Modifier" /></a></td>
                 <td class="center">
-                    <?= Form::open(array('method' => 'DELETE', 'action' => array('\Ipsum\Admin\Controllers\UsersController@destroy', $data->id))) ?>
+                    <?= Form::open(array('method' => 'DELETE', 'route' => array('admin.user.destroy', $data->id))) ?>
                         <div>
                             <input type="image" src="<?= asset('assets/admin/img/supprimer.png') ?>" value="Supprimer">
                             <button type="submit">Delete</button>
                         </div>
                     <?= Form::close() ?>
-                    <?php /* TODO faire confirmation javascript 
+                    <?php /* TODO faire confirmation javascript
                     array(
                         "alt" => "Supprimer",
                         'class' => 'supprimer',

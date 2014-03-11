@@ -111,7 +111,7 @@ class UsersController extends BaseController {
             $data->acces = serialize(Input::get('zone'));
             if ($data->save()) {
                 Session::flash('success', "L'enregistrement a bien été créé");
-                return Redirect::route("admin.user.index");
+                return Redirect::route("admin.user");
             } else {
                 Session::flash('error', "Impossible de créer l'enregistrement");
             }
@@ -188,7 +188,7 @@ class UsersController extends BaseController {
             }
             if ($data->save()) {
                 Session::flash('success', "L'enregistrement a bien été modifié");
-                return Redirect::route("admin.user.index");
+                return Redirect::route("admin.user");
             } else {
                 Session::flash('error', "Impossible de modifier l'enregistrement");
             }

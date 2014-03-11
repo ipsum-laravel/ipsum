@@ -1,4 +1,4 @@
-<?php echo Form::open(array('url' => 'admin/login')); ?>
+<?php echo Form::open(array('route' => 'admin.login')); ?>
     <fieldset>
         <legend>Veuillez vous identifier</legend>
 
@@ -24,4 +24,4 @@
         </p>
     </fieldset>
 <?php echo Form::close(); ?>
-<p class="baspage"><?php echo link_to_action('\Ipsum\Admin\Controllers\RemindersController@getRemind', 'Mot de passe oublié') ?></p>
+<p class="baspage"><?php echo link_to_route('admin.remind', 'Mot de passe oublié') ?></p>

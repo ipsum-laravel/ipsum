@@ -6,16 +6,16 @@ return array(
         'smenus' => array(
             array(
                 'nom' => 'Gestion des administrateurs',
-                'action' => '\Ipsum\Admin\Controllers\UsersController@index',
+                'route' => 'admin.user',
             ),
             array(
                 'nom' => 'Gestion des paramètres',
-                'action' => '\Ipsum\Admin\Controllers\ConfigController@index',
+                'route' => 'admin.parametre',
                 'zone' => 'admin',
             ),
             array(
                 'nom' => 'Gestion des erreurs',
-                'action' => '\Ipsum\Admin\Controllers\LogController@log',
+                'route' => 'admin.log',
                 'zone' => 'superAdmin',
             ),
         ),
@@ -26,7 +26,7 @@ return array(
         'smenus' => array(
             array(
                 'nom' => 'Gestion des catégories',
-                'action' => '\Ipsum\Admin\Controllers\BaseController@getIndex',
+                'route' => 'admin',
                 'zone' => 'categorie',
             ),
         ),

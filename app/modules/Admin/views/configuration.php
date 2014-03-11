@@ -8,7 +8,7 @@
         <?php if (!isset($smenu['zone']) or Auth::user()->hasAcces($smenu['zone'])) : ?>
         <tr>
             <th style="width: 240px;"><?php echo $smenu['nom'] ?></th>
-            <td><?= link_to_action($smenu['action'], 'éditer') ?></td>
+            <td><?= link_to_route($smenu['route'], 'éditer') ?></td>
         </tr>
         <?php endif ?>
         <?php endforeach ?>
