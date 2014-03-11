@@ -108,6 +108,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
         'Barryvdh\VendorCleanup\VendorCleanupServiceProvider',
+        'anlutro\L4SmartErrors\L4SmartErrorsServiceProvider',
 
         'Ipsum\Admin\AdminServiceProvider',
         'Ipsum\Actualite\ActualiteServiceProvider',

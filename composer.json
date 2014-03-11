@@ -5,7 +5,8 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.1.*",
-		"barryvdh/laravel-vendor-cleanup": "1.*"
+		"barryvdh/laravel-vendor-cleanup": "1.*",
+		"anlutro/l4-smart-errors": "2.*"
 	},
 	"autoload": {
 		"classmap": [
