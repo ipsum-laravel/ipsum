@@ -29,6 +29,9 @@ class ErrorsServiceProvider extends ServiceProvider {
         $this->app->error(function(\Illuminate\Database\Eloquent\ModelNotFoundException $exception) use ($app) {
             return $app['error']->handleModelNotFoundException($exception);
         });
+
+        // For test views
+        //include __DIR__.'/routes.php';
     }
 
     /**

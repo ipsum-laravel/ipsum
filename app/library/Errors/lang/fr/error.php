@@ -31,7 +31,7 @@ return array(
 		'meaning'    	=> 'Qu\'est-ce que cela signifie ?',
 		'reason'		=> 'Quelque chose s\'est mal passé sur nos serveurs pendant que nous traitions votre demande.<br>'.
 							'Nous sommes vraiment désolés à ce sujet, nous faisons tout notre possible pour résoudre cela au plus vite.',
-		'redirect'     	=> 'Peut-être souhaitez vous consulter notre <a href="'.URL::route('home').'3> page d\'accueil </a> ?'
+		'redirect'     	=> 'Peut-être souhaitez vous consulter notre <a href="'.URL::route('home').'"> page d\'accueil </a> ?'
 	),
 
 	'503' => array(
