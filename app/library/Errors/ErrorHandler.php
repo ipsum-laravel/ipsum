@@ -53,7 +53,7 @@ class ErrorHandler
 		Log::error($logstr);
 
 		// if debug is false end the mail
-		if (Config::get('app.debug')) {
+		if (!Config::get('app.debug')) {
 			$timeFormat = Config::get('IpsumErrors::date-format') ?: 'Y-m-d H:i:s';
 
 
