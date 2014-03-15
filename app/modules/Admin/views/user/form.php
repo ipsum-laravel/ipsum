@@ -2,7 +2,7 @@
 <?= Form::open(array('route' => isset($data) ? array('admin.user.update', $data->id) : 'admin.user.store', 'class' => 'saisie', 'method' => isset($data) ? 'PUT' : 'POST')) ?>
     <fieldset class="bloc_left">
         <legend>Description</legend>
-        <p>
+        <p class="oblig<?= $errors->has('nom') ? ' form_erreur' : '' ?>">
             <?= Form::label('nom', 'Nom') ?>
             <?= Form::text('nom', isset($data) ? $data->nom : null) ?>
         </p>
@@ -10,11 +10,11 @@
             <?= Form::label('prenom', 'Prénom') ?>
             <?= Form::text('prenom', isset($data) ? $data->prenom : null) ?>
         </p>
-        <p>
+        <p class="oblig<?= $errors->has('email') ? ' form_erreur' : '' ?>">
             <?= Form::label('email', 'Email') ?>
             <?= Form::text('email', isset($data) ? $data->email : null) ?>
         </p>
-        <p>
+        <p class="<?= $errors->has('password') ? ' form_erreur' : '' ?>">
             <span class="textNotice">Laisser vide pour conserver l'ancien</span>
             <?= Form::label('password', 'Mot de passe') ?>
             <?= Form::password('password') ?>
@@ -24,7 +24,7 @@
             <?php echo Form::password('password_confirmation') ?>
         </p>
         <?php if ($role) : ?>
-        <p>
+        <p class="oblig<?= $errors->has('role') ? ' form_erreur' : '' ?>">
             <?= Form::label('role', 'Rôle') ?>
             <?= Form::select('role', $role, isset($data) ? $data->role : null) ?>
         </p>

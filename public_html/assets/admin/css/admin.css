@@ -403,7 +403,7 @@ font-size:  .8em;
     overflow:  hidden;
     font-size: .8em;
     }
-        #texte .saisie p.form_erreur input, #texte .saisie .form_erreur textarea,  #texte .saisie .p.form_erreur{
+        #texte .saisie p.form_erreur, #texte .saisie .form_erreur,  #texte .saisie .p.form_erreur{
         background: #fce5e1;
         }
     .saisie label, .saisie .label{
@@ -468,7 +468,7 @@ font-size:  .8em;
     margin-left: 40%;
     margin-bottom: 5px;
     }
-    .oblig {
+    .oblig label {
     color: #ce0000 ;
     }
     .saisie .input_mini {

@@ -2,11 +2,11 @@
 <?= Form::open(array('route' => isset($data) ? array('admin.actualite.update', $data->id) : 'admin.actualite.store', 'class' => 'saisie', 'method' => isset($data) ? 'PUT' : 'POST')) ?>
     <fieldset class="bloc_left">
         <legend>Description</legend>
-        <p>
-            <?= Form::label('date_actu', 'Date') ?>
+        <p class="oblig<?= $errors->has('date_actu') ? ' form_erreur' : '' ?>">
+            <?= Form::label('date_actu') ?>
             <?= Form::text('date_actu', isset($data) ? formateDate($data->date_actu) : date('d/m/Y'), array('class' => "date-pick")) ?>
         </p>
-        <p>
+        <p class="oblig<?= $errors->has('nom') ? ' form_erreur' : '' ?>">
             <?= Form::label('nom', 'Titre') ?>
             <?= Form::text('nom', isset($data) ? $data->nom : null) ?>
         </p>
@@ -31,8 +31,7 @@
             <?= Form::file('image') ?>
         </p>
         <p>
-            <label for="submit">&nbsp;</label>
-            <?= Form::submit('Télécharger', array('id' => 'submit', 'class' => 'submit')) ?>
+            <?= Form::submit('Télécharger', array('id' => 'submit', 'class' => 'submits')) ?>
         </p>
         <?= Form::close() ?>
         <?php if ($data->image) : ?>
