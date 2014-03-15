@@ -187,7 +187,9 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
                 Input::file('image')->move($this->mediaFolder, $filename);
                 Session::flash('success', "L'image a bien été téléchargée");
 
-            } catch (\FatalErrorException $e) {
+            } catch (\RuntimeException $e) {
+                Session::flash('error', "Votre fichier image est trop lourd.");
+            } catch (\Exception $e) {
                 Session::flash('error', "Impossible d'enregistrer l'image");
             }
         }
