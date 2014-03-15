@@ -83,7 +83,7 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
 	public function store()
 	{
         $inputs = Input::all();
-        $inputs['date_actu'] = formateDateStocke(Input::get('date_actu'));
+        $inputs['date_actu'] = formateDateStocke(Input::get('date_actu'), 'Y-m-d');
         $validation = Actualite::validate($inputs);
 
         if ($validation->passes()) {
@@ -142,7 +142,7 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
 	    $data = Actualite::findOrFail($id);
 
         $inputs = Input::all();
-        $inputs['date_actu'] = formateDateStocke(Input::get('date_actu'));
+        $inputs['date_actu'] = formateDateStocke(Input::get('date_actu'), 'Y-m-d');
         $validation = Actualite::validate($inputs);
 
         if ($validation->passes()) {

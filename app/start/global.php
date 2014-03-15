@@ -72,7 +72,7 @@ require app_path().'/library/macros.php';
 * @param string $format de sortie (DATE, DATETIME, IDENTIQUE)
 * @return string
 */
-function formateDate($date, $format='IDENTIQUE')
+function formateDate($date, $format = 'IDENTIQUE')
 {
     if ($date == '0000-00-00 00:00:00' or $date == '0000-00-00') return false;
     $timestamp = strtotime($date);
@@ -92,21 +92,14 @@ function formateDate($date, $format='IDENTIQUE')
 * @param string $date
 * @return string  (format sql DATE ou DATETIME)
 */
-function formateDateStocke($date)
+function formateDateStocke($date, $format = 'Y-m-d H:i:s')
 {
     $date = trim($date);
-    if (strlen($date) != 19 and strlen($date) != 10  and strlen($date) != 8){
-     return false;
+    try {
+        $date = \Carbon\Carbon::createFromFormat('d/m/Y', $date)->format($format);
+    } catch (\InvalidArgumentException $e) {
+        return false;
     }
-    // On extrait
-    $jour = substr($date, 0, 2);
-    $mois = substr($date, 3, 2);
-    if (strlen($date) == 8) {
-        $annee = '20'.substr($date, 6, 2);
-    } else {
-        $annee = substr($date,6,4);
-    }
-    $date = substr_replace($date, $annee.'-'.$mois.'-'.$jour, 0);
     return $date;
 }
 

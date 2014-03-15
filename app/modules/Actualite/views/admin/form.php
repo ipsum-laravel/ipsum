@@ -4,7 +4,7 @@
         <legend>Description</legend>
         <p>
             <?= Form::label('date_actu', 'Date') ?>
-            <?= Form::text('date_actu', isset($data) ? formateDate($data->date_actu) : null, array('class' => "date-pick")) ?>
+            <?= Form::text('date_actu', isset($data) ? formateDate($data->date_actu) : date('d/m/Y'), array('class' => "date-pick")) ?>
         </p>
         <p>
             <?= Form::label('nom', 'Titre') ?>
