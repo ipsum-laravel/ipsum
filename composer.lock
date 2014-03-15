@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "f48a6b87737984658b4b1db62108712f",
+    "hash": "1b92f147dd78cf0b63e82cf97c2bb443",
     "packages": [
         {
             "name": "barryvdh/laravel-vendor-cleanup",
@@ -49,6 +49,49 @@
                 "vendor"
             ],
             "time": "2013-10-12 13:05:41"
+        },
+        {
+            "name": "bkwld/croppa",
+            "version": "3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BKWLD/croppa.git",
+                "reference": "3aacce5afbcce12889447b34711a83f64144e929"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BKWLD/croppa/zipball/3aacce5afbcce12889447b34711a83f64144e929",
+                "reference": "3aacce5afbcce12889447b34711a83f64144e929",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "<4.2,>=4.0",
+                "php": ">=5.3.0",
+                "weotch/phpthumb": "~1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations"
+                ],
+                "psr-0": {
+                    "Bkwld\\Croppa": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robert Reinhard"
+                }
+            ],
+            "description": "Image thumbnail creation through specially formatted URLs for Laravel",
+            "time": "2014-03-07 17:53:47"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -1603,6 +1646,41 @@
             "description": "Symfony Translation Component",
             "homepage": "http://symfony.com",
             "time": "2014-02-03 17:15:33"
+        },
+        {
+            "name": "weotch/phpthumb",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/weotch/PHPThumb.git",
+                "reference": "316a472b9a00fb33450d46f463de62c0eadb876a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/weotch/PHPThumb/zipball/316a472b9a00fb33450d46f463de62c0eadb876a",
+                "reference": "316a472b9a00fb33450d46f463de62c0eadb876a",
+                "shasum": ""
+            },
+            "replace": {
+                "dannytrue/phpthumb": "dev-master#2d8898f62e75a743e248dd5906a038d574e0dfe0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robert Reinhard"
+                }
+            ],
+            "description": "Fork of PHPThumb that adds auto-image rotation based on EXIF data and composer support",
+            "time": "2013-04-08 22:11:00"
         }
     ],
     "packages-dev": [

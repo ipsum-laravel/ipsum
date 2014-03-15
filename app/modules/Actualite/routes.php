@@ -32,6 +32,14 @@ Route::group(
             'as'     => 'admin.actualite.update',
             'uses'   => 'AdminController@update'
         ));
+        Route::put('actualite/{id}/upload', array(
+            'as'     => 'admin.actualite.upload',
+            'uses'   => 'AdminController@upload'
+        ));
+        Route::delete('actualite/{id}/image', array(
+            'as'     => 'admin.actualite.deleteImage',
+            'uses'   => 'AdminController@deleteImage'
+        ));
         Route::delete('actualite/{id}/destroy', array(
             'as'     => 'admin.actualite.destroy',
             'uses'   => 'AdminController@destroy'

@@ -108,6 +108,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
         'Barryvdh\VendorCleanup\VendorCleanupServiceProvider',
+        'Bkwld\Croppa\ServiceProvider',
 
         'Ipsum\Library\Errors\ErrorsServiceProvider',
         'Ipsum\Admin\AdminServiceProvider',
@@ -154,7 +155,7 @@ return array(
 		'DB'              => 'Illuminate\Support\Facades\DB',
 		'Eloquent'        => 'Illuminate\Database\Eloquent\Model',
 		'Event'           => 'Illuminate\Support\Facades\Event',
-		'File'            => 'Illuminate\Support\Facades\File',
+		//'File'            => 'Illuminate\Support\Facades\File',
 		'Form'            => 'Illuminate\Support\Facades\Form',
 		'Hash'            => 'Illuminate\Support\Facades\Hash',
 		'HTML'            => 'Illuminate\Support\Facades\HTML',
@@ -179,6 +180,8 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 
+        'Croppa'          => 'Bkwld\Croppa\Facade',
+        'File'            => 'Ipsum\Library\Facades\File',
 	),
 
 );

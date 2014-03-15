@@ -8,6 +8,8 @@ use Input;
 use Redirect;
 use Session;
 use Str;
+use Validator;
+use File;
 use Ipsum\Actualite\Models\Actualite;
 
 class AdminController extends \Ipsum\Admin\Controllers\BaseController {
@@ -16,6 +18,7 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
     public $rubrique = 'actualite';
     public $menu = 'actualite';
     public static $zone = 'actualite';
+    public $mediaFolder = 'assets/media/actu/';
 
 	/**
 	 * Display a listing of the resource.
@@ -51,6 +54,7 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
 
         $data['datas'] = array();
         foreach($ressource as $item) {
+            $item->image = File::find($this->mediaFolder.$item->id.'.*', null, true);
             $item->description = Str::words(strip_tags($item->description), 30, '...');
             $data['datas'][] = $item;
         }
@@ -89,7 +93,7 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
             $data->description = Input::get('description');
             if ($data->save()) {
                 Session::flash('success', "L'enregistrement a bien été créé");
-                return Redirect::route("admin.actualite.index");
+                return Redirect::route("admin.actualite.edit", $data->id);
             } else {
                 Session::flash('error', "Impossible de créer l'enregistrement");
             }
@@ -121,8 +125,10 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
 	{
         $data = Actualite::findOrFail($id);
 
+        $data->image = File::find($this->mediaFolder.$id.'.*', null, true);
+
         $this->layout->head = JsTools::jwysiwyg().JsTools::datePicker();
-        $this->layout->content = View::make('IpsumActualite::admin.form', compact("data"));
+        $this->layout->content = View::make('IpsumActualite::admin.form', compact("data", "image"));
 	}
 
 	/**
@@ -146,13 +152,59 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
 
             if ($data->save()) {
                 Session::flash('success', "L'enregistrement a bien été modifié");
-                return Redirect::route("admin.actualite.index");
+                return Redirect::route("admin.actualite.edit", $id);
             } else {
                 Session::flash('error', "Impossible de modifier l'enregistrement");
             }
         }
         return Redirect::back()->withInput()->withErrors($validation);
 	}
+
+    /**
+     * Upload image
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function upload($id)
+    {
+        $data = Actualite::findOrFail($id);
+
+        $rules = array('image'  => 'image|max:1000');
+        $datas = array('image' => Input::file('image'));
+        $validation = Validator::make($datas, $rules);
+        if ($validation->passes()) {
+            $file = Input::file('image');
+
+            // Delete all images
+            File::deleteAll($this->mediaFolder.$id.'{.,-}*');
+
+            $filename = $id.'.'.File::extension($file->getClientOriginalName());
+            if (Input::file('image')->move($this->mediaFolder, $filename)) {
+                Session::flash('success', "L'image a bien été téléchargée");
+                return Redirect::route("admin.actualite.edit", $id);
+            } else {
+                Session::flash('error', "Impossible d'enregistrer l'image");
+            }
+        }
+        return Redirect::back()->withErrors($validation);
+    }
+
+    /**
+     * Delete image
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function deleteImage($id)
+    {
+        $data = Actualite::findOrFail($id);
+
+        // Delete all images
+        File::deleteAll($this->mediaFolder.$id.'{.,-}*');
+        Session::flash('warning', "L'image a bien été supprimée");
+        return Redirect::route("admin.actualite.edit", $id);
+    }
 
 	/**
 	 * Remove the specified resource from storage.
@@ -163,6 +215,9 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
 	public function destroy($id)
 	{
 	    $data = Actualite::findOrFail($id);
+
+	    File::deleteAll($this->mediaFolder.$id.'{.,-}*');
+
 		if ($data->delete()) {
             Session::flash('warning', "L'enregistrement a bien été supprimé");
 		} else {

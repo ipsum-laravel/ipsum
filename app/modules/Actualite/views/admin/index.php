@@ -13,6 +13,7 @@
             <th><?= $liste->labelTri('date_actu', 'Date') ?></th>
             <th><?= $liste->labelTri('nom', 'Titre') ?></th>
             <th><?= $liste->labelTri('description', 'Description') ?></th>
+            <th>Photo</th>
             <th>Modif.</th>
             <th>Supp.</th>
         </tr>
@@ -23,6 +24,11 @@
                 <td><?= $data->date_actu_format; ?></td>
                 <td><?= e($data->nom) ?></td>
                 <td><?= e($data->description) ?></td>
+                <td>
+                    <?php if ($data->image) : ?>
+                   <img src="<?=Croppa::url('/'.$data->image, 150, 150)?>" alt="" />
+                    <?php endif ?>
+                </td>
                 <td class="center"><a href="<?= route('admin.actualite.edit', array('id' => $data->id)) ?>"><img src="<?= asset('assets/admin/img/modifier.png') ?>" alt="Modifier" /></a></td>
                 <td class="center">
                     <?= Form::open(array('method' => 'DELETE', 'route' => array('admin.actualite.destroy', $data->id))) ?>

@@ -78,7 +78,7 @@ Thumbs.db
 /app/config/staging
 /app/config/production
 
-# Basset development collections
-/public/assets/compiled/public
-/public/assets/compiled/admin
+
+# Media
+/public_html/assets/media
 
