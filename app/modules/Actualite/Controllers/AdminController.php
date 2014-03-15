@@ -102,20 +102,6 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
 	}
 
 	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$data['actualite'] = Actualite::findOrFail($id);
-
-        $this->layout->title = $data['actualite']->nom;
-        $this->layout->content = View::make('IpsumActualite::admin.show', $data);
-	}
-
-	/**
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param  int  $id
