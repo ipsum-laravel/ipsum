@@ -38,6 +38,15 @@ class ErrorHandler
 	public function handleException($exception, $code = null)
 	{
 
+        // show the friendly error message
+        switch ($code) {
+            case 403:
+                return Response::make(View::make('IpsumErrors::403'), 403);
+
+            case 404:
+                return Response::make(View::make('IpsumErrors::404'), 404);
+        }
+
 		$route = $this->findRoute();
 		$url = Request::fullUrl();
 		$client = Request::getClientIp();
@@ -86,14 +95,8 @@ class ErrorHandler
 
 			// show the friendly error message
             switch ($code) {
-                case 403:
-                    return Response::make(View::make('IpsumErrors::403'), 403);
-
                 case 500:
                     return Response::make(View::make('IpsumErrors::500'), 500);
-
-                default:
-                    return Response::make(View::make('IpsumErrors::404'), 404);
             }
         }
 
