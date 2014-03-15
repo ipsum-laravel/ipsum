@@ -33,8 +33,7 @@
                 <td class="center">
                     <?= Form::open(array('method' => 'DELETE', 'route' => array('admin.actualite.destroy', $data->id))) ?>
                         <div>
-                            <input type="image" src="<?= asset('assets/admin/img/supprimer.png') ?>" value="Supprimer">
-                            <button type="submit">Delete</button>
+                            <input type="image" src="<?= asset('assets/admin/img/supprimer.png') ?>" value="Supprimer" class="supprimer" data-message="<?= e($data->nom) ?>">
                         </div>
                     <?= Form::close() ?>
                     <?php /* TODO faire confirmation javascript

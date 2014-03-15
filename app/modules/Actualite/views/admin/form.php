@@ -41,7 +41,7 @@
         </p>
         <?= Form::open(array('method' => 'DELETE', 'route' => array('admin.actualite.deleteImage', $data->id))) ?>
         <p class="center">
-            <button type="submit">Supprimer l'image</button>
+            <button type="submit" class="supprimer" data-message="l'image">Supprimer l'image</button>
          </p>
          <?= Form::close() ?>
         <?php endif ?>
