@@ -55,7 +55,9 @@ Web site
 Quick Start
 ===========
 
-The following code creates a jWYSIWYG editor with the default options::
+The following code creates a jWYSIWYG editor with the default options:
+
+.. code:: html
 
     <script type="text/javascript" src="jquery.wysiwyg.js"></script>
     <script type="text/javascript">
@@ -70,7 +72,9 @@ The following code creates a jWYSIWYG editor with the default options::
 Activating Hidden Controls
 --------------------------
 
-Toolbar buttons are selected with the ``controls`` configuration option::
+Toolbar buttons are selected with the ``controls`` configuration option:
+
+.. code:: javascript
 
     $('#wysiwyg').wysiwyg({
         controls: {
@@ -87,7 +91,9 @@ A full list of available ``controls`` options is available in ____.
 Adding Custom Controls
 ----------------------
 
-Custom controls can also be specified with the ``controls`` option::
+Custom controls can also be specified with the ``controls`` option:
+
+.. code:: javascript
 
     $('#wysiwyg').wysiwyg({
         controls: {
@@ -100,7 +106,9 @@ Custom controls can also be specified with the ``controls`` option::
         }
     })
 
-Another way::
+Another way:
+
+.. code:: javascript
 
     $('#wysiwyg').wysiwyg("addControl",
         "controlName",
@@ -115,7 +123,9 @@ Styling the Content Inside the Editor
 -------------------------------------
 
 To apply a CSS stylesheet to the content inside the editor, use the ``css``
-configuration option::
+configuration option:
+
+.. code:: javascript
 
     $('#wysiwyg').wysiwyg({
         css: 'editor.css'
@@ -128,16 +138,29 @@ specify a CSS file to apply to it.
 Clear the Editor
 ----------------
 
-To clear the editor at any time::
+To clear the editor at any time:
+
+.. code:: javascript
 
     $('#wysiwyg').wysiwyg('clear');
+
+Focus the Editor
+----------------
+
+To focus on the editor at any time:
+
+.. code:: javascript
+
+    $('#wysiwyg').wysiwyg('focus');
 
 
 Insert an Image
 ---------------
 
 When the #insertImage link is clicked, insert an image inline at the current
-cursor location in the editor::
+cursor location in the editor:
+
+.. code:: javascript
 
     $('a[href="#insertImage"]').click(function() {
         $('#wysiwyg').wysiwyg('insertImage', 'img/hourglass.gif');
@@ -150,7 +173,9 @@ cursor location in the editor::
 Insert an Image with Attributes
 -------------------------------
 
-Add some additional attributes to the image, as well::
+Add some additional attributes to the image, as well:
+
+.. code:: javascript
 
     $('a[href="#insertImage"]').click(function() {
         $('#wysiwyg').wysiwyg('insertImage', 'img/hourglass.gif', { 'class': 'myClass', 'className': 'myClass' });
@@ -197,6 +222,10 @@ the wysiwyg() function when it is first called on a textarea. Available keys are
 
 ``brIE``
     A boolean. If ``true``, a ``<br/>`` will be inserted for a newline in IE.
+    This is also true for other browsers and may seem a bit peculiar for users 
+    if they use "Header 1", or similar styles. The ENTER key will no longer reset
+    the style to "Paragraph", but continue writing "Header 1" until users explicitly
+    choose "Paragraph" in the toolbar.
 
 ``formHeight``
     An integer. Height of dialog form.
@@ -254,8 +283,10 @@ the wysiwyg() function when it is first called on a textarea. Available keys are
 ``rmUnusedControls``
     A boolean. If ``true``, the editor will remove all controls which are not
     mentioned in ``controls`` option.
-    In this example only bold control will be available in toolbar::
+    In this example only bold control will be available in toolbar:
     
+    .. code:: javascript
+
         $("textarea").wysiwyg({
             rmUnusedControls: true,
             controls: {
@@ -275,7 +306,9 @@ the wysiwyg() function when it is first called on a textarea. Available keys are
 ``events``
     A javascript object specifying events. Events are specified as ``key: value``
     pairs in the javascript object,
-    where the key is the name of the event and the value is javascript function::
+    where the key is the name of the event and the value is javascript function:
+
+    .. code:: javascript
 
         {
             click: function(event) {
@@ -293,7 +326,9 @@ the wysiwyg() function when it is first called on a textarea. Available keys are
     the key is the name of the control and the value is another javascript
     object with a specific signature.
     
-    The signature of a control object looks like this::
+    The signature of a control object looks like this:
+
+    .. code:: javascript
     
         {
             // If true, this object will just be a vertical separator bar,
@@ -355,7 +390,7 @@ the wysiwyg() function when it is first called on a textarea. Available keys are
     ``quote`` control which creates ``<blockquote>`` tags, we could do specify
     this key::
     
-        quote: { visible; true, tags: ['blockquote'], css: { class: 'quote', className: 'quote' } }
+        quote: { visible: true, tags: ['blockquote'], css: { class: 'quote', className: 'quote' } }
     
     Note that when defining custom controls, you will most likely want to add
     additional CSS to style the resulting toolbar button. The CSS to style a
@@ -386,6 +421,7 @@ the wysiwyg() function when it is first called on a textarea. Available keys are
     * ``insertHorizontalRule``: Insert horizontal rule.
     * ``createLink``: Create a link from the selected text, by prompting the
       user for the URL.
+    * ``unLink``: Remove a link from the selected text.
     * ``insertImage``: Insert an image, by prompting the user for the image path.
     * ``h1``: Make text an h1 header
     * ``h2``: Make text an h2 header
@@ -436,7 +472,9 @@ Built-in editor functions can be triggered manually with the
 * setContent
 
 For example, if you want to set new content to original textarea, and then
-remove the jWYSIWYG editor to bring original textarea back::
+remove the jWYSIWYG editor to bring original textarea back:
+
+.. code:: javascript
 
     $("#original").wysiwyg("setContent", "<p>My new content</p>").wysiwyg("destroy")
     
@@ -461,10 +499,12 @@ Along with the jWYSIWYG source code, come handlers for different languages, so y
 The handler that shuold be set with .setAjaxHandler("...") is the one that contains the ``authentication`` response. This is usually the "file_manager.*" handler.
 Note that usually you will need to rewrite some of the handlers code, so it will fit your application.
 
-After you setup the server-side part, you need to add the javascript and css files for the file manager: ::
+After you setup the server-side part, you need to add the javascript and css files for the file manager:
 
-	<link rel="stylesheet" href="../../plugins/fileManager/wysiwyg.fileManager.css" type="text/css"/> 
-	<script type="text/javascript" src="../../plugins/wysiwyg.fileManager.js"></script> 
+.. code:: html
+
+    <link rel="stylesheet" href="../../plugins/fileManager/wysiwyg.fileManager.css" type="text/css"/> 
+    <script type="text/javascript" src="../../plugins/wysiwyg.fileManager.js"></script> 
 
 Then, all you have to do is start using it, as explained below.
 
@@ -482,46 +522,54 @@ And another important boolean value:
 
 First, you must set an ajax handler. The plugin does not force you to use its official available handlers, it enables you to set your own route for the handler.
 In order to initiate the file manager interface, you should call 'init()'. The init() method will not fire until there is an ajax handler.
-This may look something like: ::
+This may look something like:
 
-	// First we set the handler:
-	$.wysiwyg.fileManager.setAjaxHandler("http://example.com/jwysiwyg/handler.php");
+.. code:: javascript
 
-	// Then we fire-up the interface:
-	$.wysiwyg.fileManager.init(function (selected) {
-		alert(selected);
-	});
-	// The init() method takes a callback function, and returns the URL of the selected file.
+    // First we set the handler:
+    $.wysiwyg.fileManager.setAjaxHandler("http://example.com/jwysiwyg/handler.php");
+
+    // Then we fire-up the interface:
+    $.wysiwyg.fileManager.init(function (selected) {
+    	alert(selected);
+    });
+    // The init() method takes a callback function, and returns the URL of the selected file.
 
 
-For convinience, the setAjaxHandler() method returns the $.wysiwyg.fileManager object, so it can be used in a short form: ::
+For convinience, the setAjaxHandler() method returns the $.wysiwyg.fileManager object, so it can be used in a short form:
 
-	$.wysiwyg.fileManager.setAjaxHandler("http://example.com/jwysiwyg/handler.php").init(function (selected) {
-		alert(selected);
-	});
+.. code:: javascript
+
+    $.wysiwyg.fileManager.setAjaxHandler("http://example.com/jwysiwyg/handler.php").init(function (selected) {
+    	alert(selected);
+    });
 
 Use Within Other Plugins
 ------------------------
 
 In addition to its stand-alone usage, the File Manager plugin can be incorporated quite easily into other plugins.
-Actually, the only thing the should be checked before using the plugin, is whether its ajax handler is set: ::
+Actually, the only thing the should be checked before using the plugin, is whether its ajax handler is set:
 
-	if ($.wysiwyg.fileManager.ready) {
-		$.wysiwyg.fileManager.init(function (selected) {
-			alert(selected);
-		});	
-	}
+.. code:: javascript
+
+    if ($.wysiwyg.fileManager.ready) {
+    	$.wysiwyg.fileManager.init(function (selected) {
+    		alert(selected);
+    	});	
+    }
 
 This method exists in order to assure third-party plugins that the file manager is ready-to-go.
 
 .. note::
 		
-		In order to display the file manager icon, one can use a div with a "wysiwyg-fileManager" class.
+    In order to display the file manager icon, one can use a div with a "wysiwyg-fileManager" class.
 
 Sample custom File Manager Control
 ----------------------------------
 
-This is a quick example of how to use the jWYSIWYG editor with a custom file manager control: ::
+This is a quick example of how to use the jWYSIWYG editor with a custom file manager control:
+
+.. code:: javascript
 
 	$('#wysiwyg').wysiwyg({
 		controls: {
@@ -582,6 +630,44 @@ Contributing
 
 Read document `help/docs/contributing.rst
 <https://github.com/akzhan/jwysiwyg/blob/master/help/docs/contributing.rst>`_
+
+=====================
+How to build jWYSIWYG
+=====================
+
+Run:
+
+.. code:: bash
+
+    $ git clone git://github.com/jquery/jquery.git
+    $ cd jwysiwyg/
+    $ git submodule update --init
+    
+    to make uglify work::
+    
+    	ln -s "`pwd`/build/uglify/uglify-js.js ~/.node_libraries/
+    
+    to build Jasmine:
+
+        .. code:: bash
+
+        $ cd test/lib/jasmine
+        $ rake
+
+    to build jQuery::
+    
+        $ cd test/lib/jquery
+    
+        Following the rules in README
+
+Change directory back to jwysiwyg:
+
+.. code:: bash
+
+    $ cd ../../../
+    $ rake
+
+The built version of jWYSIWYG will be put in the `dist/` subdirectory.
 
 ====================
 Additional Resources
