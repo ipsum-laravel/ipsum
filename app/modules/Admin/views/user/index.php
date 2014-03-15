@@ -29,12 +29,6 @@
                             <button type="submit">Delete</button>
                         </div>
                     <?= Form::close() ?>
-                    <?php /* TODO faire confirmation javascript
-                    array(
-                        "alt" => "Supprimer",
-                        'class' => 'supprimer',
-                        'title' => 'supprimer '.$data->nom
-                    ))); */?>
                 </td>
            </tr>
         <?php $i++; endforeach; ?>
