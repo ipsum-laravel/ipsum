@@ -65,7 +65,9 @@ class ErrorHandler
 		if (!Config::get('app.debug')) {
 			$timeFormat = Config::get('IpsumErrors::date-format') ?: 'Y-m-d H:i:s';
 
-
+            // TODO mettre les inputs
+            // Mise en cache impossible d'objet. Exemple lors d'upload
+            // Serialization of 'Symfony\Component\HttpFoundation\File\UploadedFile' is not allowed in vendor/laravel/framework/src/Illuminate/Cache/FileStore.php:82
 			$mailData = array(
     			array(
     				'exception' => array(
@@ -78,7 +80,7 @@ class ErrorHandler
     				'url'       => $url,
     				'route'     => $route,
     				'client'    => $client,
-    				'input'     => $input,
+    				'input'     => '',
     				'time'      => date($timeFormat),
                 )
             );
