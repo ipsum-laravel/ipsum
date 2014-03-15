@@ -170,13 +170,16 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
     {
         $data = Actualite::findOrFail($id);
 
-        $rules = array('image'  => 'required|image|max:8000');
+        // TODO problème avec champ vide
+        // puis message lorsque dépasse upload_max_filesize
+        $rules = array('image'  => 'image|max:2000');
         $datas = array('image' => Input::file('image'));
         $validation = Validator::make($datas, $rules);
         if ($validation->passes()) {
-            $file = Input::file('image');
 
             try {
+                $file = Input::file('image');
+
                 // Delete all images
                 File::deleteAll($this->mediaFolder.$id.'{.,-}*');
 
@@ -184,7 +187,7 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
                 Input::file('image')->move($this->mediaFolder, $filename);
                 Session::flash('success', "L'image a bien été téléchargée");
 
-            } catch (\Exception $e) {
+            } catch (\FatalErrorException $e) {
                 Session::flash('error', "Impossible d'enregistrer l'image");
             }
         }
