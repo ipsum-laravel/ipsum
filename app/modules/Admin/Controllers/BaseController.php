@@ -19,6 +19,7 @@ class BaseController extends \BaseController {
     public function __construct()
     {
         $this->beforeFilter('auth');
+        $this->beforeFilter('csrf', array('on' => array('post')));
     }
 
     /**
@@ -29,6 +30,13 @@ class BaseController extends \BaseController {
     protected function setupLayout()
     {
         parent::setupLayout();
+
+        if (isset($this->title)) {
+            $this->layout->title = $this->title;
+        }
+        if (isset($this->rubrique)) {
+            $this->layout->rubrique = $this->rubrique;
+        }
         $this->layout->menu = $this->menu;
     }
 
