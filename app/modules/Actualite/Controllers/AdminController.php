@@ -170,24 +170,25 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
     {
         $data = Actualite::findOrFail($id);
 
-        $rules = array('image'  => 'image|max:1000');
+        $rules = array('image'  => 'required|image|max:8000');
         $datas = array('image' => Input::file('image'));
         $validation = Validator::make($datas, $rules);
         if ($validation->passes()) {
             $file = Input::file('image');
 
-            // Delete all images
-            File::deleteAll($this->mediaFolder.$id.'{.,-}*');
+            try {
+                // Delete all images
+                File::deleteAll($this->mediaFolder.$id.'{.,-}*');
 
-            $filename = $id.'.'.File::extension($file->getClientOriginalName());
-            if (Input::file('image')->move($this->mediaFolder, $filename)) {
+                $filename = $id.'.'.File::extension($file->getClientOriginalName());
+                Input::file('image')->move($this->mediaFolder, $filename);
                 Session::flash('success', "L'image a bien été téléchargée");
-                return Redirect::route("admin.actualite.edit", $id);
-            } else {
+
+            } catch (\Exception $e) {
                 Session::flash('error', "Impossible d'enregistrer l'image");
             }
         }
-        return Redirect::back()->withErrors($validation);
+        return Redirect::route("admin.actualite.edit", $id)->withErrors($validation);
     }
 
     /**

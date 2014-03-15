@@ -38,13 +38,15 @@ class ErrorHandler
 	public function handleException($exception, $code = null)
 	{
 
-        // show the friendly error message
-        switch ($code) {
-            case 403:
-                return Response::make(View::make('IpsumErrors::403'), 403);
+        if (!Config::get('app.debug')) {
+            // show the friendly error message
+            switch ($code) {
+                case 403:
+                    return Response::make(View::make('IpsumErrors::403'), 403);
 
-            case 404:
-                return Response::make(View::make('IpsumErrors::404'), 404);
+                case 404:
+                    return Response::make(View::make('IpsumErrors::404'), 404);
+            }
         }
 
 		$route = $this->findRoute();
