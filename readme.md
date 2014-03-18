@@ -1,21 +1,41 @@
-## Laravel PHP Framework
+# Ipsum
 
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/version.png)](https://packagist.org/packages/laravel/framework) [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.png)](https://packagist.org/packages/laravel/framework) [![Build Status](https://travis-ci.org/laravel/framework.png)](https://travis-ci.org/laravel/framework) [![License](https://poser.pugx.org/laravel/framework/license.png)](https://packagist.org/packages/laravel/framework) 
+Basé sur Laravel 4
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, and caching.
+## Instalation
 
-Laravel aims to make the development process a pleasing one for the developer without sacrificing application functionality. Happy developers make the best code. To this end, we've attempted to combine the very best of what we have seen in other web frameworks, including frameworks implemented in other languages, such as Ruby on Rails, ASP.NET MVC, and Sinatra.
+Installation de composer
+    curl -s https://getcomposer.org/installer | php
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+    $ curl -sS https://getcomposer.org/installer | php
+    $ mv composer.phar /usr/local/bin/composer
 
-## Official Documentation
+Instalation des dépendances
+    composer install
 
-Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
+Pour définir l'environment, créer un fichier bootstrap/environment.php avec le contenu ci-dessous :
+```php
+<?php
+return 'local';
+```
 
-### Contributing To Laravel
+Création du dossier de configuration de test dans app\local avec les fichiers suivant :
+- app.php
+- database.php
+- mail.php
 
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
+    mkdir app/config/local
+    cp app/config/database.php app/config/local/database.php
 
-### License
+Vérifier la création du dossier storage avec les sous dossiers et les droits nécessaires
+    chmod -R 0777 app/storage
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Création des tables
+    php artisan migrate
+    php artisan migrate --path="app/modules/Actualite/migrations"
+
+Modification de la clé de cryptage si besoin
+    php artisan key:generate
+
+Population des tables
+    php artisan db:seed
