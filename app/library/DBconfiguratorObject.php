@@ -1,6 +1,8 @@
 <?php
 namespace Ipsum\Library;
 
+use DB;
+use Cache;
 // http://forumsarchive.laravel.io/viewtopic.php?pid=68196
 
 
@@ -13,7 +15,7 @@ class DBconfiguratorObject implements \ArrayAccess, \Iterator,  \Serializable {
 
     public function __construct($tableName = 'config') {
         $this->tableName = $tableName;
-        $this->table = \DB::table($tableName)->rememberForever($tableName);
+        $this->table = DB::table($tableName)->rememberForever($tableName);
         $this->config = $this->table->lists('value', 'key');
     }
 
@@ -39,19 +41,19 @@ class DBconfiguratorObject implements \ArrayAccess, \Iterator,  \Serializable {
         return $this->config[$key];
     }
 
-    public function offsetSet($key, $value){
+    public function offsetSet($key, $value) {
         if($this->offsetExists($key)){
-            $this->table->where('key', $key)->update(array(
+            $result = DB::table($this->tableName)->where('key', $key)->update(array(
                 'value' => $value
             ));
         } else {
-            $this->table->insert(array(
+            DB::table($this->tableName)->insert(array(
                 'key' => $key,
                 'value' => $value
             ));
         }
         $this->config[$key] = $value;
-        \Cache::forget($this->tableName);
+        Cache::forget($this->tableName);
     }
 
     public function offsetExists($key) {
@@ -61,7 +63,7 @@ class DBconfiguratorObject implements \ArrayAccess, \Iterator,  \Serializable {
     public function offsetUnset($key) {
         unset($this->config[$key]);
         $this->table->where('key', $key)->delete();
-        \Cache::forget($this->tableName);
+        Cache::forget($this->tableName);
     }
 
    /**
