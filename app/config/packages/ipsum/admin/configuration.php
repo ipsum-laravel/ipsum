@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    array(
+    'groupe1' => array(
         'nom' => 'PARAMETRES SYSTEME',
         'smenus' => array(
             array(
@@ -20,7 +20,7 @@ return array(
             ),
         ),
     ),
-    array(
+    /*'groupe2' => array(
         'nom' => 'GESTION DU SITE',
         'zone' => '',
         'smenus' => array(
@@ -30,5 +30,5 @@ return array(
                 'zone' => 'categorie',
             ),
         ),
-    ),
+    ),*/
 );

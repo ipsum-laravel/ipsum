@@ -110,7 +110,8 @@ return array(
         'Barryvdh\VendorCleanup\VendorCleanupServiceProvider',
         'Bkwld\Croppa\ServiceProvider',
 
-        'Ipsum\Library\Errors\ErrorsServiceProvider',
+        'Ipsum\Errors\ErrorsServiceProvider',
+        'Ipsum\Core\CoreServiceProvider',
         'Ipsum\Admin\AdminServiceProvider',
         'Ipsum\Actualite\ActualiteServiceProvider',
         'Ipsum\Website\WebsiteServiceProvider',
@@ -181,7 +182,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 
         'Croppa'          => 'Bkwld\Croppa\Facade',
-        'File'            => 'Ipsum\Library\Facades\File',
+        'File'            => 'Ipsum\Core\Library\Facades\File',
 	),
 
 );

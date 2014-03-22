@@ -1,7 +1,9 @@
 <?php
 namespace Ipsum\Actualite\Models;
 
-class Actualite extends \BaseModel {
+use Ipsum\Core\Models\BaseModel;
+
+class Actualite extends BaseModel {
 
     protected $table = 'actualite';
 
