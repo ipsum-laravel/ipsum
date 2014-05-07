@@ -1,7 +1,7 @@
 <?php
 namespace Ipsum\Actualite\Controllers;
 
-use Ipsum\Library\Liste;
+use Ipsum\Core\Library\Liste;
 use View;
 use Str;
 use Ipsum\Actualite\Models;

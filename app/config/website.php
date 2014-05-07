@@ -1,3 +1,3 @@
 <?php
 
-return new \Ipsum\Library\DBconfiguratorObject('website');
+return new \Ipsum\Core\Library\DBconfiguratorObject('website');
