@@ -1,7 +1,7 @@
 <?php
 namespace Ipsum\Actualite\Controllers;
 
-use Ipsum\Library\Liste;
+use Ipsum\Core\Library\Liste;
 use Ipsum\Admin\Library\JsTools;
 use View;
 use Input;

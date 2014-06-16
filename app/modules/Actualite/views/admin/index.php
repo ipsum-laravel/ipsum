@@ -29,11 +29,11 @@
                    <img src="<?=Croppa::url('/'.$data->image, 150, 150)?>" alt="" />
                     <?php endif ?>
                 </td>
-                <td class="center"><a href="<?= route('admin.actualite.edit', array('id' => $data->id)) ?>"><img src="<?= asset('assets/admin/img/modifier.png') ?>" alt="Modifier" /></a></td>
+                <td class="center"><a href="<?= route('admin.actualite.edit', array('id' => $data->id)) ?>"><img src="<?= asset('packages/ipsum/admin/img/modifier.png') ?>" alt="Modifier" /></a></td>
                 <td class="center">
                     <?= Form::open(array('method' => 'DELETE', 'route' => array('admin.actualite.destroy', $data->id))) ?>
                         <div>
-                            <input type="image" src="<?= asset('assets/admin/img/supprimer.png') ?>" value="Supprimer" class="supprimer" data-message="<?= e($data->nom) ?>">
+                            <input type="image" src="<?= asset('packages/ipsum/admin/img/supprimer.png') ?>" value="Supprimer" class="supprimer" data-message="<?= e($data->nom) ?>">
                         </div>
                     <?= Form::close() ?>
                 </td>

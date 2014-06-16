@@ -6,8 +6,25 @@
 	"require": {
 		"laravel/framework": "4.1.*",
 		"barryvdh/laravel-vendor-cleanup": "1.*",
+		"ipsum/admin": "@dev",
+		"ipsum/core": "@dev",
+		"ipsum/errors": "@dev",
 		"bkwld/croppa": "~3.0"
 	},
+    "repositories": [
+        {
+            "type": "vcs",
+            "url":  "https://github.com/ipsum-laravel/admin.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "https://github.com/ipsum-laravel/core.git"
+        },
+        {
+            "type": "vcs",
+            "url":  "https://github.com/ipsum-laravel/errors.git"
+        }
+    ],
 	"autoload": {
 		"classmap": [
 			"app/commands",
@@ -18,8 +35,7 @@
 			"app/tests/TestCase.php"
 		],
         "psr-4": {
-            "Ipsum\\": "app/modules",
-            "Ipsum\\Library\\": "app/library"
+            "Ipsum\\": "app/modules"
         }
 	},
 	"scripts": {

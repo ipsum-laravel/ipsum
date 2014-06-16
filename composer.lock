@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "1b92f147dd78cf0b63e82cf97c2bb443",
+    "hash": "676add939ce6d2973c3614d967b158ef",
     "packages": [
         {
             "name": "barryvdh/laravel-vendor-cleanup",
@@ -226,6 +226,121 @@
             "time": "2013-12-04 14:19:30"
         },
         {
+            "name": "ipsum/admin",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ipsum-laravel/admin.git",
+                "reference": "45cc7b7f384e870390fe2b8750fd7d6160dc2c8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ipsum-laravel/admin/zipball/45cc7b7f384e870390fe2b8750fd7d6160dc2c8d",
+                "reference": "45cc7b7f384e870390fe2b8750fd7d6160dc2c8d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "4.1.*",
+                "ipsum/core": "@dev",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations"
+                ],
+                "psr-4": {
+                    "Ipsum\\Admin\\": "src"
+                }
+            },
+            "authors": [
+                {
+                    "name": "B1nj",
+                    "email": "postmaster@b1nj.fr"
+                }
+            ],
+            "support": {
+                "source": "https://github.com/ipsum-laravel/admin/tree/master",
+                "issues": "https://github.com/ipsum-laravel/admin/issues"
+            },
+            "time": "2014-03-22 12:00:38"
+        },
+        {
+            "name": "ipsum/core",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ipsum-laravel/core.git",
+                "reference": "c895caf36ee6af765266c9044cd002c6ed961798"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ipsum-laravel/core/zipball/c895caf36ee6af765266c9044cd002c6ed961798",
+                "reference": "c895caf36ee6af765266c9044cd002c6ed961798",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "4.1.*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations"
+                ],
+                "psr-4": {
+                    "Ipsum\\Core\\": "src"
+                }
+            },
+            "authors": [
+                {
+                    "name": "B1nj",
+                    "email": "postmaster@b1nj.fr"
+                }
+            ],
+            "support": {
+                "source": "https://github.com/ipsum-laravel/core/tree/master",
+                "issues": "https://github.com/ipsum-laravel/core/issues"
+            },
+            "time": "2014-03-21 22:16:20"
+        },
+        {
+            "name": "ipsum/errors",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ipsum-laravel/errors.git",
+                "reference": "1069e083f8db8e0e14c7f844ab7075856a99d9d8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ipsum-laravel/errors/zipball/1069e083f8db8e0e14c7f844ab7075856a99d9d8",
+                "reference": "1069e083f8db8e0e14c7f844ab7075856a99d9d8",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "4.1.*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ipsum\\Errors\\": "src"
+                }
+            },
+            "authors": [
+                {
+                    "name": "B1nj",
+                    "email": "postmaster@b1nj.fr"
+                }
+            ],
+            "support": {
+                "source": "https://github.com/ipsum-laravel/errors/tree/master",
+                "issues": "https://github.com/ipsum-laravel/errors/issues"
+            },
+            "time": "2014-03-22 12:11:42"
+        },
+        {
             "name": "ircmaxell/password-compat",
             "version": "1.0.3",
             "source": {
@@ -314,16 +429,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v4.1.23",
+            "version": "v4.1.24",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "054c1a29aaf537c6c6ca7e7804375c671eddcaaf"
+                "reference": "4f69e545e0ca19b54010ca4c68a66ba6de6e853c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/054c1a29aaf537c6c6ca7e7804375c671eddcaaf",
-                "reference": "054c1a29aaf537c6c6ca7e7804375c671eddcaaf",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/4f69e545e0ca19b54010ca4c68a66ba6de6e853c",
+                "reference": "4f69e545e0ca19b54010ca4c68a66ba6de6e853c",
                 "shasum": ""
             },
             "require": {
@@ -386,7 +501,7 @@
                 "iron-io/iron_mq": "1.5.*",
                 "mockery/mockery": "0.9.*",
                 "pda/pheanstalk": "2.1.*",
-                "phpunit/phpunit": "3.7.*"
+                "phpunit/phpunit": "4.0.*"
             },
             "suggest": {
                 "doctrine/dbal": "Allow renaming columns and dropping SQLite columns."
@@ -427,7 +542,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2014-02-28 22:07:47"
+            "time": "2014-03-17 15:49:21"
         },
         {
             "name": "monolog/monolog",
@@ -1690,9 +1805,11 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "ipsum/admin": 20,
+        "ipsum/core": 20,
+        "ipsum/errors": 20
+    },
     "platform": [
 
     ],
