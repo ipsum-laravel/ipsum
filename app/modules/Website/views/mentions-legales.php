@@ -41,9 +41,9 @@
 
 <h2>Déclaration du site à la CNIL</h2>
 <p>
-    Conformément aux dispositons de la Loi n° 78-17 du 6 janvier 1978 relative à l'Informatique, aux Fichiers et aux
+    Conformément aux dispositions de la Loi n° 78-17 du 6 janvier 1978 relative à l'Informatique, aux Fichiers et aux
     Libertés, le traitement automatisé des données nominatives réalisé à partir de ce site Internet a fait l'objet d'une déclaration auprès de la
-    Commision Nationale de l'Informatique et des Libertés (CNIL) sous le numèro <?= Config::get('website.cnil') ?>.
+    Commission Nationale de l'Informatique et des Libertés (CNIL) sous le numéro <?= Config::get('website.cnil') ?>.
 </p>
 
 <h2>Données nominatives</h2>
