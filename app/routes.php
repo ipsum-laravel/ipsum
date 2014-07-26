@@ -11,8 +11,7 @@
 |
 */
 
-Route::get('/', array('as' => 'home', function()
-{
-	return View::make('hello');
-}));
+// Routes for the pages : Catch all the route
+// Must be the last rule
+Route::get('{all}', 'Ipsum\Website\Controllers\PageController@getIndex')->where('all', '.*');
 

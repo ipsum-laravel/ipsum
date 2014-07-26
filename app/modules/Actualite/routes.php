@@ -1,6 +1,9 @@
 <?php
 
-Route::get('actualite', '\Ipsum\Actualite\Controllers\frontController@index');
+Route::get('actualite', array(
+    'as' => 'actualite',
+    'uses' => '\Ipsum\Actualite\Controllers\frontController@index'
+));
 
 Route::group(
     array(

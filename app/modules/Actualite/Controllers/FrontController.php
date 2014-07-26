@@ -1,73 +1,37 @@
 <?php
 namespace Ipsum\Actualite\Controllers;
 
-use Ipsum\Core\Library\Liste;
 use View;
 use Str;
-use Ipsum\Actualite\Models;
+use File;
+use Carbon\Carbon;
+use Ipsum\Actualite\Models\Actualite;
 
 class FrontController extends \BaseController {
 
-    public $title = 'Gestion des actualités';
-    public $rubrique = 'actualite';
-    public $menu = 'actualite';
-    public static $zone = 'actualite';
-
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-	    $data = array();
-
-        $liste = new Liste();
-        $recherche = array(
-            'input'     => 'mot',
-            'colonnes'      => array (
-                'actualite.nom',
-                'actualite.description'
-            )
-        );
-        $liste->setRecherche($recherche);
-        $tri = array(
-            'ordre'     => 'DESC',
-            'colonne'  => 'date_actu'
-        );
-        $liste->setTri($tri);
-        $requete = array(
-            'colonnes'  => 'actualite.id,
-                            actualite.nom,
-                            actualite.description,
-                            DATE_FORMAT(actualite.date_actu, "%d/%m/%Y") AS date_actu_format',
-            'from'      => 'actualite'
-        );
-        $ressource = $liste->select($requete);
-
-        $data['datas'] = array();
-        foreach($ressource as $item) {
-            $item->description = Str::words(strip_tags($item->description), 30, '...');
-            $data['datas'][] = $item;
+    public function index()
+    {
+        $actus = Actualite::orderBy('date_actu', 'desc')->paginate(10);
+        foreach ($actus as $key => $actu) {
+            $actu->date_actu = Carbon::createFromFormat('Y-m-d', $actu->date_actu)->formatLocalized('%A %d %B %Y');
+            $actu->image = File::find('assets/media/actu/'.$actu->id.'.*', null, true);
+            $actus[$key] = $actu;
         }
+        return View::make('IpsumActualite::index', compact('actus'));
+    }
 
-        $data['liste'] = $liste;
-
-        $this->layout->content = View::make('IpsumActualite::index', $data);
-	}
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$data['actualite'] = Actualite::findOrFail($id);
-
-        $this->layout->title = $data['actualite']->nom;
-        $this->layout->content = View::make('actualite.show', $data);
-	}
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        $actu = Actualite::findOrFail($id);
+        $actu->date_actu = Carbon::createFromFormat('Y-m-d', $actu->date_actu)->formatLocalized('%A %d %B %Y');
+        $actu->image = File::find('assets/media/actu/'.$actu->id.'.*', null, true);
+        return View::make('IpsumActualite::show', compact('actu'));
+    }
 
 }

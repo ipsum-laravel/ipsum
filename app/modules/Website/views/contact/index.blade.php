@@ -1,3 +1,11 @@
+@extends('layouts.website')
+@section('title')Contactez-nous @stop
+@section('description') @stop
+
+@section('sidebar')
+@stop
+
+@section('content')
 <h1>Contactez-nous</h1>
 
 <h2>Nos coordonnées</h2>
@@ -16,16 +24,13 @@
     </p>
 </div>
 <h2>Envoyez-nous un message</h2>
-<form class="saisie2" method="post" action="?">
-    <p>
+<?= HTML::notifications($errors) ?>
+<?= Form::open(array('route' => array('contact.send'), 'method' => 'POST', 'class' => 'saisie2')) ?>
+    <p class="oblig<?= $errors->has('nom') ? ' form_erreur' : '' ?>">
         <?= Form::label('nom', 'Nom') ?>
         <?= Form::text('nom') ?>
     </p>
-    <p>
-        <?= Form::label('prenom', 'Prénom') ?>
-        <?= Form::text('prenom') ?>
-    </p>
-    <p>
+    <p class="oblig<?= $errors->has('email') ? ' form_erreur' : '' ?>">
         <?= Form::label('email', 'Email') ?>
         <?= Form::text('email') ?>
     </p>
@@ -33,12 +38,13 @@
         <?= Form::label('telephone', 'Téléphone') ?>
         <?= Form::text('telephone') ?>
     </p>
-    <p>
-        <?= Form::label('message', 'Message') ?>
-        <?= Form::textarea('message') ?>
+    <p class="oblig<?= $errors->has('message') ? ' form_erreur' : '' ?>">
+        <?= Form::label('messages', 'Message') ?>
+        <?= Form::textarea('messages') ?>
     </p>
     <p>
-        <label for="submit">&nbsp;</label>
-        <input name="submit" id="submit" class="envoyer_mail" type="submit" value="Envoyer">
+        <input name="submit" id="submit" type="submit" value="Envoyer">
     </p>
-</form>
+<?= Form::close() ?>
+
+@stop

@@ -2,38 +2,46 @@
 namespace Ipsum\Website\Controllers;
 
 use View;
-use Ipsum\Website\Validations;
+use Validator;
+use Input;
+use Config;
+use Redirect;
+use Mail;
+use Session;
+use Ipsum\Website\Validations\ContactValidator;
 
 class ContactController extends \BaseController {
 
-    public $title = 'Contact';
-    public $rubrique = 'contact';
-
-    public function getIndex()
+    /**
+     * Instantiate a new UserController instance.
+     */
+    public function __construct()
     {
-        $this->layout->description = '';
-        $this->layout->head = '';
-        $this->layout->javascript = '';
-        $this->layout->content = View::make('IpsumWebsite::contact.index');
+        $this->beforeFilter('csrf', array('on' => array('post')));
     }
 
-    public function postIndex()
+    public function index()
     {
-        $validator = new ContactValidator(Input::all());
+        return View::make('IpsumWebsite::contact.index');
+    }
 
-        if ($validator->passes()) {
-            Mail::send('IpsumWebsite::contact.email_content', Input::all(), function($m) {
-                $m->to(Config::get('website.mail_to'), Config::get('website.nom_site'))->subject(Config::get('website.mail_objet').' '.Config::get('website.nom_site'));
+    public function send()
+    {
+        $validation = new ContactValidator(Input::all());
+
+        if ($validation->passes()) {
+            Mail::send('IpsumWebsite::contact.mail', Input::all(), function($m) {
+                $m->to(Config::get('IpsumCore::website.mail_to'), Config::get('IpsumCore::website.nom_site'))->subject(Config::get('IpsumCore::website.mail_objet').' '.Config::get('IpsumCore::website.nom_site'));
             });
-
-            return Redirect::route('contact/success');
+            Session::flash('success', "Votre demande de contact a bien été envoyée");
+            return Redirect::route('contact.success');
         }
 
-        return Redirect::back()->withInput()->withErrors($validator->getErrors());
+        return Redirect::back()->withInput()->withErrors($validation);
     }
 
-    public function getSuccess()
+    public function success()
     {
-        $this->layout->content = View::make('IpsumWebsite::contact.success');
+        return View::make('IpsumWebsite::contact.index');
     }
 }
