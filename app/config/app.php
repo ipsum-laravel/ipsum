@@ -109,6 +109,7 @@ return array(
 
         'Barryvdh\VendorCleanup\VendorCleanupServiceProvider',
         'Bkwld\Croppa\ServiceProvider',
+        'Barryvdh\Debugbar\ServiceProvider',
 
         'Ipsum\Errors\ErrorsServiceProvider',
         'Ipsum\Core\CoreServiceProvider',
