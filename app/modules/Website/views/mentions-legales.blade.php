@@ -2,7 +2,6 @@
 @section('title')Mentions légales @stop
 
 @section('content')
-    @parent
     <h1>Mentions légales</h1>
 
     <p>(réglementées par la Loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique)</p>
