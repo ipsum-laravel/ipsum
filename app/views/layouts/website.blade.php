@@ -22,7 +22,7 @@
         <header role="banner" class="header line pam mbs">
             <div class="header-logo"><a href="index.php" title="Retour à la page d'accueil" ><img src="{{ asset('assets/img/logo-pixell.gif') }}" width="200" alt="logo"></a></div>
             <p class="header-slogan">Le meilleur site du web</p>
-        </header><!-- Fin header //-->
+        </header>
 
         <nav role="navigation" class="menu mbs">
             <ul class="line">
@@ -52,7 +52,7 @@
         <footer role="contentinfo" class="footer line pam txtcenter">
             <p><a href="{{ url('mentions-legales') }}" >Mentions légales</a> - Réalisé, hébergé et référencé par <a href="http://www.pixellweb.com"><img src="{{ asset('assets/img/logo-pixell.gif') }}" alt="logo pixell"></a></p>
         </footer>
-    </div><!-- Fin conteneur //-->
+    </div>
     @yield('script')
 </body>
 </html>
