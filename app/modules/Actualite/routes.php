@@ -2,7 +2,7 @@
 
 Route::get('actualite', array(
     'as' => 'actualite',
-    'uses' => '\Ipsum\Actualite\Controllers\frontController@index'
+    'uses' => '\Ipsum\Actualite\Controllers\FrontController@index'
 ));
 
 Route::group(
