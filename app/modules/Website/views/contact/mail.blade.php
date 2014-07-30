@@ -16,6 +16,6 @@
     </p>
 
     <p>
-        <?= $messages ?>
+        <?= $texte ?>
     </p>
 @stop

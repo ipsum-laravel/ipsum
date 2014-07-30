@@ -38,9 +38,9 @@
         <?= Form::label('telephone', 'Téléphone') ?>
         <?= Form::text('telephone') ?>
     </p>
-    <p class="oblig<?= $errors->has('message') ? ' form_erreur' : '' ?>">
-        <?= Form::label('messages', 'Message') ?>
-        <?= Form::textarea('messages') ?>
+    <p class="oblig<?= $errors->has('texte') ? ' form_erreur' : '' ?>">
+        <?= Form::label('texte', 'Message') ?>
+        <?= Form::textarea('texte') ?>
     </p>
     <p>
         <input name="submit" id="submit" type="submit" value="Envoyer">
