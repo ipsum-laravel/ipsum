@@ -1,18 +1,23 @@
-<h2>Liste des actualités (<?= $liste->count() ?>)</h2>
-<?= $liste->pagination() ?>
+<h2>Liste des actualités (<?= Liste::count() ?>)</h2>
+<?= Liste::pagination() ?>
 <form method="get" id="recherche" action="">
     <div>
-        <?= $liste->paramsListe(true) ?>
-        <input type="text" name="mot" id="mot" value="<?= $liste->getRechercheValue('mot') ?>" />
+        <?= Liste::inputsHidden(array('id', 'mot', 'tri' => array('date'))) ?>
+        <select name="id">
+            <option value="">------</option>
+            <option value="2" <?= Liste::getFiltreValeur('id') == '2' ? 'selected="selected"' : '' ?>>2</option>
+            <option value="5" <?= Liste::getFiltreValeur('id') == '5' ? 'selected="selected"' : '' ?>>5</option>
+        </select>
+        <input type="text" name="mot" id="mot" value="<?= Liste::getFiltreValeur('mot') ?>" />
         <input type="submit" name="submit" value="Chercher" />
     </div>
 </form>
-<table class="liste" width="75%">
+<table class="liste" style="width: 100%;">
     <thead>
         <tr>
-            <th><?= $liste->labelTri('date_actu', 'Date') ?></th>
-            <th><?= $liste->labelTri('nom', 'Titre') ?></th>
-            <th><?= $liste->labelTri('description', 'Description') ?></th>
+            <th><?= Liste::lienTri('Date', 'date') ?></th>
+            <th><?= Liste::lienTri('Titre', 'titre') ?></th>
+            <th><?= Liste::lienTri('Description', 'description', 'asc') ?></th>
             <th>Photo</th>
             <th>Modif.</th>
             <th>Supp.</th>
@@ -21,12 +26,12 @@
     <tbody>
         <?php $i=0; foreach ($datas as $data): ?>
             <tr class="<?= (($i %2 ) == 0 ? "pair" : "impair") ?>">
-                <td><?= $data->date_actu_format; ?></td>
+                <td><?= e($data->date_actu) ?></td>
                 <td><?= e($data->nom) ?></td>
                 <td><?= e($data->description) ?></td>
                 <td>
                     <?php if ($data->image) : ?>
-                   <img src="<?=Croppa::url('/'.$data->image, 150, 150)?>" alt="" />
+                   <img src="<?= Croppa::url('/'.$data->image, 150, 150) ?>" alt="" />
                     <?php endif ?>
                 </td>
                 <td class="center"><a href="<?= route('admin.actualite.edit', array('id' => $data->id)) ?>"><img src="<?= asset('packages/ipsum/admin/img/modifier.png') ?>" alt="Modifier" /></a></td>
@@ -41,4 +46,4 @@
         <?php $i++; endforeach; ?>
     </tbody>
 </table>
-<?= $liste->pagination() ?>
+<?= Liste::pagination() ?>

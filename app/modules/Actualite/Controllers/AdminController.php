@@ -1,7 +1,6 @@
 <?php
 namespace Ipsum\Actualite\Controllers;
 
-use Ipsum\Core\Library\Liste;
 use Ipsum\Admin\Library\JsTools;
 use View;
 use Input;
@@ -10,6 +9,7 @@ use Session;
 use Str;
 use Validator;
 use File;
+use Liste;
 use Ipsum\Actualite\Models\Actualite;
 
 class AdminController extends \Ipsum\Admin\Controllers\BaseController {
@@ -27,41 +27,55 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
 	 */
 	public function index()
 	{
-	    $data = array();
+	    $datas = array();
 
-        $liste = new Liste();
-        $recherche = array(
-            'input'     => 'mot',
-            'colonnes'      => array (
-                'actualite.nom',
-                'actualite.description'
-            )
+        $requete = Actualite::select(
+            'actualite.id',
+            'actualite.nom',
+            'actualite.description',
+            'actualite.date_actu'
         );
-        $liste->setRecherche($recherche);
-        $tri = array(
-            'ordre'     => 'DESC',
-            'colonne'  => 'date_actu'
+        $liste = Liste::setRequete($requete);
+        $filtres = array(
+            array(
+                'nom' => 'id',
+                'colonnes' => 'id',
+            ),
+            array(
+                'nom' => 'mot',
+                'operateur' => 'like',
+                'colonnes' => array (
+                    'actualite.nom',
+                    'actualite.description'
+                ),
+            ),
         );
-        $liste->setTri($tri);
-        $requete = array(
-            'colonnes'  => 'actualite.id,
-                            actualite.nom,
-                            actualite.description,
-                            DATE_FORMAT(actualite.date_actu, "%d/%m/%Y") AS date_actu_format',
-            'from'      => 'actualite'
+        Liste::setFiltres($filtres);
+        $tris = array(
+            array(
+                'nom' => 'date',
+                'ordre' => 'asc',
+                'colonne' => 'date_actu',
+                'actif' => true,
+            ),
+            array(
+                'nom' => 'titre',
+                'ordre' => 'desc',
+                'colonne' => 'nom',
+            ),
+            array(
+                'nom' => 'description',
+            ),
         );
-        $ressource = $liste->select($requete);
+        Liste::setTris($tris);
 
-        $data['datas'] = array();
-        foreach($ressource as $item) {
+        foreach(Liste::rechercherLignes() as $item) {
             $item->image = File::find($this->mediaFolder.$item->id.'.*', null, true);
             $item->description = Str::words(strip_tags($item->description), 30, '...');
-            $data['datas'][] = $item;
+            $datas[] = $item;
         }
 
-        $data['liste'] = $liste;
-
-        $this->layout->content = View::make('IpsumActualite::admin.index', $data);
+        $this->layout->content = View::make('IpsumActualite::admin.index', compact('datas'));
 	}
 
 	/**
