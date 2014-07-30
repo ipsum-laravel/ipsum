@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4f793d11f17e6eb6b78a6a6f07d249f0",
+    "hash": "f439ad4e2c8fb8278f269fd6bc558e9c",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -324,12 +324,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ipsum-laravel/core.git",
-                "reference": "f9bd1c54220c020f1a08f436753fbd353753321b"
+                "reference": "b0a4bd6c3fe7d77ba833b1f60b498a598c75c787"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ipsum-laravel/core/zipball/f9bd1c54220c020f1a08f436753fbd353753321b",
-                "reference": "f9bd1c54220c020f1a08f436753fbd353753321b",
+                "url": "https://api.github.com/repos/ipsum-laravel/core/zipball/b0a4bd6c3fe7d77ba833b1f60b498a598c75c787",
+                "reference": "b0a4bd6c3fe7d77ba833b1f60b498a598c75c787",
                 "shasum": ""
             },
             "require": {
@@ -355,7 +355,7 @@
                 "source": "https://github.com/ipsum-laravel/core/tree/master",
                 "issues": "https://github.com/ipsum-laravel/core/issues"
             },
-            "time": "2014-07-26 09:29:46"
+            "time": "2014-07-29 23:57:23"
         },
         {
             "name": "ipsum/errors",
