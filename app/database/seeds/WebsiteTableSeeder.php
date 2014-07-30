@@ -47,7 +47,7 @@ class WebsiteTableSeeder extends Seeder
             ),
             array(
                 'key' => 'email',
-                'value' => 'test@pixellweb.com',
+                'value' => 'email@example.com',
             ),
             array(
                 'key' => 'rcs',
@@ -79,7 +79,7 @@ class WebsiteTableSeeder extends Seeder
             ),
             array(
                 'key' => 'mail_to',
-                'value' => 'test@pixellweb.com',
+                'value' => 'email@example.com',
             ),
             array(
                 'key' => 'mail_objet',

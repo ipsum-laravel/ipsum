@@ -31,7 +31,7 @@
 
     <h2>Réalisation, Référencement et hébergement du site</h2>
 
-    <p>
+    <p><?php // TODO enlever Pixell en dur ?>
         Société Pixell<br>
         Bâtiment Frigodom - Niveau 1<br>
         Z.I.P. de la Pointe des Grives<br>

@@ -7,9 +7,9 @@ class UtilisateurTableSeeder extends Seeder
         \Ipsum\Admin\Models\User::create(
             array(
                 'id' => 1,
-                'nom' => 'Pixell',
+                'nom' => 'Admin',
                 'prenom' => 'admin',
-                'email' => 'test@pixellweb.com',
+                'email' => 'admin@example.com',
                 'password' => Hash::make('admin'),
                 'role' => '1',
             )
@@ -18,9 +18,9 @@ class UtilisateurTableSeeder extends Seeder
         \Ipsum\Admin\Models\User::create(
             array(
                 'id' => 2,
-                'nom' => 'Demo',
-                'prenom' => 'Demo',
-                'email' => 'demo@pixellweb.com',
+                'nom' => 'User',
+                'prenom' => 'User',
+                'email' => 'user@example.com',
                 'password' => Hash::make('demo'),
                 'role' => '2',
             )

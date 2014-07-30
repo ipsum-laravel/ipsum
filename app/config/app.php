@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://www.ipsum3.pixellweb.com',
+	'url' => 'http://wwww.example.com',
 
 	/*
 	|--------------------------------------------------------------------------
