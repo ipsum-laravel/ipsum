@@ -54,13 +54,12 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
         $tris = array(
             array(
                 'nom' => 'date',
-                'ordre' => 'asc',
+                'ordre' => 'desc',
                 'colonne' => 'date_actu',
                 'actif' => true,
             ),
             array(
                 'nom' => 'titre',
-                'ordre' => 'desc',
                 'colonne' => 'nom',
             ),
             array(

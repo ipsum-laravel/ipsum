@@ -2,7 +2,7 @@
 <?= Liste::pagination() ?>
 <form method="get" id="recherche" action="">
     <div>
-        <?= Liste::inputsHidden(array('id', 'mot', 'tri' => array('date'))) ?>
+        <?= Liste::inputsHidden() ?>
         <select name="id">
             <option value="">------</option>
             <option value="2" <?= Liste::getFiltreValeur('id') == '2' ? 'selected="selected"' : '' ?>>2</option>
