@@ -3,11 +3,6 @@
 <form method="get" id="recherche" action="">
     <div>
         <?= Liste::inputsHidden() ?>
-        <select name="id">
-            <option value="">------</option>
-            <option value="2" <?= Liste::getFiltreValeur('id') == '2' ? 'selected="selected"' : '' ?>>2</option>
-            <option value="5" <?= Liste::getFiltreValeur('id') == '5' ? 'selected="selected"' : '' ?>>5</option>
-        </select>
         <input type="text" name="mot" id="mot" value="<?= Liste::getFiltreValeur('mot') ?>" />
         <input type="submit" name="submit" value="Chercher" />
     </div>

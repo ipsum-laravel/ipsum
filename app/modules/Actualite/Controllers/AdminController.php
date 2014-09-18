@@ -38,10 +38,6 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
         $liste = Liste::setRequete($requete);
         $filtres = array(
             array(
-                'nom' => 'id',
-                'colonnes' => 'id',
-            ),
-            array(
                 'nom' => 'mot',
                 'operateur' => 'like',
                 'colonnes' => array (
