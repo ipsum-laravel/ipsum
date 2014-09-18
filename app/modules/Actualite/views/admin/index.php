@@ -21,7 +21,7 @@
     <tbody>
         <?php $i=0; foreach ($datas as $data): ?>
             <tr class="<?= (($i %2 ) == 0 ? "pair" : "impair") ?>">
-                <td><?= e($data->date_actu) ?></td>
+                <td><?= e($data->date_actu_format) ?></td>
                 <td><?= e($data->nom) ?></td>
                 <td><?= e($data->description) ?></td>
                 <td>

@@ -10,6 +10,7 @@ use Str;
 use Validator;
 use File;
 use Liste;
+use DB;
 use Ipsum\Actualite\Models\Actualite;
 
 class AdminController extends \Ipsum\Admin\Controllers\BaseController {
@@ -33,7 +34,7 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
             'actualite.id',
             'actualite.nom',
             'actualite.description',
-            'actualite.date_actu'
+            DB::raw('DATE_FORMAT(actualite.date_actu, "%d/%m/%Y") AS date_actu_format')
         );
         $liste = Liste::setRequete($requete);
         $filtres = array(
