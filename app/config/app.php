@@ -113,6 +113,7 @@ return array(
 
         'Ipsum\Errors\ErrorsServiceProvider',
         'Ipsum\Core\CoreServiceProvider',
+        'Ipsum\Core\Library\Liste\ListeServiceProvider',
         'Ipsum\Admin\AdminServiceProvider',
         'Ipsum\Actualite\ActualiteServiceProvider',
         'Ipsum\Website\WebsiteServiceProvider',
@@ -184,6 +185,7 @@ return array(
 
         'Croppa'          => 'Bkwld\Croppa\Facade',
         'File'            => 'Ipsum\Core\Library\Facades\File',
+        'Liste'           => 'Ipsum\Core\Library\Facades\Liste',
 	),
 
 );

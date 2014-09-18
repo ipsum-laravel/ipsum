@@ -90,27 +90,30 @@ img.bordure {
 
 /*---- pagination-------*/
 .pagination {
-	clear: both;
 	text-align: center;
 	padding-top: 15px;
+	list-style-type: none;
 }
-	.pagination a,
-	.pagination strong{
-		border: 1px solid #e1e4ec;
-		background: white;
-		padding: 1px 4px;
-	    margin-left: 4px;
-		text-decoration: none;
-		color: #d88107;
-	}
-	.pagination a:hover{
-		border: 1px solid #e1e4ec;
-		background: #f9dcc0;
-		color: white;
-	}
-	.pagination strong{
-		background: #e5f1ff;
-	}
+    .pagination li {
+        display: inline;
+    }
+    	.pagination a,
+    	.pagination strong{
+    		border: 1px solid #e1e4ec;
+    		background: white;
+    		padding: 1px 4px;
+    	    margin-left: 4px;
+    		text-decoration: none;
+    		color: #d88107;
+    	}
+    	.pagination a:hover{
+    		border: 1px solid #e1e4ec;
+    		background: #f9dcc0;
+    		color: white;
+    	}
+    	.pagination strong{
+    		background: #e5f1ff;
+    	}
 
 /*---- Messages divers -------*/
 .messages {
