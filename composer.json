@@ -10,7 +10,8 @@
 		"ipsum/admin": "1.0.*",
 		"ipsum/errors": "1.0.*",
 		"bkwld/croppa": "~3.0",
-        "barryvdh/laravel-debugbar": "1.*"
+        "barryvdh/laravel-debugbar": "1.*",
+        "mews/purifier": "dev-master"
 	},
     "repositories": [
         {
@@ -47,8 +48,7 @@
 		"post-update-cmd": [
 			"php artisan clear-compiled",
 			"php artisan vendor-cleanup",
-			"php artisan optimize",
-			"php artisan debugbar:publish"
+			"php artisan optimize"
 		],
 		"post-create-project-cmd": [
 			"php artisan key:generate"

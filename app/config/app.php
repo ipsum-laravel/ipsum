@@ -110,6 +110,7 @@ return array(
         'Barryvdh\VendorCleanup\VendorCleanupServiceProvider',
         'Bkwld\Croppa\ServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
+        'Mews\Purifier\PurifierServiceProvider',
 
         'Ipsum\Errors\ErrorsServiceProvider',
         'Ipsum\Core\CoreServiceProvider',
@@ -184,6 +185,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 
         'Croppa'          => 'Bkwld\Croppa\Facade',
+        'Purifier'        => 'Mews\Purifier\Facades\Purifier',
         'File'            => 'Ipsum\Core\Library\Facades\File',
         'Liste'           => 'Ipsum\Core\Library\Facades\Liste',
 	),

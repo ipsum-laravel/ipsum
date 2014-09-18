@@ -11,6 +11,7 @@ use Validator;
 use File;
 use Liste;
 use DB;
+use Purifier;
 use Ipsum\Actualite\Models\Actualite;
 
 class AdminController extends \Ipsum\Admin\Controllers\BaseController {
@@ -100,7 +101,7 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
             $data = new Actualite;
             $data->nom = Input::get('nom');
             $data->date_actu = $inputs['date_actu'];
-            $data->description = Input::get('description');
+            $data->description = Purifier::clean(Input::get('description'));
             if ($data->save()) {
                 Session::flash('success', "L'enregistrement a bien été créé");
                 return Redirect::route("admin.actualite.edit", $data->id);
@@ -144,7 +145,7 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
         if ($validation->passes()) {
             $data->nom = Input::get('nom');
             $data->date_actu = $inputs['date_actu'];
-            $data->description = Input::get('description');
+            $data->description = Purifier::clean(Input::get('description'));
 
             if ($data->save()) {
                 Session::flash('success', "L'enregistrement a bien été modifié");
