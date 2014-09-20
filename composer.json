@@ -41,18 +41,27 @@
         }
 	},
 	"scripts": {
-		"post-install-cmd": [
-			"php artisan clear-compiled",
-			"php artisan optimize"
-		],
-		"post-update-cmd": [
-			"php artisan clear-compiled",
-			"php artisan vendor-cleanup",
-			"php artisan optimize"
-		],
-		"post-create-project-cmd": [
-			"php artisan key:generate"
-		]
+        "pre-install-cmd": [
+            "php artisan down"
+        ],
+        "post-install-cmd": [
+            "php artisan clear-compiled",
+            "php artisan optimize",
+            "php artisan ipsum:update",
+            "php artisan up"
+        ],
+        "pre-update-cmd": [
+            "php artisan down"
+        ],
+        "post-update-cmd": [
+            "php artisan clear-compiled",
+            "php artisan optimize",
+            "php artisan ipsum:update",
+            "php artisan up"
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ]
 	},
 	"config": {
 		"preferred-install": "dist"

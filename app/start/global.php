@@ -35,22 +35,6 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 
 /*
 |--------------------------------------------------------------------------
-| Maintenance Mode Handler
-|--------------------------------------------------------------------------
-|
-| The "down" Artisan command gives you the ability to put an application
-| into maintenance mode. Here, you will define what is displayed back
-| to the user if maintenance mode is in effect for the application.
-|
-*/
-
-App::down(function()
-{
-	return Response::make(View::make('error/503'), 503);
-});
-
-/*
-|--------------------------------------------------------------------------
 | Require The Filters File
 |--------------------------------------------------------------------------
 |

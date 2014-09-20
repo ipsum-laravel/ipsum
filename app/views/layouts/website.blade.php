@@ -51,7 +51,7 @@
         </div>
 
         <footer role="contentinfo" class="footer line pam txtcenter">
-            <p><a href="{{ url('mentions-legales') }}" >Mentions légales</a> - Réalisé, hébergé et référencé par <a href="http://www.pixellweb.com"><img src="{{ asset('assets/img/logo-pixell.gif') }}" alt="logo pixell"></a></p>
+            <p><a href="{{ url('mentions-legales') }}" >Mentions légales</a> - <a href="http://www.pixellweb.com" title="Réalisé, hébergé et référencé par Pixell"><img src="{{ asset('assets/img/logo-pixell.gif') }}" alt="logo Pixell"></a></p>
         </footer>
     </div>
     @yield('script')

@@ -49,14 +49,14 @@ Vérifier la création du dossier storage avec les sous dossiers et les droits n
     $ curl -sS https://getcomposer.org/installer | php
     $ mv composer.phar /usr/local/bin/composer
 
-### Modification de la clé de cryptage (instalation uniquement)
-
-    php artisan key:generate
-
 ### Installation des packages
 
-Voir le readme de chaque package sur les [dépots Ipsum](https://github.com/ipsum-laravel/) pour leurs installation.
+    php artisan ipsum:install
 
-### Population des tables
+Voir les [dépots Ipsum](https://github.com/ipsum-laravel/) pour plus de détails sur leurs installation.
 
-    php artisan db:seed
+Ajouter ensuite la commande down de artisan dans le fichier composer.json
+
+    "pre-install-cmd": [
+        "php artisan down"
+
