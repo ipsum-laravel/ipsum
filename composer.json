@@ -4,7 +4,8 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "4.1.*",
+	    "php": ">=5.4.0",
+		"laravel/framework": "4.2.*",
 		"barryvdh/laravel-vendor-cleanup": "1.*",
         "ipsum/core": "1.0.*",
 		"ipsum/admin": "1.0.*",
