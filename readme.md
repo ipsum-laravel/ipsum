@@ -38,7 +38,7 @@ Vérifier la création du dossier storage avec les sous dossiers et les droits n
 
     chmod -R 0777 app/storage
 
-### Instalation des dépendances
+### Installation des dépendances
 
     composer install
 
@@ -49,7 +49,7 @@ Vérifier la création du dossier storage avec les sous dossiers et les droits n
     $ curl -sS https://getcomposer.org/installer | php
     $ mv composer.phar /usr/local/bin/composer
 
-### Installation des packages
+### Nouveau projet : installation des packages
 
     php artisan ipsum:install
 
