@@ -70,6 +70,7 @@ composer.phar
 .env.php
 .DS_Store
 Thumbs.db
+/workbench
 
 # Configuration
 /bootstrap/environment.php
