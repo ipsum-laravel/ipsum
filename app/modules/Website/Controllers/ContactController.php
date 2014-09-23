@@ -32,6 +32,7 @@ class ContactController extends \BaseController {
 
         if ($validation->passes()) {
             Mail::send('IpsumWebsite::contact.mail', Input::all(), function($m) {
+                $m->from(Input::get('email'), Input::get('nom'));
                 $m->to(Config::get('IpsumCore::website.mail_to'), Config::get('IpsumCore::website.nom_site'))->subject(Config::get('IpsumCore::website.mail_objet').' '.Config::get('IpsumCore::website.nom_site'));
             });
             Session::flash('success', "Votre demande de contact a bien été envoyée");
