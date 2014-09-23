@@ -27,7 +27,8 @@ class ContactController extends \BaseController {
 
     public function send()
     {
-        $validation = new ContactValidator(Input::all());
+        $validator = new ContactValidator(Input::all());
+        $validation = $validator->validate();
 
         if ($validation->passes()) {
             Mail::send('IpsumWebsite::contact.mail', Input::all(), function($m) {

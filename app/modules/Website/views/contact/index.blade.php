@@ -20,7 +20,7 @@
         <strong>Téléphone :</strong> <span class="tel"><?= Config::get('website.telephone') ?></span><br>
         <strong>GSM :</strong> <span><?= Config::get('website.gsm') ?></span><br>
         <strong>Fax :</strong> <?= Config::get('website.fax') ?><br>
-        <strong>Courriel :</strong> <?= HTML::mailto(Config::get('website.email')) ?>
+        <!--<strong>Courriel :</strong> <?php /* HTML::mailto(Config::get('website.email')) */ ?>-->
     </p>
 </div>
 <h2>Envoyez-nous un message</h2>
