@@ -10,7 +10,7 @@
             <?= Form::label('nom', 'Titre') ?>
             <?= Form::text('nom', isset($data) ? $data->nom : null) ?>
         </p>
-        <p>
+        <p class="champ_max">
             <?= Form::label('description', 'Description') ?>
             <?= Form::textarea('description', isset($data) ? $data->description : null, array('class' => 'jwysiwyg', 'rows' => 15)) ?>
         </p>
