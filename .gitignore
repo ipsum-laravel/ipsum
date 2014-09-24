@@ -83,3 +83,6 @@ Thumbs.db
 # Media
 /public_html/assets/media
 
+# Ipsum
+/public_html/packages/ipsum/admin
+
