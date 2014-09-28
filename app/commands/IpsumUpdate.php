@@ -38,7 +38,7 @@ class IpsumUpdate extends Command {
     public function fire() {
         $this->call(
             'migrate',
-            array('--package' => 'ipsum/core')
+            array('--package' => 'ipsum/core', '--force' => true)
         );
         $this->call(
             'asset:publish',
@@ -46,7 +46,7 @@ class IpsumUpdate extends Command {
         );
         $this->call(
             'migrate',
-            array('--package' => 'ipsum/admin')
+            array('--package' => 'ipsum/admin', '--force' => true)
         );
     }
 
