@@ -1,6 +1,8 @@
 # Ipsum
 
-Basé sur Laravel 4
+Ipsum est un kit de démarage basé sur le Framework php Laravel 4.2.
+L'architecture de base de Laravel a été modifié en module. On trouvera les modules dans le repertoire app/modules.
+Le module app/modules/Actualite est là pour exemple.
 
 ## Instalation
 
