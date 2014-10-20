@@ -43,7 +43,7 @@
 	},
 	"scripts": {
         "pre-install-cmd": [
-
+            "php artisan down"
         ],
         "post-install-cmd": [
             "php artisan clear-compiled",
