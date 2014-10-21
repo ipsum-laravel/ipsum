@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c33ddca40eac8b06e67d06f2d47e6799",
+    "hash": "2dac775f90953f7546519ecbbb10b72a",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -335,16 +335,16 @@
         },
         {
             "name": "ipsum/admin",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ipsum-laravel/admin.git",
-                "reference": "b8314d650477abc33ee3010afad344aef749878b"
+                "reference": "497d981d66d01e5df54e3ee2007b857d10822f72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ipsum-laravel/admin/zipball/b8314d650477abc33ee3010afad344aef749878b",
-                "reference": "b8314d650477abc33ee3010afad344aef749878b",
+                "url": "https://api.github.com/repos/ipsum-laravel/admin/zipball/497d981d66d01e5df54e3ee2007b857d10822f72",
+                "reference": "497d981d66d01e5df54e3ee2007b857d10822f72",
                 "shasum": ""
             },
             "require": {
@@ -368,23 +368,23 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/ipsum-laravel/admin/tree/master",
+                "source": "https://github.com/ipsum-laravel/admin/tree/1.0.2",
                 "issues": "https://github.com/ipsum-laravel/admin/issues"
             },
-            "time": "2014-09-20 14:16:32"
+            "time": "2014-09-24 03:20:00"
         },
         {
             "name": "ipsum/core",
-            "version": "1.0.2",
+            "version": "1.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ipsum-laravel/core.git",
-                "reference": "99598751e63c992bb216906d266bfdc58da79b93"
+                "reference": "1968b36fd79949a2f7c0d40f9a055bb9264fd384"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ipsum-laravel/core/zipball/99598751e63c992bb216906d266bfdc58da79b93",
-                "reference": "99598751e63c992bb216906d266bfdc58da79b93",
+                "url": "https://api.github.com/repos/ipsum-laravel/core/zipball/1968b36fd79949a2f7c0d40f9a055bb9264fd384",
+                "reference": "1968b36fd79949a2f7c0d40f9a055bb9264fd384",
                 "shasum": ""
             },
             "require": {
@@ -407,10 +407,10 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/ipsum-laravel/core/tree/master",
+                "source": "https://github.com/ipsum-laravel/core/tree/1.0.3",
                 "issues": "https://github.com/ipsum-laravel/core/issues"
             },
-            "time": "2014-09-20 14:17:32"
+            "time": "2014-09-24 01:43:16"
         },
         {
             "name": "ipsum/errors",
@@ -2064,12 +2064,8 @@
             "time": "2013-04-08 22:11:00"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "mews/purifier": 20
@@ -2078,7 +2074,5 @@
     "platform": {
         "php": ">=5.4.0"
     },
-    "platform-dev": [
-
-    ]
+    "platform-dev": []
 }
