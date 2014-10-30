@@ -52,10 +52,6 @@ class IpsumInstall extends Command {
             array('--package' => 'ipsum/admin')
         );
         $this->call(
-            'config:publish',
-            array('package' => 'ipsum/admin')
-        );
-        $this->call(
             'db:seed'
         );
     }
