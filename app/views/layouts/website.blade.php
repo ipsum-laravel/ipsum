@@ -1,16 +1,10 @@
 <!doctype html>
-<!--[if lte IE 7]> <html class="no-js ie67 ie678" lang="fr"> <![endif]-->
-<!--[if IE 8]> <html class="no-js ie8 ie678" lang="fr"> <![endif]-->
-<!--[if IE 9]> <html class="no-js ie9" lang="fr"> <![endif]-->
-<!--[if gt IE 9]> <!--><html class="no-js" lang="fr"> <!--<![endif]-->
+<html class="no-js" lang="fr">
 <head>
-    <meta charset="iso-8859-15">
+    <meta charset="UTF-8">
     <meta name="description" content="@yield('description')">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/knacss.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
     @yield('head')
     <title>
         @yield('title')
@@ -28,9 +22,6 @@
             <ul class="line">
                 <li class="inbl {{ Request::is('/') ? 'lien_actif' : '' }}" ><a href="{{ route('home') }}">Accueil</a></li>
                 <li class="inbl {{ Request::is('actualite*') ? 'lien_actif' : '' }}" ><a href="{{ route('actualite') }}">Actualités</a></li>
-                <li class="inbl {{ Request::is('produit*') ? 'lien_actif' : '' }}" ><a href="#">Produits</a></li>
-                <li class="inbl {{ Request::is('panier*') ? 'lien_actif' : '' }}" ><a href="#">Panier</a></li>
-                <li class="inbl {{ Request::is('compte*') ? 'lien_actif' : '' }}" ><a href="#">Mon compte</a></li>
                 <li class="inbl {{ Request::is('menu3*') ? 'lien_actif' : '' }}" ><a href="#">menu3</a></li>
                 <li class="inbl {{ Request::is('menu4*') ? 'lien_actif' : '' }}" ><a href="#">menu4</a></li>
                 <li class="inbl {{ Request::is('contact*') ? 'lien_actif' : '' }}" ><a href="{{ route('contact.index') }}">Contact</a></li>
@@ -46,7 +37,6 @@
         </aside>
 
         <div role="main" class="texte mod mls pam">
-            <!--[if lte IE 7]><div class="messages warning""><p>Nous avons détecté que vous utilisez IE7 (ou une version antérieure).<br/>Ce site ne s'affichera pas correctement car cette version est dépassée. Pour une meilleure utilisation du site, nous vous recommandons fortement d'utiliser un des navigateurs suivants  :<br /><a href="http://www.microsoft.com/windows/products/winfamily/ie/default.mspx">Internet Explorer</a> <a href="http://www.apple.com/safari/">Safari</a> <a href="http://www.google.com/chrome/">Google Chrome</a> <a href="http://www.mozilla.com/firefox/">Firefox</a> <a href="http://www.opera.com/download/">Opera</a></p></div> <![endif]-->
             @yield('content')
         </div>
 
