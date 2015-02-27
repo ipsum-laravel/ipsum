@@ -38,15 +38,7 @@ Ligne de commande :
 
 Vérifier la création du dossier storage avec les sous dossiers et les droits nécessaires
 
-    chmod -R 0777 app/storage
-
 ### Installation des dépendances
-
-Avant d'installer les dépendances pour la première fois, il faut désactiver la commande down de artisan dans le fichier composer.json.
-Cette commande met le site en maintenance le temps de charger les librairies. Ne pas oublier de le remettre une fois terminer.
-
-    "pre-install-cmd": [
-        "php artisan down"
 
 Commande pour l'instalation :
 
@@ -63,5 +55,5 @@ Commande pour l'instalation :
 
     php artisan ipsum:install
 
-Voir les [dépots Ipsum](https://github.com/ipsum-laravel/) pour plus de détails sur leurs installation.
+Voir les [dépots Ipsum](https://github.com/ipsum-laravel/) pour plus de détails sur leurs installations.
 
