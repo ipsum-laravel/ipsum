@@ -3,6 +3,7 @@
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
+use Illuminate\Support\Facades\Config;
 
 class IpsumInstall extends Command {
 
@@ -36,20 +37,17 @@ class IpsumInstall extends Command {
      * @return mixed
      */
     public function fire() {
+        if (Config::get('app.key') == 'YourSecretKey!!!') {
+            $this->call(
+                'key:generate'
+            );
+        }
+        if (Schema::hasTable(Config::get('database.migrations'))) {
+            $this->error('Stop install, migration déja installé.');
+            return false;
+        }
         $this->call(
-            'key:generate'
-        );
-        $this->call(
-            'migrate',
-            array('--package' => 'ipsum/core')
-        );
-        $this->call(
-            'asset:publish',
-            array('package' => 'ipsum/admin')
-        );
-        $this->call(
-            'migrate',
-            array('--package' => 'ipsum/admin')
+            'ipsum:update'
         );
         $this->call(
             'db:seed'
