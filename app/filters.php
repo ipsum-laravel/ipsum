@@ -33,18 +33,6 @@ App::after(function($request, $response)
 |
 */
 
-Route::filter('auth', function()
-{
-    if (Auth::guest()) return Redirect::guest(route('admin.login'));
-
-    // Check accès au controleur
-    $controleur = strstr(Route::currentRouteAction(), '@', true);
-    if (!Auth::user()->hasAcces($controleur::$zone)) {
-        return Redirect::to('admin')->with('error', "Vous n'avez pas accès à cette page");
-    }
-});
-
-
 Route::filter('auth.basic', function()
 {
 	return Auth::basic();
