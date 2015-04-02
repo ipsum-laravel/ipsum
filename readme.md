@@ -51,9 +51,16 @@ Commande pour l'instalation :
     $ curl -sS https://getcomposer.org/installer | php
     $ mv composer.phar /usr/local/bin/composer
 
-### Nouveau projet : installation des packages
+### Install et update de Ipsum
+
+Pour un nouveau projet ou une nouvelle instance d'un projet Ipsum existant :
 
     php artisan ipsum:install
-
+    
 Voir les [dépots Ipsum](https://github.com/ipsum-laravel/) pour plus de détails sur leurs installations.
+
+Pour mettre à jour un projet existant :
+
+    php artisan ipsum:update
+
 
