@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "482dcb36642fd920e9b82520ad5ce0f2",
+    "hash": "7d5fff5892dbebdf225b08d33e617965",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -59,51 +59,6 @@
                 "webprofiler"
             ],
             "time": "2015-02-04 09:52:12"
-        },
-        {
-            "name": "barryvdh/laravel-vendor-cleanup",
-            "version": "v1.2.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/barryvdh/laravel-vendor-cleanup.git",
-                "reference": "71de33b8b730cbc1ae20825d5a8bd3c76f8d9b7f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-vendor-cleanup/zipball/71de33b8b730cbc1ae20825d5a8bd3c76f8d9b7f",
-                "reference": "71de33b8b730cbc1ae20825d5a8bd3c76f8d9b7f",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/console": "4.x",
-                "illuminate/filesystem": "4.x",
-                "illuminate/support": "4.x",
-                "php": ">=5.3.0",
-                "symfony/finder": "~2.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Barryvdh\\VendorCleanup": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Barry vd. Heuvel",
-                    "email": "barryvdh@gmail.com"
-                }
-            ],
-            "description": "A vendor cleanup package, to remove tests and documentation to save space",
-            "keywords": [
-                "cleanup",
-                "laravel",
-                "vendor"
-            ],
-            "time": "2014-08-21 11:40:40"
         },
         {
             "name": "bkwld/croppa",

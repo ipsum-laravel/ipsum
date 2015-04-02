@@ -109,7 +109,6 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 
-        'Barryvdh\VendorCleanup\VendorCleanupServiceProvider',
         'Bkwld\Croppa\ServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
         'Mews\Purifier\PurifierServiceProvider',
