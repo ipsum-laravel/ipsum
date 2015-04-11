@@ -1,5 +1,5 @@
 @extends('layouts.website')
-@section('title')Mentions légales @stop
+@section('title', 'Mentions légales')
 
 @section('content')
     <h1>Mentions légales</h1>

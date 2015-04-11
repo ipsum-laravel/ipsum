@@ -6,10 +6,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/knacss.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     @yield('head')
-    <title>
-        @yield('title')
-        - {{{ Config::get('IpsumCore::website.nom_site') }}}
-    </title>
+    <title>@yield('title') - {{{ Config::get('IpsumCore::website.nom_site') }}}</title>
 </head>
 <body>
     <div class="conteneur center">

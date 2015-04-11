@@ -1,6 +1,6 @@
 @extends('layouts.website')
-@section('title')Titre de la page @stop
-@section('description') @stop
+@section('title', 'Titre de la page')
+@section('description')
 
 @section('content')
     <p>

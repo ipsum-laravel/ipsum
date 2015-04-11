@@ -1,6 +1,6 @@
 @extends('layouts.website')
-@section('title')Actualités @stop
-@section('description') @stop
+@section('title', 'Actualités')
+@section('description')
 
 @section('content')
     <h1>Les actualités</h1>

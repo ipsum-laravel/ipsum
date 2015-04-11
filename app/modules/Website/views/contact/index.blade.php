@@ -1,9 +1,6 @@
 @extends('layouts.website')
-@section('title')Contactez-nous @stop
-@section('description') @stop
-
-@section('sidebar')
-@stop
+@section('title', 'Contactez-nous')
+@section('description')
 
 @section('content')
 <h1>Contactez-nous</h1>
