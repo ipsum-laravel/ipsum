@@ -6,11 +6,9 @@ use View;
 use Input;
 use Redirect;
 use Session;
-use Str;
 use Validator;
 use File;
 use Liste;
-use DB;
 use Purifier;
 use Ipsum\Actualite\Models\Actualite;
 
@@ -35,7 +33,7 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
             'actualite.id',
             'actualite.nom',
             'actualite.description',
-            DB::raw('DATE_FORMAT(actualite.date_actu, "%d/%m/%Y") AS date_actu_format')
+            'actualite.date_actu'
         );
         $liste = Liste::setRequete($requete);
         $filtres = array(
@@ -66,11 +64,7 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
         );
         Liste::setTris($tris);
 
-        foreach(Liste::rechercherLignes() as $item) {
-            $item->image = File::find($this->mediaFolder.$item->id.'.*', null, true);
-            $item->description = Str::words(strip_tags($item->description), 30, '...');
-            $datas[] = $item;
-        }
+        $datas = Liste::rechercherLignes();
 
         $this->layout->content = View::make('IpsumActualite::admin.index', compact('datas'));
 	}
@@ -122,10 +116,8 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
 	{
         $data = Actualite::findOrFail($id);
 
-        $data->image = File::find($this->mediaFolder.$id.'.*', null, true);
-
         $this->layout->head = JsTools::jwysiwyg().JsTools::datePicker();
-        $this->layout->content = View::make('IpsumActualite::admin.form', compact("data", "image"));
+        $this->layout->content = View::make('IpsumActualite::admin.form', compact('data'));
 	}
 
 	/**

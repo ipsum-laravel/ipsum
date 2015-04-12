@@ -21,9 +21,9 @@
     <tbody>
         <?php $i=0; foreach ($datas as $data): ?>
             <tr class="<?= (($i %2 ) == 0 ? "pair" : "impair") ?>">
-                <td><?= e($data->date_actu_format) ?></td>
+                <td><?= e($data->date_actu->format('d/m/Y')) ?></td>
                 <td><?= e($data->nom) ?></td>
-                <td><?= e($data->description) ?></td>
+                <td><?= e(Str::words(strip_tags($data->description), 30, '...')) ?></td>
                 <td>
                     <?php if ($data->image) : ?>
                    <img src="<?= Croppa::url('/'.$data->image, 150, 150) ?>" alt="" />

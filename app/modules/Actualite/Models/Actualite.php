@@ -2,6 +2,7 @@
 namespace Ipsum\Actualite\Models;
 
 use Ipsum\Core\Models\BaseModel;
+use File;
 
 class Actualite extends BaseModel {
 
@@ -14,4 +15,13 @@ class Actualite extends BaseModel {
                                 "nom" => "required",
                             );
 
+    public function getImageAttribute()
+    {
+        return File::find('assets/media/actu/'.$this->id.'.*', null, true);
+    }
+
+    public function getDates()
+    {
+        return array('date_actu');
+    }
 }

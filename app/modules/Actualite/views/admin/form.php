@@ -4,7 +4,7 @@
         <legend>Description</legend>
         <p class="oblig<?= $errors->has('date_actu') ? ' form_erreur' : '' ?>">
             <?= Form::label('date_actu') ?>
-            <?= Form::text('date_actu', isset($data) ? formateDate($data->date_actu) : date('d/m/Y'), array('class' => "date-pick")) ?>
+            <?= Form::text('date_actu', isset($data) ? $data->date_actu->format('d/m/Y') : date('d/m/Y'), array('class' => "date-pick")) ?>
         </p>
         <p class="oblig<?= $errors->has('nom') ? ' form_erreur' : '' ?>">
             <?= Form::label('nom', 'Titre') ?>
