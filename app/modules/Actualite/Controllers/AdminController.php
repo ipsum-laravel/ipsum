@@ -12,7 +12,8 @@ use Liste;
 use Purifier;
 use Ipsum\Actualite\Models\Actualite;
 
-class AdminController extends \Ipsum\Admin\Controllers\BaseController {
+class AdminController extends \Ipsum\Admin\Controllers\BaseController
+{
 
     public $title = 'Gestion des actualités';
     public $rubrique = 'actualite';
@@ -20,14 +21,14 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
     public static $zone = 'actualite';
     public $mediaFolder = 'assets/media/actu/';
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-	    $datas = array();
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        $datas = array();
 
         $requete = Actualite::select(
             'actualite.id',
@@ -40,7 +41,7 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
             array(
                 'nom' => 'mot',
                 'operateur' => 'like',
-                'colonnes' => array (
+                'colonnes' => array(
                     'actualite.nom',
                     'actualite.description'
                 ),
@@ -67,26 +68,26 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
         $datas = Liste::rechercherLignes();
 
         $this->layout->content = View::make('IpsumActualite::admin.index', compact('datas'));
-	}
+    }
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-        $this->layout->head = JsTools::jwysiwyg().JsTools::datePicker();
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        $this->layout->head = JsTools::jwysiwyg() . JsTools::datePicker();
         $this->layout->content = View::make('IpsumActualite::admin.form');
-	}
+    }
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store()
+    {
         $inputs = Input::all();
         $inputs['date_actu'] = formateDateStocke(Input::get('date_actu'), 'Y-m-d');
         $validation = Actualite::validate($inputs);
@@ -104,31 +105,31 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
             }
         }
         return Redirect::back()->withInput()->withErrors($validation);
-	}
+    }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function edit($id)
+    {
         $data = Actualite::findOrFail($id);
 
-        $this->layout->head = JsTools::jwysiwyg().JsTools::datePicker();
+        $this->layout->head = JsTools::jwysiwyg() . JsTools::datePicker();
         $this->layout->content = View::make('IpsumActualite::admin.form', compact('data'));
-	}
+    }
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-	    $data = Actualite::findOrFail($id);
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        $data = Actualite::findOrFail($id);
 
         $inputs = Input::all();
         $inputs['date_actu'] = formateDateStocke(Input::get('date_actu'), 'Y-m-d');
@@ -147,12 +148,12 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
             }
         }
         return Redirect::back()->withInput()->withErrors($validation);
-	}
+    }
 
     /**
      * Upload image
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function upload($id)
@@ -161,7 +162,7 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
 
         // TODO problème avec champ vide
         // puis message lorsque dépasse upload_max_filesize
-        $rules = array('image'  => 'image|max:2000');
+        $rules = array('image' => 'image|max:2000');
         $datas = array('image' => Input::file('image'));
         $validation = Validator::make($datas, $rules);
         if ($validation->passes()) {
@@ -170,9 +171,9 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
                 $file = Input::file('image');
 
                 // Delete all images
-                File::deleteAll($this->mediaFolder.$id.'{.,-}*');
+                File::deleteAll($this->mediaFolder . $id . '{.,-}*');
 
-                $filename = $id.'.'.File::extension($file->getClientOriginalName());
+                $filename = $id . '.' . File::extension($file->getClientOriginalName());
                 Input::file('image')->move($this->mediaFolder, $filename);
                 Session::flash('success', "L'image a bien été téléchargée");
 
@@ -188,7 +189,7 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
     /**
      * Delete image
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
      */
     public function deleteImage($id)
@@ -196,29 +197,29 @@ class AdminController extends \Ipsum\Admin\Controllers\BaseController {
         $data = Actualite::findOrFail($id);
 
         // Delete all images
-        File::deleteAll($this->mediaFolder.$id.'{.,-}*');
+        File::deleteAll($this->mediaFolder . $id . '{.,-}*');
         Session::flash('warning', "L'image a bien été supprimée");
         return Redirect::route("admin.actualite.edit", $id);
     }
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-	    $data = Actualite::findOrFail($id);
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $data = Actualite::findOrFail($id);
 
-	    File::deleteAll($this->mediaFolder.$id.'{.,-}*');
+        File::deleteAll($this->mediaFolder . $id . '{.,-}*');
 
-		if ($data->delete()) {
+        if ($data->delete()) {
             Session::flash('warning', "L'enregistrement a bien été supprimé");
-		} else {
-		    Session::flash('error', "Impossible de supprimer l'enregistrement");
-		}
-		return Redirect::back();
-	}
+        } else {
+            Session::flash('error', "Impossible de supprimer l'enregistrement");
+        }
+        return Redirect::back();
+    }
 
 }

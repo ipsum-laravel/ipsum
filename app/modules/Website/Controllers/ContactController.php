@@ -9,7 +9,8 @@ use Mail;
 use Session;
 use Ipsum\Website\Validations\ContactValidator;
 
-class ContactController extends \BaseController {
+class ContactController extends \BaseController
+{
 
     /**
      * Instantiate a new UserController instance.
@@ -30,9 +31,9 @@ class ContactController extends \BaseController {
         $validation = $validator->validate();
 
         if ($validation->passes()) {
-            Mail::send('IpsumWebsite::contact.mail', Input::all(), function($m) {
+            Mail::send('IpsumWebsite::contact.mail', Input::all(), function ($m) {
                 $m->from(Input::get('email'), Input::get('nom'));
-                $m->to(Config::get('IpsumCore::website.mail_to'), Config::get('IpsumCore::website.nom_site'))->subject(Config::get('IpsumCore::website.mail_objet').' '.Config::get('IpsumCore::website.nom_site'));
+                $m->to(Config::get('IpsumCore::website.mail_to'), Config::get('IpsumCore::website.nom_site'))->subject(Config::get('IpsumCore::website.mail_objet') . ' ' . Config::get('IpsumCore::website.nom_site'));
             });
             Session::flash('success', "Votre demande de contact a bien été envoyée");
             return Redirect::route('contact.success');

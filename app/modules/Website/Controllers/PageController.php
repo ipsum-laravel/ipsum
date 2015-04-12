@@ -4,7 +4,8 @@ namespace Ipsum\Website\Controllers;
 use View;
 use App;
 
-class PageController extends \BaseController {
+class PageController extends \BaseController
+{
 
     public $modulePages = array(
         'mentions-legales',
@@ -14,12 +15,12 @@ class PageController extends \BaseController {
     {
         $page = str_replace('/', '.', $page);
         if (in_array($page, $this->modulePages)) {
-            $page = 'IpsumWebsite::'.$page;
+            $page = 'IpsumWebsite::' . $page;
         }
 
         try {
             return View::make($page);
-        } catch(\InvalidArgumentException $e) {
+        } catch (\InvalidArgumentException $e) {
             App::abort(404);
         }
     }
