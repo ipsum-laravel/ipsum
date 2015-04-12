@@ -2,7 +2,6 @@
 namespace Ipsum\Actualite\Controllers;
 
 use View;
-use Str;
 use File;
 use Carbon\Carbon;
 use Ipsum\Actualite\Models\Actualite;

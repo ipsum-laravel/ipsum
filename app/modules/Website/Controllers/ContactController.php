@@ -2,7 +2,6 @@
 namespace Ipsum\Website\Controllers;
 
 use View;
-use Validator;
 use Input;
 use Config;
 use Redirect;

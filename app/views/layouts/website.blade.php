@@ -11,7 +11,7 @@
 <body>
     <div class="conteneur center">
         <header role="banner" class="header line pam mbs">
-            <div class="header-logo"><a href="index.php" title="Retour à la page d'accueil" ><img src="{{ asset('assets/img/logo-pixell.gif') }}" width="200" alt="logo"></a></div>
+            <div class="header-logo"><a href="{{ route('home') }}" title="Retour à la page d'accueil" ><img src="{{ asset('assets/img/logo-pixell.gif') }}" width="200" alt="logo"></a></div>
             <p class="header-slogan">Le meilleur site du web</p>
         </header>
 
