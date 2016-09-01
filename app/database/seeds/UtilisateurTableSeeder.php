@@ -12,6 +12,8 @@ class UtilisateurTableSeeder extends Seeder
                 'email' => 'admin@example.com',
                 'password' => Hash::make('admin'),
                 'role' => '1',
+                'acces' => '',
+                'remember_token' => '',
             )
         );
 
@@ -23,6 +25,8 @@ class UtilisateurTableSeeder extends Seeder
                 'email' => 'user@example.com',
                 'password' => Hash::make('demo'),
                 'role' => '2',
+                'acces' => '',
+                'remember_token' => '',
             )
         );
 
