@@ -296,12 +296,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ipsum-laravel/admin.git",
-                "reference": "366a8c24194d023efa395e42b1ce546f8131932b"
+                "reference": "67b896bdbbd83b1dbb1638a9325698f6ea2ff591"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ipsum-laravel/admin/zipball/366a8c24194d023efa395e42b1ce546f8131932b",
-                "reference": "366a8c24194d023efa395e42b1ce546f8131932b",
+                "url": "https://api.github.com/repos/ipsum-laravel/admin/zipball/67b896bdbbd83b1dbb1638a9325698f6ea2ff591",
+                "reference": "67b896bdbbd83b1dbb1638a9325698f6ea2ff591",
                 "shasum": ""
             },
             "require": {
@@ -328,7 +328,7 @@
                 "source": "https://github.com/ipsum-laravel/admin/tree/master",
                 "issues": "https://github.com/ipsum-laravel/admin/issues"
             },
-            "time": "2016-10-03 16:24:36"
+            "time": "2016-10-03 16:56:32"
         },
         {
             "name": "ipsum/core",
@@ -336,12 +336,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ipsum-laravel/core.git",
-                "reference": "090c906df0b79b48092f29ee3932ae40e79e84e5"
+                "reference": "9a8c95a38ea52173534e434b794030e85ef07cd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ipsum-laravel/core/zipball/090c906df0b79b48092f29ee3932ae40e79e84e5",
-                "reference": "090c906df0b79b48092f29ee3932ae40e79e84e5",
+                "url": "https://api.github.com/repos/ipsum-laravel/core/zipball/9a8c95a38ea52173534e434b794030e85ef07cd7",
+                "reference": "9a8c95a38ea52173534e434b794030e85ef07cd7",
                 "shasum": ""
             },
             "require": {
@@ -367,7 +367,7 @@
                 "source": "https://github.com/ipsum-laravel/core/tree/master",
                 "issues": "https://github.com/ipsum-laravel/core/issues"
             },
-            "time": "2016-09-05 19:02:41"
+            "time": "2016-10-03 16:56:21"
         },
         {
             "name": "ipsum/errors",
