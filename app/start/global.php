@@ -14,8 +14,6 @@
 ClassLoader::addDirectories(array(
 
 	app_path().'/commands',
-	app_path().'/controllers',
-	app_path().'/models',
 	app_path().'/database/seeds',
 
 ));
@@ -45,3 +43,40 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 */
 
 require app_path().'/filters.php';
+
+
+Validator::extend('notSpammeur', function($attribute, $value, $parameters)
+{
+    $adresse = 'http://www.stopforumspam.com/api?';
+    $query = array(
+        'confidence' => 'true',
+        'f' => 'xmldom',
+    );
+
+    $query['email'] = urlencode($value);
+
+    if (!empty($parameters[3])) {
+        $query['ip'] = urlencode($parameters[3]);
+    } else {
+        $query['ip'] = Request::getClientIp();
+    }
+
+    foreach($query as $key => $value) {
+        $adresse .= $key.'='.$value.'&';
+    }
+
+    $xml_string = file_get_contents($adresse);
+    if ($xml_string) {
+        $xml = new SimpleXMLElement($xml_string);
+        if ($xml->success == 1) {
+            foreach ($xml->children() as $value) {
+                if ($value->appears == "1" and  $value->confidence >= 0) {
+                    // spammeur detecté
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+
+});

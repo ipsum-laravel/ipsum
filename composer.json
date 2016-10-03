@@ -6,12 +6,13 @@
 	"require": {
 	    "php": ">=5.4.0",
 		"laravel/framework": "4.2.*",
-        "ipsum/core": "1.0.*",
-		"ipsum/admin": "1.0.*",
-		"ipsum/errors": "1.0.*",
-		"bkwld/croppa": "~3.0",
+        "ipsum/core": "dev-master@dev",
+		"ipsum/admin": "dev-master@dev",
+		"ipsum/errors": "dev-master@dev",
+        "bkwld/croppa": "4.0.*",
         "barryvdh/laravel-debugbar": "1.*",
-        "mews/purifier": "1.0.2"
+        "mews/purifier": "1.0.2",
+        "mobiledetect/mobiledetectlib": "2.8"
 	},
     "repositories": [
         {
@@ -30,14 +31,12 @@
 	"autoload": {
 		"classmap": [
 			"app/commands",
-			"app/controllers",
-			"app/models",
 			"app/database/migrations",
 			"app/database/seeds",
-			"app/tests/TestCase.php"
+			"tests/TestCase.php"
 		],
         "psr-4": {
-            "Ipsum\\": "app/modules"
+          "App\\": "app"
         }
 	},
 	"scripts": {

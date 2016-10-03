@@ -18,7 +18,6 @@
         <nav role="navigation" class="menu mbs">
             <ul class="line">
                 <li class="inbl {{ Request::is('/') ? 'lien_actif' : '' }}" ><a href="{{ route('home') }}">Accueil</a></li>
-                <li class="inbl {{ Request::is('actualite*') ? 'lien_actif' : '' }}" ><a href="{{ route('actualite') }}">Actualités</a></li>
                 <li class="inbl {{ Request::is('menu3*') ? 'lien_actif' : '' }}" ><a href="#">menu3</a></li>
                 <li class="inbl {{ Request::is('menu4*') ? 'lien_actif' : '' }}" ><a href="#">menu4</a></li>
                 <li class="inbl {{ Request::is('contact*') ? 'lien_actif' : '' }}" ><a href="{{ route('contact.index') }}">Contact</a></li>

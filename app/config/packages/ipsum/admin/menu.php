@@ -3,7 +3,7 @@
 // Configuration des rubriques
 return array(
     'groupe1' => array(
-        'actualite' => array(
+        /*'actualite' => array(
             'rubrique' => 'actualite',
             'nom' => 'Actualités',
             'abreviation' => 'Actu.',
@@ -34,7 +34,7 @@ return array(
                     'route' => 'admin',
                 ),
             ),
-        ),
+        ),*/
         'configuration' => array(
             'rubrique' => 'configuration',
             'nom' => 'Configuration',

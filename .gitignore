@@ -72,6 +72,7 @@ composer.phar
 Thumbs.db
 /workbench
 
+
 # Configuration
 /bootstrap/environment.php
 /app/config/local

@@ -53,6 +53,7 @@ return array(
 	*/
 
 	'locale' => 'fr',
+    'setLocale' => array('fr_FR', 'fr_FR.utf8', 'fr_fr', 'fr', ),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -68,6 +69,18 @@ return array(
 	'key' => 'YourSecretKey!!!',
 
     'cipher' => MCRYPT_RIJNDAEL_128,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Key Google API
+    |--------------------------------------------------------------------------
+    |
+    |
+    */
+
+    'google_api_key' => 'AIzaSyD8PD8reSeuV9_68vBkKc6L8ZLfINThB4Q',
+
+    'analytics_id' => '', // UA-xxxxxxx-xx
 
 	/*
 	|--------------------------------------------------------------------------
@@ -117,8 +130,6 @@ return array(
         'Ipsum\Core\CoreServiceProvider',
         'Ipsum\Core\Library\Liste\ListeServiceProvider',
         'Ipsum\Admin\AdminServiceProvider',
-        'Ipsum\Actualite\ActualiteServiceProvider',
-        'Ipsum\Website\WebsiteServiceProvider',
 	),
 
 	/*
@@ -189,6 +200,8 @@ return array(
         'Purifier'        => 'Mews\Purifier\Facades\Purifier',
         'File'            => 'Ipsum\Core\Library\Facades\File',
         'Liste'           => 'Ipsum\Core\Library\Facades\Liste',
+
+        'BaseController'  => 'App\Controllers\BaseController',
 	),
 
 );
