@@ -12,14 +12,6 @@ use Validator;
 class ContactController extends BaseController
 {
 
-    /**
-     * Instantiate a new UserController instance.
-     */
-    public function __construct()
-    {
-        $this->beforeFilter('csrf', array('on' => array('post')));
-    }
-
     public function index()
     {
         return View::make('contact.index');

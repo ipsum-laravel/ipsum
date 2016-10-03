@@ -88,3 +88,13 @@ storage
 # Ipsum
 /public_html/packages/ipsum/admin
 
+
+node_modules
+npm-debug.log
+.sass-cache
+.sass-cache/*
+bundles/
+bundles/*
+node_modules/
+node_modules/*
+
