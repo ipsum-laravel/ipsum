@@ -28,4 +28,17 @@ return array(
 
 	'pagination' => 'pagination::slider-3',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Notification View
+    |--------------------------------------------------------------------------
+    |
+    | This view will be used to render the notification Helper output, and can
+    | be easily customized here to show any view you like. A clean view
+    | compatible with Twitter's Bootstrap is given to you by default.
+    |
+    */
+
+    'notification' => 'IpsumCore::partials.notifications',
+
 );
