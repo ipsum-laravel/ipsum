@@ -20,10 +20,10 @@ class ContactController extends BaseController
     public function send()
     {
         $rules =  array(
-            'nom' => array('required', 'min:5'),
+            'nom' => array('required', 'min:4'),
             'email' => array('required', 'email', 'notSpammeur'),
             'telephone' => array('min:10'),
-            'texte' => array('required', 'min:30'),
+            'texte' => array('required', 'min:10'),
         );
         $validation = Validator::make(Input::all() , $rules);
 
