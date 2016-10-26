@@ -13,4 +13,4 @@
 
 Artisan::add(new IpsumUpdate);
 Artisan::add(new IpsumInstall);
-Artisan::add(new IpsumReloadDB);
+Artisan::add(new IpsumReloadDb);
