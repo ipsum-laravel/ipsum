@@ -53,7 +53,7 @@ return array(
 	*/
 
 	'locale' => 'fr',
-    'setLocale' => array('fr_FR', 'fr_FR.utf8', 'fr_fr', 'fr', ),
+    'setLocale' => array('fr_FR.utf8', 'fr_FR', 'fr_fr', 'fr', ),
 
 	/*
 	|--------------------------------------------------------------------------
