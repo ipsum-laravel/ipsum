@@ -1,18 +1,20 @@
 {
-	"name": "laravel/laravel",
-	"description": "The Laravel Framework.",
-	"keywords": ["framework", "laravel"],
+	"name": "ipsum/ipsum",
+	"description": "The Ipsum Laravel Framework.",
+	"keywords": ["framework", "laravel", "ipsum"],
 	"license": "MIT",
 	"require": {
 	    "php": ">=5.4.0",
 		"laravel/framework": "4.2.*",
-        "ipsum/core": "dev-master@dev",
+		"d11wtq/boris": "1.0.8",
+                "ipsum/core": "dev-master@dev",
 		"ipsum/admin": "dev-master@dev",
 		"ipsum/errors": "dev-master@dev",
-        "bkwld/croppa": "4.0.*",
-        "barryvdh/laravel-debugbar": "1.*",
-        "mews/purifier": "1.0.2",
-        "mobiledetect/mobiledetectlib": "2.8"
+		"bkwld/croppa": "4.0.*",
+		"league/flysystem": "1.0.28",
+		"barryvdh/laravel-debugbar": "1.*",
+		"mews/purifier": "1.0.2",
+		"mobiledetect/mobiledetectlib": "2.8"
 	},
     "repositories": [
         {
