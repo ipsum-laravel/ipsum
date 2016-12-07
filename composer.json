@@ -16,20 +16,6 @@
 		"mews/purifier": "1.0.2",
 		"mobiledetect/mobiledetectlib": "2.8"
 	},
-    "repositories": [
-        {
-            "type": "vcs",
-            "url":  "https://github.com/ipsum-laravel/admin.git"
-        },
-        {
-            "type": "vcs",
-            "url":  "https://github.com/ipsum-laravel/core.git"
-        },
-        {
-            "type": "vcs",
-            "url":  "https://github.com/ipsum-laravel/errors.git"
-        }
-    ],
 	"autoload": {
 		"classmap": [
 			"app/commands",
