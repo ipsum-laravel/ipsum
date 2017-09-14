@@ -3,38 +3,33 @@
 // Configuration des rubriques
 return array(
     'groupe1' => array(
-        /*'actualite' => array(
-            'rubrique' => 'actualite',
-            'nom' => 'Actualités',
-            'abreviation' => 'Actu.',
+        'article' => array(
+            'rubrique' => 'article',
+            'nom' => 'Articles',
+            'abreviation' => 'Art.',
             'icone' => 'calendrier.png',
-            'zone' => 'actualite',
-            'route' => 'admin.actualite.index',
+            'zone' => 'article',
+            'route' => 'admin.article.index',
             'menus' => array(
-                'actualite' => array(
-                    'menu' => 'actualite',
-                    'nom' => 'Actualités',
-                    'route' => 'admin.actualite.index',
+                'article' => array(
+                    'menu' => 'article',
+                    'nom' => 'Articles',
+                    'route' => 'admin.article.index',
                     'smenus' => array(
                         array(
-                            'nom' => 'Liste des actualités',
-                            'route' => 'admin.actualite.index',
+                            'nom' => 'Liste des articles',
+                            'route' => 'admin.article.index',
                             'icone' => 'table.png'
                         ),
                         array(
-                            'nom' => 'Ajouter une actualité',
-                            'route' => 'admin.actualite.create',
+                            'nom' => 'Ajouter un article',
+                            'route' => 'admin.article.create',
                             'icone' => 'add.png'
                         ),
                     ),
                 ),
-                'test' => array(
-                    'menu' => 'test',
-                    'nom' => 'test',
-                    'route' => 'admin',
-                ),
             ),
-        ),*/
+        ),
         'configuration' => array(
             'rubrique' => 'configuration',
             'nom' => 'Configuration',
