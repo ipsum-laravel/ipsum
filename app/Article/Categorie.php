@@ -15,6 +15,6 @@ class Categorie extends BaseModel
 
     public function articles()
     {
-        return $this->belongsTo('App\Article\Article');
+        return $this->hasMany('App\Article\Article');
     }
 }

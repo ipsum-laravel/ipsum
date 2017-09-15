@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "22277a398cd18c6639ef74405b146268",
+    "hash": "b81a173af3a60ea1bc237280138c2049",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -53,7 +53,7 @@
                 "profiler",
                 "webprofiler"
             ],
-            "time": "2017-06-15T15:02:56+00:00"
+            "time": "2017-06-15 15:02:56"
         },
         {
             "name": "bkwld/croppa",
@@ -98,7 +98,7 @@
                 }
             ],
             "description": "Image thumbnail creation through specially formatted URLs for Laravel",
-            "time": "2015-06-24T16:22:02+00:00"
+            "time": "2015-06-24 16:22:02"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -145,7 +145,7 @@
                 "class",
                 "preload"
             ],
-            "time": "2014-03-12T00:05:31+00:00"
+            "time": "2014-03-12 00:05:31"
         },
         {
             "name": "d11wtq/boris",
@@ -179,7 +179,7 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "time": "2014-01-17T12:21:18+00:00"
+            "time": "2014-01-17 12:21:18"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -224,7 +224,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2013-11-30T08:25:19+00:00"
+            "time": "2013-11-30 08:25:19"
         },
         {
             "name": "filp/whoops",
@@ -282,7 +282,7 @@
                 "whoops",
                 "zf2"
             ],
-            "time": "2015-06-29T05:42:04+00:00"
+            "time": "2015-06-29 05:42:04"
         },
         {
             "name": "fzaninotto/faker",
@@ -332,7 +332,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2017-08-15T16:48:10+00:00"
+            "time": "2017-08-15 16:48:10"
         },
         {
             "name": "ipsum/admin",
@@ -369,7 +369,7 @@
                     "email": "postmaster@b1nj.fr"
                 }
             ],
-            "time": "2016-12-07T16:08:11+00:00"
+            "time": "2016-12-07 16:08:11"
         },
         {
             "name": "ipsum/core",
@@ -408,7 +408,7 @@
                 "source": "https://github.com/ipsum-laravel/core/tree/master",
                 "issues": "https://github.com/ipsum-laravel/core/issues"
             },
-            "time": "2016-10-11T13:57:21+00:00"
+            "time": "2016-10-11 13:57:21"
         },
         {
             "name": "ipsum/errors",
@@ -444,7 +444,7 @@
                 "source": "https://github.com/ipsum-laravel/errors/tree/master",
                 "issues": "https://github.com/ipsum-laravel/errors/issues"
             },
-            "time": "2015-12-01T15:51:03+00:00"
+            "time": "2015-12-01 15:51:03"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -486,7 +486,7 @@
                 "hashing",
                 "password"
             ],
-            "time": "2014-11-20T16:49:30+00:00"
+            "time": "2014-11-20 16:49:30"
         },
         {
             "name": "jeremeamia/SuperClosure",
@@ -534,7 +534,7 @@
                 "serialize",
                 "tokenizer"
             ],
-            "time": "2015-01-10T01:09:28+00:00"
+            "time": "2015-01-10 01:09:28"
         },
         {
             "name": "laravel/framework",
@@ -649,7 +649,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-11-12T01:41:37+00:00"
+            "time": "2016-11-12 01:41:37"
         },
         {
             "name": "league/commonmark",
@@ -718,7 +718,7 @@
                 "markdown",
                 "parser"
             ],
-            "time": "2016-07-02T18:48:39+00:00"
+            "time": "2016-07-02 18:48:39"
         },
         {
             "name": "league/flysystem",
@@ -801,7 +801,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2016-10-07T12:20:37+00:00"
+            "time": "2016-10-07 12:20:37"
         },
         {
             "name": "maximebf/debugbar",
@@ -857,7 +857,7 @@
             "keywords": [
                 "debug"
             ],
-            "time": "2015-10-19T20:35:12+00:00"
+            "time": "2015-10-19 20:35:12"
         },
         {
             "name": "mews/purifier",
@@ -903,7 +903,7 @@
                 "htmlpurifier",
                 "laravel"
             ],
-            "time": "2014-12-31T14:02:27+00:00"
+            "time": "2014-12-31 14:02:27"
         },
         {
             "name": "monolog/monolog",
@@ -981,7 +981,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2017-06-19T01:22:40+00:00"
+            "time": "2017-06-19 01:22:40"
         },
         {
             "name": "nesbot/carbon",
@@ -1034,7 +1034,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2017-01-16T07:55:07+00:00"
+            "time": "2017-01-16 07:55:07"
         },
         {
             "name": "nikic/php-parser",
@@ -1079,7 +1079,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2014-07-23T18:24:17+00:00"
+            "time": "2014-07-23 18:24:17"
         },
         {
             "name": "paragonie/random_compat",
@@ -1127,7 +1127,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2017-03-13T16:22:52+00:00"
+            "time": "2017-03-13 16:22:52"
         },
         {
             "name": "patchwork/utf8",
@@ -1186,7 +1186,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2016-05-18T13:57:10+00:00"
+            "time": "2016-05-18 13:57:10"
         },
         {
             "name": "phpseclib/phpseclib",
@@ -1284,7 +1284,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2015-01-28T21:50:33+00:00"
+            "time": "2015-01-28 21:50:33"
         },
         {
             "name": "predis/predis",
@@ -1334,7 +1334,7 @@
                 "predis",
                 "redis"
             ],
-            "time": "2014-08-01T09:43:10+00:00"
+            "time": "2014-08-01 09:43:10"
         },
         {
             "name": "psr/log",
@@ -1381,7 +1381,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10T12:19:37+00:00"
+            "time": "2016-10-10 12:19:37"
         },
         {
             "name": "stack/builder",
@@ -1430,7 +1430,7 @@
             "keywords": [
                 "stack"
             ],
-            "time": "2016-06-02T06:58:42+00:00"
+            "time": "2016-06-02 06:58:42"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -1484,7 +1484,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2017-05-01T15:54:03+00:00"
+            "time": "2017-05-01 15:54:03"
         },
         {
             "name": "symfony/browser-kit",
@@ -1541,7 +1541,7 @@
             ],
             "description": "Symfony BrowserKit Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-11T14:37:17+00:00"
+            "time": "2017-07-11 14:37:17"
         },
         {
             "name": "symfony/console",
@@ -1601,7 +1601,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-08-17T08:44:22+00:00"
+            "time": "2017-08-17 08:44:22"
         },
         {
             "name": "symfony/css-selector",
@@ -1654,7 +1654,7 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-            "time": "2017-04-29T15:58:46+00:00"
+            "time": "2017-04-29 15:58:46"
         },
         {
             "name": "symfony/debug",
@@ -1711,7 +1711,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-08-27T08:27:28+00:00"
+            "time": "2017-08-27 08:27:28"
         },
         {
             "name": "symfony/dom-crawler",
@@ -1766,7 +1766,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2017-08-14T10:36:32+00:00"
+            "time": "2017-08-14 10:36:32"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -1826,7 +1826,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-02T07:47:27+00:00"
+            "time": "2017-06-02 07:47:27"
         },
         {
             "name": "symfony/filesystem",
@@ -1875,7 +1875,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-11T07:12:11+00:00"
+            "time": "2017-07-11 07:12:11"
         },
         {
             "name": "symfony/finder",
@@ -1924,7 +1924,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-01T20:44:56+00:00"
+            "time": "2017-06-01 20:44:56"
         },
         {
             "name": "symfony/http-foundation",
@@ -1980,7 +1980,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-08-09T10:15:13+00:00"
+            "time": "2017-08-09 10:15:13"
         },
         {
             "name": "symfony/http-kernel",
@@ -2063,7 +2063,7 @@
             ],
             "description": "Symfony HttpKernel Component",
             "homepage": "https://symfony.com",
-            "time": "2017-08-28T18:40:36+00:00"
+            "time": "2017-08-28 18:40:36"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2122,7 +2122,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-14T15:44:48+00:00"
+            "time": "2017-06-14 15:44:48"
         },
         {
             "name": "symfony/process",
@@ -2171,7 +2171,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-27T16:14:10+00:00"
+            "time": "2017-06-27 16:14:10"
         },
         {
             "name": "symfony/routing",
@@ -2245,7 +2245,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-06-19T14:02:36+00:00"
+            "time": "2017-06-19 14:02:36"
         },
         {
             "name": "symfony/security-core",
@@ -2310,7 +2310,7 @@
             ],
             "description": "Symfony Security Component - Core Library",
             "homepage": "https://symfony.com",
-            "time": "2017-07-28T21:20:34+00:00"
+            "time": "2017-07-28 21:20:34"
         },
         {
             "name": "symfony/translation",
@@ -2373,7 +2373,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-23T10:52:30+00:00"
+            "time": "2017-06-23 10:52:30"
         },
         {
             "name": "symfony/var-dumper",
@@ -2441,7 +2441,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2017-08-27T14:29:03+00:00"
+            "time": "2017-08-27 14:29:03"
         },
         {
             "name": "weotch/phpthumb",
@@ -2476,7 +2476,7 @@
                 }
             ],
             "description": "Fork of PHPThumb that adds auto-image rotation based on EXIF data and composer support",
-            "time": "2015-05-12T22:56:19+00:00"
+            "time": "2015-05-12 22:56:19"
         }
     ],
     "packages-dev": [],

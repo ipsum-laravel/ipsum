@@ -83,7 +83,7 @@ storage
 
 
 # Media
-/public_html/assets/media
+/public_html/uploads
 
 # Ipsum
 /public_html/packages/ipsum/admin
@@ -98,3 +98,4 @@ bundles/*
 node_modules/
 node_modules/*
 
+.php_cs.cache
