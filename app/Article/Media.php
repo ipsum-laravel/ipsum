@@ -9,7 +9,7 @@ class Media extends BaseModel
 {
     protected $table = 'media';
 
-    protected $fillable = array('titre', 'url', 'texte');
+    protected $fillable = ['titre', 'url', 'texte'];
 
     public static function getRules()
     {

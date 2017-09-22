@@ -1,6 +1,6 @@
 @extends('layouts.website')
-@section('title', e($actualite->titre))
-@section('description', e($actualite->extrait))
+@section('title', e($actualite->seoTitle))
+@section('description', e($actualite->seoDescription))
 
 @section('content')
 

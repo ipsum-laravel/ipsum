@@ -14,7 +14,7 @@ class Article extends BaseModel
         Mediable::boot as mediaBoot;
     }
 
-    protected $fillable = array('titre', 'extrait', 'texte_md', 'seo_title', 'seo_description', 'categorie_id', 'etat');
+    protected $fillable = ['titre', 'extrait', 'texte_md', 'seo_title', 'seo_description', 'type', 'categorie_id', 'etat'];
 
     protected $table = 'article';
 
@@ -26,7 +26,7 @@ class Article extends BaseModel
     public static function getRules()
     {
         $rules = array(
-            "categorie_id" => "required|integer|exists:article_categorie,id",
+            "categorie_id" => "integer|exists:article_categorie,id",
             "titre" => 'required|max:255',
             "extrait" => '',
         );

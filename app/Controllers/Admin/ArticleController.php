@@ -1,6 +1,8 @@
 <?php
 namespace App\Controllers\Admin;
 
+use Ipsum\Admin\Controllers\BaseController;
+use App\Article\Article;
 use App\Article\Categorie;
 use App\Article\Media;
 use Ipsum\Admin\Library\JsTools;
@@ -8,28 +10,16 @@ use View;
 use Input;
 use Redirect;
 use Session;
-use Str;
 use Liste;
-
 use Croppa;
-use App\Article\Article;
 
-class ArticleController extends \Ipsum\Admin\Controllers\BaseController
+class ArticleController extends BaseController
 {
     public $title = 'Gestion des articles';
     public $rubrique = 'article';
     public $menu = 'article';
     public static $zone = 'article';
 
-    protected function setupLayout()
-    {
-        // Modification du menu en fonction de la catégorie de l'article
-        if (Input::has('type')) {
-            $this->menu = Input::get('type');
-        }
-
-        parent::setupLayout();
-    }
 
     /**
      * Display a listing of the resource.
@@ -38,8 +28,6 @@ class ArticleController extends \Ipsum\Admin\Controllers\BaseController
      */
     public function index()
     {
-        $datas = array();
-
         $requete = Article::with('illustration', 'categorie', 'categorie');
 
         Liste::setRequete($requete);
@@ -91,6 +79,7 @@ class ArticleController extends \Ipsum\Admin\Controllers\BaseController
 
         $categories = Categorie::get()->lists('nom', 'id');
 
+        $this->layout->menu = Input::has('type') ? Input::get('type') : $this->menu; // Modification du menu en fonction de type de l'article
         $this->layout->content = View::make('article.admin.index', compact('datas', 'categories'));
     }
 
@@ -103,6 +92,7 @@ class ArticleController extends \Ipsum\Admin\Controllers\BaseController
     {
         $categories = Categorie::get()->lists('nom', 'id');
 
+        $this->layout->menu = Input::has('type') ? Input::get('type') : $this->menu; // Modification du menu en fonction de type de l'article
         $this->layout->head = JsTools::markItUp(route('article.markdownPreview'));
         $this->layout->content = View::make('article.admin.form', compact('categories'));
     }
@@ -140,6 +130,7 @@ class ArticleController extends \Ipsum\Admin\Controllers\BaseController
 
         $categories = Categorie::get()->lists('nom', 'id');
 
+        $this->layout->menu = $article->type; // Modification du menu en fonction de type de l'article
         $this->layout->head = JsTools::markItUp(route('article.markdownPreview'));
         $this->layout->content = View::make('article.admin.form', compact("article", "categories"));
     }
