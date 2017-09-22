@@ -22,6 +22,15 @@ Route::group(
             'uses' => 'HomeController@index'
         ));
 
+        Route::get('actualites', array(
+            'as'     => 'article.actualites',
+            'uses' => 'ArticleController@actualites'
+        ));
+        Route::get('actualite/{slug}', array(
+            'as'     => 'article.actualite',
+            'uses' => 'ArticleController@actualite'
+        ));
+
         Route::get('contact', array(
             'as'     => 'contact.index',
             'uses' => 'ContactController@index'
@@ -29,10 +38,6 @@ Route::group(
         Route::post('contact', array(
             'as'     => 'contact.send',
             'uses' => 'ContactController@send'
-        ));
-        Route::get('contact/success', array(
-            'as'     => 'contact.success',
-            'uses' => 'ContactController@success'
         ));
     }
 );
@@ -42,5 +47,5 @@ include('routes_admin.php');
 
 // Routes for the pages : Catch all the route
 // Must be the last rule
-Route::get('{all}', 'App\Controllers\PageController@getIndex')->where('all', '.*');
+Route::get('{all}', 'App\Controllers\ArticleController@page')->where('all', '.*');
 

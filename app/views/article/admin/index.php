@@ -4,7 +4,10 @@
     <div>
         <?= Liste::inputsHidden() ?>
         <input type="text" name="mot" id="mot" value="<?= Liste::getFiltreValeur('mot') ?>" />
-        <!--<?= Form::select('categorie', ['' => '----- Catégories -----'] + $categories, Liste::getFiltreValeur('categorie')) ?>-->
+        <?php if (!Input::has('type') or Input::get('type') == 'page') : ?>
+        <?= Form::select('categorie', ['' => '----- Catégories -----'] + $categories, Liste::getFiltreValeur('categorie')) ?>
+        <?php endif ?>
+        <input type="hidden" name="type" value="<?= Liste::getFiltreValeur('type') ?>">
         <input type="submit" name="submit" value="Chercher" />
     </div>
 </form>
@@ -14,6 +17,7 @@
             <th><?= Liste::lienTri('Date', 'creation') ?></th>
             <th><?= Liste::lienTri('Titre', 'titre') ?></th>
             <th><?= Liste::lienTri('Extrait', 'extrait', 'asc') ?></th>
+            <th><?= Liste::lienTri('Type', 'type') ?></th>
             <th><?= Liste::lienTri('Catégorie', 'categorie') ?></th>
             <th>Illustration</th>
             <th>Modif.</th>
@@ -26,7 +30,8 @@
                 <td><?= $data->created_at->format('d/m/Y') ?></td>
                 <td><a href="<?= url(e($data->url)) ?>"><?= e($data->titre) ?></a></td>
                 <td><?= e(Str::words($data->extrait, 30)) ?></td>
-                <td><?= $categories[$data->categorie_id] ?></td>
+                <td><?= $data->typeNom ?></td>
+                <td><?= $data->categorie ? $data->categorie->nom : '' ?></td>
                 <td>
                     <?php if ($data->illustration) : ?>
                    <img src="<?= Croppa::url('/'.$data->illustration->cropPath, 150, 150) ?>" alt="" />

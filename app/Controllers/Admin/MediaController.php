@@ -141,9 +141,9 @@ class MediaController extends \Ipsum\Admin\Controllers\BaseController
                         $data = $model::findOrFail(Input::get('publication_id'));
                         $data->medias()->attach($media);
 
-                        if (method_exists($data, 'illustration') and !$data->illustration()->count()) {
-                            $data->illustration()->associate($media)->save();
-                        }
+                        // Déclenchement event saved pour enregistrer l'illustration sur la première image
+                        $data->save();
+						
                     } elseif (Input::has('publication_type')) {
                         // Cas des médias qui ne sont pas encore associé à une pulbication
                         // Cas de l'upload avant la création de la publication

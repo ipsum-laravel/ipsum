@@ -19,9 +19,10 @@ trait Mediable
                 Session::forget('media.publications');
             }
 
-            if (!$objet->illustration()->count() and $objet->medias()->count()) {
-                $media = $objet->medias()->first();
-                $objet->illustration()->associate($media)->save();
+            if ($objet->media_id === null and $objet->medias()->images()->count()) {
+                $media = $objet->medias()->images()->first();
+                $objet->media_id = $media->id;
+                $objet->save();
             }
         });
     }

@@ -3,7 +3,7 @@ namespace App\Article;
 
 use App\BaseModel;
 use App\Library\Markdown;
-use App\Slug;
+use App\Article\Slug;
 use Mews\Purifier\Purifier;
 use League\CommonMark\CommonMarkConverter;
 
@@ -19,6 +19,9 @@ class Article extends BaseModel
     protected $table = 'article';
 
     protected $slugBase = 'titre';
+
+    const PAGE_ID = 'page';
+    const ACTUALITE_ID = 'actualite';
 
     public static function getRules()
     {
@@ -56,7 +59,12 @@ class Article extends BaseModel
 
     public function scopeActualites($query)
     {
-        return $query->where('categorie_id', Categorie::ACTUALITE_ID);
+        return $query->where('type', self::ACTUALITE_ID);
+    }
+
+    public function scopePages($query)
+    {
+        return $query->where('type', self::PAGE_ID);
     }
 
 
@@ -66,14 +74,9 @@ class Article extends BaseModel
      * Accessors & Mutators
      */
 
-    public function isPage()
-    {
-        return $this->categorie_id == Categorie::PAGE_ID;
-    }
-
     public function getDeletableAttribute()
     {
-        return $this->categorie_id != Categorie::PAGE_ID;
+        return $this->type != self::PAGE_ID;
     }
 
     public function getSeoTitleAttribute()
@@ -88,12 +91,20 @@ class Article extends BaseModel
 
     public function getUrlAttribute()
     {
-        $segments = [
-            Categorie::PAGE_ID => '',
-            Categorie::ACTUALITE_ID => 'actualite#'
-        ];
 
-        return $segments[$this->categorie_id].$this->slug;
+        switch ($this->type){
+
+            case self::ACTUALITE_ID :
+                return route('article.actualite', $this->slug);
+        }
+
+        return url($this->slug);
+    }
+
+    public function getTypeNomAttribute()
+    {
+        $noms = [self::PAGE_ID => 'Pages', self::ACTUALITE_ID => 'Actualités'];
+        return isset($noms[$this->type]) ? $noms[$this->type] : null;
     }
 
     public function setTexteMdAttribute($value)
@@ -101,5 +112,17 @@ class Article extends BaseModel
         $this->attributes['texte_md'] = $value;
         $converter = new Markdown(new CommonMarkConverter(), new Purifier());
         $this->attributes['texte'] = $converter->convertToHtml($value);
+    }
+
+
+
+    public function isActualite()
+    {
+        return $this->type == self::ACTUALITE_ID;
+    }
+
+    public function isPage()
+    {
+        return $this->type == self::PAGE_ID;
     }
 }

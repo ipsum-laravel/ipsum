@@ -21,6 +21,16 @@ class ArticleController extends \Ipsum\Admin\Controllers\BaseController
     public $menu = 'article';
     public static $zone = 'article';
 
+    protected function setupLayout()
+    {
+        // Modification du menu en fonction de la catégorie de l'article
+        if (Input::has('type')) {
+            $this->menu = Input::get('type');
+        }
+
+        parent::setupLayout();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -30,7 +40,7 @@ class ArticleController extends \Ipsum\Admin\Controllers\BaseController
     {
         $datas = array();
 
-        $requete = Article::with('illustration');
+        $requete = Article::with('illustration', 'categorie', 'categorie');
 
         Liste::setRequete($requete);
         $filtres = array(
@@ -46,6 +56,10 @@ class ArticleController extends \Ipsum\Admin\Controllers\BaseController
             array(
                 'nom' => 'categorie',
                 'colonnes' => 'article.categorie_id',
+            ),
+            array(
+                'nom' => 'type',
+                'colonnes' => 'article.type',
             ),
         );
         Liste::setFiltres($filtres);
@@ -63,6 +77,9 @@ class ArticleController extends \Ipsum\Admin\Controllers\BaseController
                 'nom' => 'extrait',
             ),
             array(
+                'nom' => 'type',
+            ),
+            array(
                 'nom' => 'categorie',
                 'colonne' => 'categorie_id',
             ),
@@ -70,10 +87,7 @@ class ArticleController extends \Ipsum\Admin\Controllers\BaseController
 
         Liste::setTris($tris);
 
-        foreach (Liste::rechercherLignes() as $item) {
-            $item->extrait = Str::words(strip_tags($item->extrait), 30, '...');
-            $datas[] = $item;
-        }
+        $datas = Liste::rechercherLignes();
 
         $categories = Categorie::get()->lists('nom', 'id');
 

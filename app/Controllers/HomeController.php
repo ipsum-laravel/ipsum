@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Article\Article;
 use View;
 
 class HomeController extends BaseController
@@ -8,7 +9,9 @@ class HomeController extends BaseController
 
     public function index()
     {
-        return View::make('home');
+        $article = Article::where('slug', '')->firstOrFail();
+
+        return View::make('home', compact('article'));
     }
 
 }

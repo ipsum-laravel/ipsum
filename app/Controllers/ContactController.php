@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Article\Article;
 use View;
 use Input;
 use Config;
@@ -14,7 +15,9 @@ class ContactController extends BaseController
 
     public function index()
     {
-        return View::make('contact.index');
+        $article = Article::where('slug', '')->firstOrFail();
+
+        return View::make('contact.index', compact('article'));
     }
 
     public function send()
@@ -33,14 +36,10 @@ class ContactController extends BaseController
                 $m->to(Config::get('IpsumCore::website.mail_to'), Config::get('IpsumCore::website.nom_site'))->subject(Config::get('IpsumCore::website.mail_objet') . ' ' . Config::get('IpsumCore::website.nom_site'));
             });
             Session::flash('success', "Votre demande de contact a bien été envoyée");
-            return Redirect::route('contact.success');
+            return Redirect::route('contact.index');
         }
 
         return Redirect::back()->withInput()->withErrors($validation);
     }
 
-    public function success()
-    {
-        return View::make('contact.index');
-    }
 }

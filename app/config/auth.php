@@ -79,9 +79,9 @@ return array(
 
     'zones' => array(
 
-        'actualite' => 'Gestion des actualités',
+        'article' => 'Gestion des articles',
 
-        'categorie' => 'Gestion des catégories',
+        //'categorie' => 'Gestion des catégories',
 
     ),
 

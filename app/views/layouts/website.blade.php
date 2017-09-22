@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="@yield('description')">
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/knacss.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     @yield('head')
     <title>@yield('title') - {{{ Config::get('IpsumCore::website.nom_site') }}}</title>
@@ -11,15 +10,15 @@
 <body>
     <div class="conteneur center">
         <header role="banner" class="header line pam mbs">
-            <div class="header-logo"><a href="{{ route('home') }}" title="Retour à la page d'accueil" ><img src="{{ asset('assets/img/logo-pixell.gif') }}" width="200" alt="logo"></a></div>
+            <div class="header-logo"><a href="{{ route('home') }}" title="Retour à la page d'accueil" ><img src="{{ asset('packages/ipsum/admin/img/logo-pixell.gif') }}" width="200" alt="logo"></a></div>
             <p class="header-slogan">Le meilleur site du web</p>
         </header>
 
         <nav role="navigation" class="menu mbs">
             <ul class="line">
                 <li class="inbl {{ Request::is('/') ? 'lien_actif' : '' }}" ><a href="{{ route('home') }}">Accueil</a></li>
-                <li class="inbl {{ Request::is('menu3*') ? 'lien_actif' : '' }}" ><a href="#">menu3</a></li>
-                <li class="inbl {{ Request::is('menu4*') ? 'lien_actif' : '' }}" ><a href="#">menu4</a></li>
+                <li class="inbl {{ Request::is('page1') ? 'lien_actif' : '' }}" ><a href="{{ url('page1') }}">Page 1</a></li>
+                <li class="inbl {{ Request::is('page2') ? 'lien_actif' : '' }}" ><a href="{{ url('page2') }}">Page 2</a></li>
                 <li class="inbl {{ Request::is('contact*') ? 'lien_actif' : '' }}" ><a href="{{ route('contact.index') }}">Contact</a></li>
             </ul>
         </nav>
@@ -41,5 +40,16 @@
         </footer>
     </div>
     @yield('script')
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', '{{{ Config::get('app.analytics_id') }}}', 'auto');
+        ga('send', 'pageview');
+
+    </script>
 </body>
 </html>

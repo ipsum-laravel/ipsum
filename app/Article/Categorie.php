@@ -9,10 +9,6 @@ class Categorie extends BaseModel
 
     public $timestamps = false;
 
-    const PAGE_ID = 1;
-    const ACTUALITE_ID = 2;
-
-
     public function articles()
     {
         return $this->hasMany('App\Article\Article');

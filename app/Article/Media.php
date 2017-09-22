@@ -28,6 +28,11 @@ class Media extends BaseModel
     {
         return $this->morphedByMany('App\Categorie\Categorie', 'publication', 'media_publication');
     }
+	
+    public function scopeImages($query)
+    {
+        return $query->where('type', 'image');
+    }
 
     public function getPathAttribute()
     {

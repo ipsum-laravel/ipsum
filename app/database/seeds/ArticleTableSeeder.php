@@ -7,23 +7,22 @@ class ArticleTableSeeder extends Seeder
         $faker = Faker\Factory::create('fr_FR');
 
         $datas_for_all = array(
-            'categorie_id' => '1',
+            'type' => \App\Article\Article::PAGE_ID,
             'extrait' => 'Lorem ipsum Altera sententia est, squae definit.',
             'texte' => '',
             'texte_md' => '',
         );
+
+        // Sedd pages
         foreach ($this->getDatas() as $data) {
             $data = $data + $datas_for_all;
             $article = \App\Article\Article::create($data);
             $article->slug = $data['slug'];
+            $article->categorie_id = rand(1, 2);
             $article->save();
         }
 
-        foreach ($this->getCategories() as $data) {
-            \App\Article\Categorie::create($data);
-        }
-
-
+        // Seed Actualités
         for ($i=0; $i < 3; $i++) {
             $titre = $faker->sentence(6);
             $texte = $faker->text;
@@ -34,8 +33,13 @@ class ArticleTableSeeder extends Seeder
             $article->extrait = Str::limit($texte);
             $article->texte_md = $texte;
 
-            $article->categorie_id = \App\Article\Categorie::ACTUALITE_ID;
+            $article->type = \App\Article\Article::ACTUALITE_ID;
             $article->save();
+        }
+
+        // Seed catégories
+        foreach ($this->getCategories() as $data) {
+            \App\Article\Categorie::create($data);
         }
     }
 
@@ -46,6 +50,22 @@ class ArticleTableSeeder extends Seeder
                 'slug' => '',
                 'titre' => 'Accueil',
             ),
+            array(
+                'slug' => 'page1',
+                'titre' => 'Page 1',
+            ),
+            array(
+                'slug' => 'page2',
+                'titre' => 'Page 2',
+            ),
+            array(
+                'slug' => 'contact',
+                'titre' => 'Contact',
+            ),
+            array(
+                'slug' => 'mentions-legales',
+                'titre' => 'Mentions légales',
+            ),
         );
     }
 
@@ -53,12 +73,10 @@ class ArticleTableSeeder extends Seeder
     {
         return array(
             array(
-                'id' => \App\Article\Categorie::PAGE_ID,
-                'nom' => 'Page',
+                'nom' => 'Catégorie 1',
             ),
             array(
-                'id' => \App\Article\Categorie::ACTUALITE_ID,
-                'nom' => 'Actualités',
+                'nom' => 'Catégorie 2',
             ),
         );
     }

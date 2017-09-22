@@ -1,9 +1,10 @@
 @extends('layouts.website')
-@section('title', 'Contactez-nous')
-@section('description')
+@section('title', e($article->seoTitle))
+@section('description', e($article->seoDescription))
 
 @section('content')
-<h1>Contactez-nous</h1>
+
+<h1>{{{ $article->titre }}}</h1>
 
 <h2>Nos coordonnées</h2>
 <div class="vcard">
