@@ -5,6 +5,6 @@
     <title>Prévisualisation article</title>
 </head>
 <body>
-<?= $html ?>
+{{ $html }}
 </body>
 </html>
