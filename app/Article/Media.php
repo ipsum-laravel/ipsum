@@ -24,10 +24,10 @@ class Media extends BaseModel
         return $this->morphedByMany('App\Article\Article', 'publication', 'media_publication');
     }
 
-    public function categories()
+    /*public function categories()
     {
         return $this->morphedByMany('App\Categorie\Categorie', 'publication', 'media_publication');
-    }
+    }*/
 	
     public function scopeImages($query)
     {

@@ -175,16 +175,4 @@ class ArticleController extends BaseController
         }
         return Redirect::back();
     }
-
-    public function illustrer($id)
-    {
-        $media = Media::findOrFail(Input::get('media_id'));
-        $article = Article::findOrFail($id);
-
-        $article->illustration()->associate($media)->save();
-
-        Session::flash('success', "L'image d'illustration a été enregistrée.");
-
-        return Redirect::back();
-    }
 }

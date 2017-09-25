@@ -16,6 +16,7 @@ use HTML;
 use Croppa;
 use App\Article\Media;
 
+
 class MediaController extends \Ipsum\Admin\Controllers\BaseController
 {
     public $title = 'Gestion des médias';
@@ -82,7 +83,7 @@ class MediaController extends \Ipsum\Admin\Controllers\BaseController
     public function upload()
     {
         $succes = $error = $messages = null;
-        $medias = array();
+        $medias = $views = array();
 
         $files = Input::file('medias');
         if (!is_array($files)) {
@@ -127,7 +128,7 @@ class MediaController extends \Ipsum\Admin\Controllers\BaseController
                     // Enregistrement du fichier
                     $file->move(Config::get('media.path').$repertoire, $filename);
 
-                    // Enregistrement ne bdd
+                    // Enregistrement en bdd
                     $media = new Media;
                     $media->titre = $titre;
                     $media->fichier = $filename;
@@ -135,10 +136,9 @@ class MediaController extends \Ipsum\Admin\Controllers\BaseController
                     $media->repertoire = str_replace('/', '', $repertoire);
                     $media->save();
 
-                    // Enregsitrement de la publication associé
+                    // Enregistrement de la publication associé
                     if (Input::has('publication_id') and Input::has('publication_type')) {
-                        $model = "\\".Input::get('publication_type');
-                        $data = $model::findOrFail(Input::get('publication_id'));
+                        $data = $this->_publication(Input::get('publication_type'), Input::get('publication_id'));
                         $data->medias()->attach($media);
 
                         // Déclenchement event saved pour enregistrer l'illustration sur la première image
@@ -157,13 +157,11 @@ class MediaController extends \Ipsum\Admin\Controllers\BaseController
                         Session::put('media.publications', $mediaPublications);
                     }
 
-                    // Eléments nécessaire pour affichage ajax
-                    if ($media->isImage()) {
-                        $media->image = Croppa::url('/'.$media->cropPath, 150, 150);
-                    }
-                    $media->url = asset($media->path);
-                    $media->date = $media->created_at->format('d/m/Y');
-                    $media->icone = $media->icone; // OK car attribut icone is accessor
+                    $views[] = View::make(
+                        Input::has('media_view') ? Input::get('media_view') : 'media.admin._media',
+                        compact('media')
+                    )->render();
+
                     $medias[] = $media;
 
                     $succes[] = "Le média ".$file->getClientOriginalName()." a bien été téléchargé";
@@ -191,7 +189,8 @@ class MediaController extends \Ipsum\Admin\Controllers\BaseController
                 array(
                     'errors' => ($error === null ? 0 : $error),
                     'medias' => $medias,
-                    'notifications' => $notifications
+                    'notifications' => $notifications,
+                    'views' => $views,
                 )
             );
         }
@@ -241,5 +240,26 @@ class MediaController extends \Ipsum\Admin\Controllers\BaseController
         Session::flash('warning', "Le media a bien été supprimé");
 
         return Redirect::back();
+    }
+
+    public function illustrer($id)
+    {
+        $media = Media::findOrFail($id);
+
+        $publication = $this->_publication(Input::get('publication_type'), Input::get('publication_id'));
+
+        $publication->illustration()->associate($media)->save();
+
+        Session::flash('success', "L'image d'illustration a été enregistrée.");
+
+        return Redirect::back();
+    }
+
+    protected function _publication($type, $id)
+    {
+        if (class_exists($type) and method_exists($type, 'medias')) {
+            return $type::findOrFail($id);
+        }
+        App:abort(422);
     }
 }

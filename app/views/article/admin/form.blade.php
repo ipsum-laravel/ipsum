@@ -1,12 +1,10 @@
 <h2>{{ isset($article) ? 'Modification' : 'Nouvel' }} article</h2>
-{{ Form::open(
-        [
-            'route' => isset($article) ? ['admin.article.update', $article->id] : 'admin.article.store',
-            'class' => 'saisie',
-            'id' => 'article',
-            'method' => isset($article) ? 'PUT' : 'POST'
-        ]
-    ) }}
+{{ Form::open([
+        'route' => isset($article) ? ['admin.article.update', $article->id] : 'admin.article.store',
+        'class' => 'saisie',
+        'id' => 'formulaire',
+        'method' => isset($article) ? 'PUT' : 'POST'
+    ]) }}
     <div class="bloc_left">
         <fieldset>
             <legend>Description</legend>
@@ -96,185 +94,26 @@
 {{ Form::close() }}
 
 <div class="bloc_right">
-    <h3>Téléchargement des fichiers</h3>
-    {{ Form::open(
-        [
-            'route' => ['admin.media.upload'],
-            'method' => 'PUT',
-            'files' => true
-        ]
-    ) }}
-        <div id="fileupload">
-            {{ Form::hidden('publication_id', isset($article) ? $article->id : null) }}
-            {{ Form::hidden('publication_type', 'App\\Article\\Article') }}
-            {{ Form::hidden('repertoire', 'article') }}
-            <input name="medias[]" id="files" type="file" multiple="multiple">
-            <input name="submit" type="submit" value="Télécharger">
-        </div>
-    {{ Form::close() }}
-    <div id="fileupload-message"></div>
-
-    <h3 style="margin-top: 20px;">Liste des fichiers</h3>
-    <div id="medias">
-    @if (isset($article) and $article->medias->count())
-        @foreach ($article->medias as $media)
-        <div class="media{{ $article->media_id == $media->id ? ' media-illustration' : '' }}">
-            <a class="markItUpAddMedia media-image" href="{{ asset($media->path) }}" title="{{{ $media->titre }}}" data-fichier="{{{ $media->repertoire }}}/{{{ $media->fichier }}}">
-                @if ($media->isImage())
-                <img src="{{ Croppa::url('/'.$media->cropPath, 150, 150) }}" alt="" />
-                @else
-                <img src="{{ asset('admin/img/'.$media->icone) }}" alt="{{{ $media->type }}}" />
-                @endif
-            </a>
-            <div class="media-details">
-                <div class="media-menu">
-                    <div>
-                        <a href="{{ route('admin.media.edit', $media->id) }}"><img src="{{ asset('packages/ipsum/admin/img/modifier.png') }}" alt="Modifier"></a>
-                    </div>
-                    @if ($media->isImage() and $article->media_id != $media->id)
-                    {{ Form::open(['method' => 'PUT', 'route' => ['admin.article.illustrer', $article->id]]) }}
-                        <div>
-                            <input type="hidden" name="media_id" value="{{ $media->id }}" />
-                            <input title="Illustrer l'article avec cette image" type="image" src="{{ asset('admin/img/picture_add.png') }}" value="Illustrer">
-                        </div>
-                    {{ Form::close() }}
-                    @endif
-                    {{ Form::open(['method' => 'DELETE', 'route' => ['admin.media.destroy', $media->id]]) }}
-                        <div>
-                            <input title="Supprimer le média" type="image" src="{{ asset('packages/ipsum/admin/img/supprimer.png') }}" value="Supprimer" class="supprimer" data-message="{{{ $media->titre }}}">
-                        </div>
-                    {{ Form::close() }}
-                </div>
-                @if ($media->isImage())
-                <p>
-                    <label>Taille</label>
-                    <select name="taille" class="taille">
-                        <option value="250">Petite taille</option>
-                        <option value="700">Grande taille</option>
-                        <option value="">Original</option>
-                    </select>
-                </p>
-                <p>
-                    <label>Alignement</label>
-                    <select name="alignement" class="alignement">
-                        <option value="">---</option>
-                        <option value="img-left">Centré</option>
-                        <option value="left">Gauche</option>
-                        <option value="right">Droite</option>
-                    </select>
-                </p>
-                @endif
-                <p>
-                    <a class="markItUpAddMedia"
-                        href="{{ asset($media->path) }}"
-                        title="{{{ $media->titre }}}"
-                        data-fichier="{{{ $media->repertoire }}}/{{{ $media->fichier }}}">
-                            Ajouter {{{ $media->titre }}}
-                    </a>
-                </p>
-            </div>
-       </div>
-    @endforeach
-    @endif
-    </div>
+    {{-- Uploads des fichiers --}}
+    @include('media.admin._uploads', [
+        'publication' => isset($article) ? $article : null,
+        'publication_type' => 'App\\Article\\Article',
+        'dossier' => 'article',
+        'markItUpAddMedia_textarea_id' => 'texte_md', // null si pas besoin de addMedia
+    ])
 </div>
 
-<!--  fileupload -->
-<script src="{{ asset('packages/ipsum/admin/js/jquery.ui.widget.js') }}"></script>
-<script src="{{ asset('admin/js/jquery.knob.js') }}"></script>
-<script src="{{ asset('admin/js/jquery.iframe-transport.js') }}" ></script>
-<script src="{{ asset('admin/js/jquery.fileupload.js') }}" ></script>
-<script src="{{ asset('admin/js/jquery.formFileupload.js') }}" ></script>
 <script>
     $(function() {
-        // Alerte au moment de quitter la page
-        $('#article').data('serialize',$('#article').serialize());
-        $('#article').on('submit', function(e){
+        // Alerte au moment de quitter la page si les champs ne sont pas enregistrées
+        $('#formulaire').data('serialize',$('#formulaire').serialize());
+        $('#formulaire').on('submit', function(e){
             $(window).off('beforeunload');
         });
         $(window).on('beforeunload', function(e){
-            if($('#article').serialize() != $('#article').data('serialize')) return true;
+            if($('#formulaire').serialize() != $('#formulaire').data('serialize')) return true;
             else e=null;
-        });
-
-        function markItUpAddMedia() {
-            $(".markItUpAddMedia").click(function() {
-                var src = $(this).data("fichier");
-                var alt = $(this).attr("title");
-
-                var arguments = []
-                arguments.push(src);
-                var alignement = $(this).parents('.media').find('.alignement option:selected').val();
-                if (typeof alignement !== "undefined") {
-                    arguments.push(alignement);
-                }
-                taille = $(this).parents('.media').find('.taille option:selected').val();
-                if (typeof taille !== "undefined" && taille != "") {
-                    arguments.push(taille);
-                }
-                $.markItUp({
-                    _____target: ".markItUp",
-                    openWith: "!media[",
-                    closeWith: "](" + arguments.join('|') + ")",
-                    placeHolder: alt
-                });
-                return false;
-            });
-        }
-        markItUpAddMedia();
-        // Préselectione le bon textarea pour add media
-        $.markItUp({ target: "#fr[texte_md]" });
-
-        $("#fileupload").formFileupload({
-            "afterDone" : function (e, data) {
-                $("#medias").prepend(rendered);
-                markItUpAddMedia();
-            }
         });
     });
 </script>
 
-<style>
-    .fileupload {
-        padding: 20px;
-        background-color: #fafafa;
-        border: dashed 4px #9f9f9f;
-
-        text-align: center;
-    }
-    .fileupload-hover {
-        border-color: #dedede;
-    }
-    .fileupload-error {
-        border: dashed 4px red;
-    }
-    .fileupload input{
-        display:none;
-    }
-
-    .media {
-        overflow: hidden;
-        margin-bottom: 10px;
-        padding: 5px;
-        background: #f5f5f5;
-        text-align: right;
-    }
-        .media-illustration {
-            background: #d7d7d7;
-        }
-        .media-details {
-            float: right;
-            width: 170px;
-        }
-            .media-menu > * {
-                display: inline-block;
-            }
-            .media label {
-                display: inline-block;
-                width: 50%;
-                text-align: right;
-            }
-            .media select {
-                width: 45%;
-            }
-</style>

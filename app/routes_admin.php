@@ -41,10 +41,6 @@ Route::group(
                     'as'     => 'admin.article.destroy',
                     'uses'   => 'ArticleController@destroy'
                 ));
-                Route::put('{id}/illustrer', array(
-                    'as'     => 'admin.article.illustrer',
-                    'uses'   => 'ArticleController@illustrer'
-                ));
             }
         );
         Route::group(
@@ -72,6 +68,10 @@ Route::group(
                 Route::delete('{id}/destroy', array(
                     'as'     => 'admin.media.destroy',
                     'uses'   => 'MediaController@destroy'
+                ));
+                Route::put('{id}/illustrer', array(
+                    'as'     => 'admin.media.illustrer',
+                    'uses'   => 'MediaController@illustrer'
                 ));
             }
         );
