@@ -1,8 +1,8 @@
 <?php
 
 Route::post('article/markdownPreview', array(
-    'as'     => 'article.markdownPreview',
-    'uses'   => 'App\Controllers\ArticleController@markdownPreview'
+    'as'     => 'admin.article.markdownPreview',
+    'uses'   => 'App\Controllers\Admin\ArticleController@markdownPreview'
 ));
 
 Route::group(

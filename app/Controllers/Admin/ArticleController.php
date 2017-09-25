@@ -4,7 +4,6 @@ namespace App\Controllers\Admin;
 use Ipsum\Admin\Controllers\BaseController;
 use App\Article\Article;
 use App\Article\Categorie;
-use App\Article\Media;
 use Ipsum\Admin\Library\JsTools;
 use View;
 use Input;
@@ -12,6 +11,8 @@ use Redirect;
 use Session;
 use Liste;
 use Croppa;
+use Route;
+
 
 class ArticleController extends BaseController
 {
@@ -21,10 +22,20 @@ class ArticleController extends BaseController
     public static $zone = 'article';
 
 
+    public function __construct()
+    {
+        parent::__construct();
+
+        if (Route::is('admin.article.markdownPreview')) {
+            $this->forgetBeforeFilter('csrf');
+        }
+    }
+
+
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -86,21 +97,21 @@ class ArticleController extends BaseController
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
         $categories = Categorie::get()->lists('nom', 'id');
 
         $this->layout->menu = Input::has('type') ? Input::get('type') : $this->menu; // Modification du menu en fonction de type de l'article
-        $this->layout->head = JsTools::markItUp(route('article.markdownPreview'));
+        $this->layout->head = JsTools::markItUp(route('admin.article.markdownPreview'));
         $this->layout->content = View::make('article.admin.form', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store()
     {
@@ -122,7 +133,7 @@ class ArticleController extends BaseController
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function edit($id)
     {
@@ -131,7 +142,7 @@ class ArticleController extends BaseController
         $categories = Categorie::get()->lists('nom', 'id');
 
         $this->layout->menu = $article->type; // Modification du menu en fonction de type de l'article
-        $this->layout->head = JsTools::markItUp(route('article.markdownPreview'));
+        $this->layout->head = JsTools::markItUp(route('admin.article.markdownPreview'));
         $this->layout->content = View::make('article.admin.form', compact("article", "categories"));
     }
 
@@ -139,7 +150,7 @@ class ArticleController extends BaseController
      * Update the specified resource in storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id)
     {
@@ -162,7 +173,7 @@ class ArticleController extends BaseController
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)
     {
@@ -174,5 +185,17 @@ class ArticleController extends BaseController
             Session::flash('error', "Impossible de supprimer l'enregistrement");
         }
         return Redirect::back();
+    }
+
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function markdownPreview()
+    {
+        $article = new Article();
+        $article->texte_md = Input::get('data');
+        $html = $article->texte;
+        return View::make('article.admin.preview', compact('html'));
     }
 }

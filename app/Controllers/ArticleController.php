@@ -1,29 +1,12 @@
 <?php
 namespace App\Controllers;
 
-use Redirect;
 use View;
-use Input;
-use Route;
-use Config;
 use App\Article\Article;
 
-use App\Library\Markdown;
-use Mews\Purifier\Purifier;
-use League\CommonMark\CommonMarkConverter;
 
 class ArticleController extends BaseController
 {
-    public function __construct()
-    {
-        parent::__construct();
-
-        $method = explode('@', Route::currentRouteAction());
-        $method = end($method);
-        if ($method == 'markdownPreview') {
-            $this->forgetBeforeFilter('csrf');
-        }
-    }
 
     public function page($page)
     {
@@ -46,15 +29,4 @@ class ArticleController extends BaseController
         return View::make('article.actualite', compact('actualite'));
     }
 
-    /**
-     * markdownPreview
-     * @return Response
-     * @internal param string $data
-     */
-    public function markdownPreview()
-    {
-        $converter = new Markdown(new CommonMarkConverter(), new Purifier());
-        $html =  $converter->convertToHtml(Input::get('data'));
-        return View::make('article.admin.preview', compact('html'));
-    }
 }

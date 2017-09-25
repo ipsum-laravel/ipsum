@@ -3,7 +3,6 @@ namespace App\Article;
 
 use App\BaseModel;
 use App\Library\Markdown;
-use App\Article\Slug;
 use Mews\Purifier\Purifier;
 use League\CommonMark\CommonMarkConverter;
 
