@@ -9,9 +9,8 @@ trait Slug
 {
     protected $slugChamp = 'slug';
 
-    protected static function boot()
+    protected static function bootSlug()
     {
-        parent::boot();
 
         static::creating(function ($objet) {
 

@@ -7,12 +7,11 @@ use Session;
 trait Mediable
 {
 
-
-    protected static function boot()
+    protected static function bootMediable()
     {
-        parent::boot();
 
         static::saved(function ($objet) {
+
             // Association des medias uploadés avant enregistrement de la publication
             if (Session::has('media.publications')) {
                 foreach (Session::get('media.publications') as $medias) {
@@ -33,6 +32,7 @@ trait Mediable
         static::deleting(function ($objet) {
             $objet->medias()->detach();
         });
+
     }
 
 

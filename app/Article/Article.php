@@ -9,10 +9,7 @@ use League\CommonMark\CommonMarkConverter;
 
 class Article extends BaseModel
 {
-    use Slug, Mediable {
-        Slug::boot as slugBoot;
-        Mediable::boot as mediaBoot;
-    }
+    use Slug, Mediable;
 
     protected $fillable = ['titre', 'extrait', 'texte_md', 'seo_title', 'seo_description', 'type', 'categorie_id', 'etat'];
 
@@ -31,13 +28,6 @@ class Article extends BaseModel
             "extrait" => '',
         );
         return $rules;
-    }
-
-    protected static function boot()
-    {
-        self::slugBoot();
-
-        self::mediaBoot();
     }
 
 
