@@ -13,7 +13,6 @@ use Validator;
 use Request;
 use Liste;
 use HTML;
-use Croppa;
 use App\Article\Media;
 
 
@@ -226,15 +225,6 @@ class MediaController extends \Ipsum\Admin\Controllers\BaseController
     {
         $media = Media::findOrFail($id);
 
-        $repertoire = !empty($media->repertoire) ? $media->repertoire.'/' : '';
-
-        File::deleteAll(Config::get('media.path').'crop/'.$repertoire.$media->fichier);
-        Croppa::delete(Config::get('media.path').'crop/'.$repertoire.$media->fichier); // Bug : Ne supprime pas les miniatures
-
-        foreach ($media->articles as $article) {
-            $article->illustration()->dissociate();
-            $article->save();
-        }
         $media->delete();
 
         Session::flash('warning', "Le media a bien été supprimé");

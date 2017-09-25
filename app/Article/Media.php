@@ -4,12 +4,33 @@ namespace App\Article;
 use App\BaseModel;
 use Config;
 use Mews\Purifier\Facades\Purifier;
+use File;
+use Croppa;
 
 class Media extends BaseModel
 {
     protected $table = 'media';
 
     protected $fillable = ['titre', 'url', 'texte'];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($media) {
+
+            $repertoire = !empty($media->repertoire) ? $media->repertoire.'/' : '';
+
+            File::deleteAll(Config::get('media.path').'crop/'.$repertoire.$media->fichier);
+            Croppa::delete(Config::get('media.path').'crop/'.$repertoire.$media->fichier);
+
+            foreach ($media->articles as $article) {
+                $article->illustration()->dissociate();
+                $article->save();
+            }
+
+        });
+    }
 
     public static function getRules()
     {
