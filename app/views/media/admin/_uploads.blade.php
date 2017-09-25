@@ -49,8 +49,14 @@
                     if (typeof taille !== "undefined" && taille != "") {
                         arguments.push(taille);
                     }
+
+                    if ($.markItUp.focused) {
+                        target = false;
+                    } else {
+                        target = '.markItUpEditor:first';
+                    }
                     $.markItUp({
-                        _____target: ".markItUp",
+                        target: target,
                         openWith: "!media[",
                         closeWith: "](" + arguments.join('|') + ")",
                         placeHolder: alt
@@ -59,9 +65,6 @@
                 });
             }
             markItUpAddMedia();
-
-            // Préselectione le bon textarea pour add media
-            $.markItUp({ target: "{{ $markItUpAddMedia_textarea_id }}" });
         @endif
 
         $("#fileupload").formFileupload({
