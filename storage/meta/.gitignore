@@ -1,2 +1,4 @@
-services.json
+# Ignore everything in this directory
+*
+# Except this file
 !.gitignore

@@ -71,7 +71,6 @@ composer.phar
 .DS_Store
 Thumbs.db
 /workbench
-storage
 
 
 # Configuration

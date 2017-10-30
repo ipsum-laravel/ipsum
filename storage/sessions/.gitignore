@@ -1,2 +1,4 @@
-7bb36d4eab17bf899d792c43f41d743ea23c8953
+# Ignore everything in this directory
+*
+# Except this file
 !.gitignore
