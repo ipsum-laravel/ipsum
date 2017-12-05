@@ -8,7 +8,7 @@
 ) }}
 <div id="fileupload">
     {{ Form::hidden('publication_id', isset($publication) ? $publication->id : null) }}
-    {{ Form::hidden('publication_type', 'App\Article\Article') }}
+    {{ Form::hidden('publication_type', $publication_type) }}
     {{ Form::hidden('repertoire', $dossier) }}
     <input name="medias[]" id="files" type="file" multiple="multiple">
     <input name="submit" type="submit" value="Télécharger">
