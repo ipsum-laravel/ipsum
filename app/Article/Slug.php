@@ -14,6 +14,10 @@ trait Slug
 
         static::creating(function ($objet) {
 
+            if (!property_exists($objet, 'slugBase')){
+                throw new \Exception("Pas de slugBase");
+            }
+
             $base = $objet->slugBase;
 
             $objet->slug = Input::has('slug') ? Input::get('slug') : $objet->$base;
