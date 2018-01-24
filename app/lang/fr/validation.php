@@ -69,6 +69,7 @@ return array(
     ),
     "unique"           => "La valeur du champ :attribute est déjà utilisée.",
     "url"              => "Le format de l'URL de :attribute n'est pas valide.",
+    "not_spammeur"     => "Vous avez été detecté comme spammeur.",
 
     /*
     |--------------------------------------------------------------------------
