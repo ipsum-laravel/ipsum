@@ -250,6 +250,6 @@ class MediaController extends \Ipsum\Admin\Controllers\BaseController
         if (class_exists($type) and method_exists($type, 'medias')) {
             return $type::findOrFail($id);
         }
-        App:abort(422);
+        \App::abort(422);
     }
 }
