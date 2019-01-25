@@ -22,7 +22,7 @@ trait Mediable
             }
 
             // Illustration automatique de la publication si elle n'en as pas encore
-            if ($objet->media_id === null and $objet->medias()->images()->count()) {
+            if ($objet->media_id === null and array_key_exists('media_id', $objet->getAttributes()) and $objet->medias()->images()->count()) {
                 $media = $objet->medias()->images()->first();
                 $objet->media_id = $media->id;
                 $objet->save();
