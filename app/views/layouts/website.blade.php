@@ -14,7 +14,7 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', {{{ Config::get('app.analytics_id') }}});
+        gtag('config', '{{{ Config::get('app.analytics_id') }}}');
     </script>
 </head>
 <body>
