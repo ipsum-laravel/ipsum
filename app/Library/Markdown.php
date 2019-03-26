@@ -97,11 +97,7 @@ class Markdown
 
         $fichier = $arguments[0];
 
-        $imageValidator = Validator::make(
-            array('document' => new File(public_path().'/'.Config::get('media.path').$fichier)),
-            array('document' => 'mimes:jpeg,jpg,png,bmp,gif')
-        );
-        $type = $imageValidator->passes() ? 'image' : 'document';
+        $type = in_array(pathinfo($fichier, PATHINFO_EXTENSION), ['jpeg','jpg','png','bmp','gif']) ? 'image' : 'document';
 
         $class = "";
         if (isset($arguments[1])) {
