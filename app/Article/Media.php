@@ -74,10 +74,4 @@ class Media extends BaseModel
     {
         return $this->type == 'image';
     }
-
-    public function setTexteAttribute($value)
-    {
-        $html = Purifier::clean($value);
-        $this->attributes['texte'] = $html;
-    }
 }
